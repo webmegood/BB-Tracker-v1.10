@@ -128,7 +128,7 @@ function setupGeolocation() {
 function sendtodatabase(arrayValues){
 
 $.ajax({
-url: 'http://www.mediathrong.com/connections/db_info.php',
+url: 'http://www.mediathrong.com/beepboards/tracking/scripts/gps_check.php',
 type: 'POST',
 data: {data: arrayValues},
 cache: false,
