@@ -26,7 +26,7 @@ function setupGeolocation() {
 		// Append in main content area and append classes and id
 		var positionUploadBtn = document.getElementById('main_content');
 		positionUploadBtn.appendChild(uploadDataButton);
-		uploadDataButton.className = "btn_standard btn_blue";
+		uploadDataButton.className = "button button-primary";
 		uploadDataButton.setAttribute("id", "uploadBtn");
 		
 		
@@ -168,7 +168,7 @@ function createRestartButton() {
 		// Append Restart button in main content area and append classes and id
 		var positionRestartBtn = document.getElementById('main_content');
 		positionRestartBtn.appendChild(restartButton);
-		restartButton.className = "button";
+		restartButton.className = "button button-primary";
 		restartButton.setAttribute("id", "restartBtn");
 
 		// Add event handler
