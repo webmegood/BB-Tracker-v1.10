@@ -139,7 +139,7 @@ error: function (request, status, error) {
 }
 });
 
-alert("Data has been sent!");
+//alert("Data has been sent!");
 
 
 
@@ -168,7 +168,7 @@ function createRestartButton() {
 		// Append Restart button in main content area and append classes and id
 		var positionRestartBtn = document.getElementById('main_content');
 		positionRestartBtn.appendChild(restartButton);
-		restartButton.className = "btn_standard btn_blue";
+		restartButton.className = "button";
 		restartButton.setAttribute("id", "restartBtn");
 
 		// Add event handler
