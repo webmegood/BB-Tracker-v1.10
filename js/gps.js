@@ -53,7 +53,7 @@ function setupGeolocation() {
 	var callbackFn = function(location) {
 
 
-		//testObject.push([location.latitude, location.longitude, location.time]);
+		testObject.push([location.latitude, location.longitude, location.time]);
 
 
 
@@ -83,7 +83,7 @@ function setupGeolocation() {
 		
 		// Retrieve 
 		var retrievedObject = localStorage.getItem('testObject');
-		document.getElementById("result").innerHTML = retrievedObject;	
+		//document.getElementById("result").innerHTML = retrievedObject;	
 
 
        // backgroundGeolocation.finish();
