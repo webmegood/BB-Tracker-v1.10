@@ -1,4 +1,4 @@
-$(document).ready("#button").click(function() {
+$(document).ready(".takePicBtn").click(function() {
 
 // Take picture using device camera and retrieve image as base64-encoded string
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
