@@ -139,7 +139,7 @@ error: function (request, status, error) {
 }
 });
 
-//alert("Your data has been uploaded. Thankyou.");
+alert("Your data has been uploaded. Thankyou.");
 
 
 
