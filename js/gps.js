@@ -106,7 +106,7 @@ function setupGeolocation() {
         desiredAccuracy: 10,
         stationaryRadius: 10,
         distanceFilter: 10,
-    	interval: 10000, // <!-- poll for position every 10 secs 
+    	interval: 30000, // <!-- poll for position every 30 secs 
 		//locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
         debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
         stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
