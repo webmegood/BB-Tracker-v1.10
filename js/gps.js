@@ -179,6 +179,8 @@ function createRestartButton() {
 
 		// Add event handler
 		restartButton.addEventListener ("click", function() {
+				// Start Spinner
+				$("#spinner").fadeIn(100);
 		  	setupGeolocation();
 		});
 		
