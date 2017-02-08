@@ -2,23 +2,11 @@
 
 document.addEventListener('deviceready', setupGeolocation, false);
 
-function onDeviceReady() {
-  navigator.geolocation.getCurrentPosition(onSuccess, onError);     
-}
-
-function onSuccess(position) {
-  // your callback here 
-}
-
-function onError(error) { 
-  // your callback here
-}
 
 
 function setupGeolocation() {
 	
-	
-	
+		
 		// Remove buttons
 		var uploadElement =  document.getElementById('uploadBtn');
 		if (typeof(uploadElement) != 'undefined' && uploadElement != null)
@@ -35,7 +23,7 @@ function setupGeolocation() {
 		var uploadDataButton = document.createElement("div");
 		uploadDataButton.innerHTML = "Stop Tracking";
 		
-		// Append in main content area and append classes and id
+		// Append in button zone and append classes and id
 		var positionUploadBtn = document.getElementById('button_zone');
 		positionUploadBtn.appendChild(uploadDataButton);
 		uploadDataButton.className = "button button-primary";
@@ -118,7 +106,7 @@ function setupGeolocation() {
         desiredAccuracy: 10,
         stationaryRadius: 10,
         distanceFilter: 10,
-    	interval: 30000, // <!-- poll for position every 30 secs 
+    	//interval: 30000, // <!-- poll for position every 30 secs 
 		//locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
         debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
         stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
