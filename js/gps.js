@@ -1,3 +1,5 @@
+
+
 document.addEventListener('deviceready', setupGeolocation, false);
 
 
@@ -24,7 +26,7 @@ function setupGeolocation() {
 		uploadDataButton.innerHTML = "Stop + Upload Data";
 		
 		// Append in main content area and append classes and id
-		var positionUploadBtn = document.getElementById('main_content');
+		var positionUploadBtn = document.getElementById('button_zone');
 		positionUploadBtn.appendChild(uploadDataButton);
 		uploadDataButton.className = "button button-primary";
 		uploadDataButton.setAttribute("id", "uploadBtn");
@@ -155,7 +157,11 @@ createRestartButton();
 
 
 
-function createRestartButton() {		
+
+function createRestartButton() {	
+
+		// Stop Spinner
+		$("#spinner").fadeOut(100);
 		
 		// Remove Upload button
 		var uploadElement =  document.getElementById('uploadBtn');
@@ -166,7 +172,7 @@ function createRestartButton() {
 		restartButton.innerHTML = "Restart";
 
 		// Append Restart button in main content area and append classes and id
-		var positionRestartBtn = document.getElementById('main_content');
+		var positionRestartBtn = document.getElementById('button_zone');
 		positionRestartBtn.appendChild(restartButton);
 		restartButton.className = "button button-primary";
 		restartButton.setAttribute("id", "restartBtn");
