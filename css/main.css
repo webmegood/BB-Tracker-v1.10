@@ -3,5 +3,7 @@
 	padding-top: 150px;
 }
 .button {
-	font-size: 2em;
+	font-size: 1.2em;
+	height: 50px;
+	line-height: 50px;
 }
