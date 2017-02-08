@@ -1,3 +1,7 @@
 .main_content {
 	text-align:center;
+	padding-top: 150px;
+}
+.button {
+	font-size: 2em;
 }
