@@ -92,9 +92,9 @@ function setupGeolocation() {
 	
 	
 
-    //var failureFn = function(error) {
-        //console.log('BackgroundGeolocation error');
-    //};
+    var failureFn = function(error) {
+        console.log('BackgroundGeolocation error');
+    };
 	
 	
 	
