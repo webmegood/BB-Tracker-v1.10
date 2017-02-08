@@ -2,7 +2,17 @@
 
 document.addEventListener('deviceready', setupGeolocation, false);
 
+function onDeviceReady() {
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);     
+}
 
+function onSuccess(position) {
+  // your callback here 
+}
+
+function onError(error) { 
+  // your callback here
+}
 
 
 function setupGeolocation() {
@@ -21,7 +31,7 @@ function setupGeolocation() {
 			restartElement.parentNode.removeChild(restartElement);
 		}		
 				
-		// Create upload button
+		// Create stop button
 		var uploadDataButton = document.createElement("div");
 		uploadDataButton.innerHTML = "Stop Tracking";
 		
@@ -83,7 +93,7 @@ function setupGeolocation() {
 		
 		// Retrieve 
 		var retrievedObject = localStorage.getItem('testObject');
-		//document.getElementById("result").innerHTML = retrievedObject;	
+		document.getElementById("result").innerHTML = retrievedObject;	
 
 
        // backgroundGeolocation.finish();
@@ -110,11 +120,11 @@ function setupGeolocation() {
         distanceFilter: 10,
     	interval: 30000, // <!-- poll for position every 30 secs 
 		//locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
+        debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
+        stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
     });
 
-    // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
+    // Turn ON the background-geolocation system.
     backgroundGeolocation.start();
 
     // If you wish to turn OFF background-tracking, call the #stop method.
