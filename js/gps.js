@@ -23,7 +23,7 @@ function setupGeolocation() {
 				
 		// Create upload button
 		var uploadDataButton = document.createElement("div");
-		uploadDataButton.innerHTML = "Stop + Upload Data";
+		uploadDataButton.innerHTML = "Stop Tracking";
 		
 		// Append in main content area and append classes and id
 		var positionUploadBtn = document.getElementById('button_zone');
@@ -53,7 +53,7 @@ function setupGeolocation() {
 	var callbackFn = function(location) {
 
 
-		testObject.push([location.latitude, location.longitude, location.time]);
+		//testObject.push([location.latitude, location.longitude, location.time]);
 
 
 
@@ -169,7 +169,7 @@ function createRestartButton() {
 		
 		// Create Restart button
 		var restartButton = document.createElement("div");
-		restartButton.innerHTML = "Restart";
+		restartButton.innerHTML = "Restart Tracking";
 
 		// Append Restart button in main content area and append classes and id
 		var positionRestartBtn = document.getElementById('button_zone');
