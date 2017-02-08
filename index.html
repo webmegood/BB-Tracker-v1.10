@@ -28,6 +28,7 @@
   
 	<script type="text/javascript" src="phonegap.js"></script>
 	<script type="text/javascript" src="js/zepto_min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -40,14 +41,25 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-      <div class="twelve columns" style="margin-top: 5%; text-align:center">
+      <div class="twelve columns" style="margin-top:10%; text-align:center">
         <h2>Vehicle Tracker</h2>
         <div class="main_content" id="main_content">
-				<!--p id="result" class="dynamic_data_box"></p-->
+          <div class="spinner" id="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>        
+          <!--p id="result" class="dynamic_data_box"></p-->
         </div>
       </div>
     </div>
   </div>
+  
+  
+  <div class="button_zone" id="button_zone">
+  	<!--div class="button button-primary">Stop + Upload</div-->
+  </div>
+  
+  
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
