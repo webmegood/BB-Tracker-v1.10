@@ -24,8 +24,11 @@ function onPhotoDataSuccess(imageData) {
     smallImage.style.display = 'block';
     smallImage.src = imageData;
 		
+		
+		alert(imageData);
+		
 		//Call Move Image Function
-		movePic(imageData);
+		//movePic(imageData);
 		
 }
 
