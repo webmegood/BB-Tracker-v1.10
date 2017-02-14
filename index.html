@@ -62,7 +62,14 @@
     </div>
   </div>
 
-  <div id="smallImage" style="display:none"></div>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+
+  <input type="file" name="uploadedfile" accept="image/*" capture>
+
+  <input type="submit" value="Upload">
+
+</form>
+
   
   <div class="button_zone" id="button_zone">
   	<!--div class="button button-primary">Stop + Upload</div-->
