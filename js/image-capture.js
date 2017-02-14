@@ -7,7 +7,7 @@ $("#takePicBtn").click(function(){
 
 function capturePhoto() {
 	
-		alert("noooo!");
+		//alert("noooo!");
 
 
 
