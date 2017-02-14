@@ -27,93 +27,11 @@
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   
-	<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="js/phonegap.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/phonegap.js"></script>
   
-	<script type="text/javascript" charset="utf-8">
-    var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value 
-    // Wait for PhoneGap to connect with the device
-    //
-    document.addEventListener("deviceready",onDeviceReady,false);
-    // PhoneGap is ready to be used!
-    //
-    function onDeviceReady() {
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-    }
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoDataSuccess(imageData) {
-      // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
-    
-	// Called when a photo is successfully retrieved
-    //
-    function onPhotoFileSuccess(imageData) {
-      // Get image handle
-      console.log(JSON.stringify(imageData));
-      
-   	  // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = imageData;
-    }
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI 
-      // console.log(imageURI);
-      // Get image handle
-      //
-      var largeImage = document.getElementById('largeImage');
-      // Unhide image elements
-      //
-      largeImage.style.display = 'block';
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      largeImage.src = imageURI;
-    }
-    // A button will call this function
-    //
-    function capturePhotoWithData() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
-    }
-    function capturePhotoWithFile() {
-        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-    }
-    
-    // A button will call this function
-    //
-    function getPhoto(source) {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
-    }
-    // Called if something bad happens.
-    // 
-    function onFail(message) {
-      alert('Failed because: ' + message);
-    }
-    </script>
+	<script type="text/javascript">
+  </script>
   
   
 
@@ -141,15 +59,42 @@
         <div class="main_content" id="main_content">
         
         
-    <button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
-    <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>
-    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-    <img style="display:none;" id="largeImage" src="" />
+    <!---------------------------------- Camera ------------------------------------------>
+    <div data-role="page" id="cameraMainPage" data-add-back-btn="true" back-btn-text="back">
+        <div data-role="header">
+            <h1>Camera</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#" id="capturePhoneButton">Capture Photo</a></li>
+                <li><a href="#" id="fromPhotoLibraryButton">From Photo Library</a></li>
+            </ul>
+            
+            <div class="mesgBox">
+                <h5 class="hlabel">Using camera.getPicture method</h5>
+                <ul class="smFont">
+                    <li>For both of the above menu items, URI is used to retrieve the image.<br/>
+                        Along with each image, the corresponding URI is shown.
+                    </li>
+                </ul>           
+            </div>
+            
+            <div data-role="popup" id="popupPhoto" class="ui-content" data-theme="e" data-corners="false">
+                <h5 class="hlabel">Image URI</h5>
+                <p id="pictBox" class="content mesgBox"></p>
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <img class="popphoto" id="popImage" src="">
+            </div>
+        </div>
+        <div data-role="footer">
+            <div id="cameraStatus"></div>
+        </div>
         
-        
-        
+        <script type="text/javascript" charset="utf-8" src="js/camera-min.js"></script> 
+    </div>
+    
+    
+            
           <div class="spinner" id="spinner">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -176,3 +121,77 @@
 
 	<script type="text/javascript" src="js/gps.js"></script>
 	<script type="text/javascript" src="js/image-capture.js"></script>
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+    //*********************************************************    
+    // Camera Capabilities
+    //********************************************************* 
+    var pictureSource;
+    var destinationType;
+    
+    function updateCameraStatus(status) {
+        $("#cameraStatus").html(status);
+    }
+    
+    function photoOnFail(message) {
+        updateCameraStatus("ERROR: " + message);
+    }
+    
+    function onPhotoDataSuccess(imageData) {
+        $("#popImage").attr("src", "data:image/jpeg;base64," + imageData);
+        $("#popupPhoto").popup("open");
+    }
+    
+    function onPhotoURISuccess(imageURI) {
+        $("#popImage").attr("src", imageURI);
+        //$("#pictBox").empty();
+        //$("#pictBox").append(imageURI).trigger("create");
+        $("#pictBox").html(imageURI);
+        updateCameraStatus("SUCCESS: Image loaded");
+        $("#popupPhoto").popup("open");
+    }
+
+    function capturePhoto() {
+        navigator.camera.getPicture(onPhotoURISuccess, photoOnFail, { quality: 50, destinationType: destinationType.FILE_URI });
+    }
+
+    //Android ignores the allowEdit parameter
+    function capturePhotoEdit() {
+        navigator.camera.getPicture(onPhotoDataSuccess, photoOnFail, { quality: 20, allowEdit: true, destinationType: destinationType.DATA_URL });
+    }
+
+    //source could be Camera.PictureSourceType.PHOTOLIBRARY and SAVEDPHOTOALBUM, in Android, they are the same.
+    function getPhoto(source) {
+        updateCameraStatus("");        
+        navigator.camera.getPicture(onPhotoURISuccess, photoOnFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: source });
+    }
+    
+    function getCameraReady() {
+        $("popupPhoto").popup("close");     
+        updateCameraStatus("");
+        pictureSource   = navigator.camera.PictureSourceType;
+        destinationType = navigator.camera.DestinationType;
+        
+        $('#capturePhoneButton').on('vclick', function(e) {
+            e.preventDefault();
+            capturePhoto();
+            return false;
+        });
+        
+        $('#fromPhotoLibraryButton').on('vclick', function(e){
+            e.preventDefault();
+            getPhoto(pictureSource.PHOTOLIBRARY);
+            return false;
+        });
+    }
+
+    //*********************************************************    
+    // initialize the environment
+    //********************************************************* 
+    $("#cameraMainPage").bind("pagebeforeshow", function() { getCameraReady(); } );
+</script>
