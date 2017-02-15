@@ -30,9 +30,6 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/phonegap.js"></script>
   
-	<script type="text/javascript">
-  </script>
-  
   
 
   <!-- Favicon
@@ -56,45 +53,7 @@
     <div class="row">
       <div class="twelve columns" style="margin-top:100px; text-align:center">
         <h3>Vehicle Tracker <div class="takePicBtn" id="takePicBtn"><i class="fa fa-camera fa-3" aria-hidden="true"></i></div></h3>
-        <div class="main_content" id="main_content">
-        
-        
-    <!---------------------------------- Camera ------------------------------------------>
-    <div data-role="page" id="cameraMainPage" data-add-back-btn="true" back-btn-text="back">
-        <div data-role="header">
-            <h1>Camera</h1>
-        </div>
-        <div data-role="content">
-            <ul data-role="listview" data-inset="true">
-                <li><a href="#" id="capturePhoneButton">Capture Photo</a></li>
-                <li><a href="#" id="fromPhotoLibraryButton">From Photo Library</a></li>
-            </ul>
-            
-            <div class="mesgBox">
-                <h5 class="hlabel">Using camera.getPicture method</h5>
-                <ul class="smFont">
-                    <li>For both of the above menu items, URI is used to retrieve the image.<br/>
-                        Along with each image, the corresponding URI is shown.
-                    </li>
-                </ul>           
-            </div>
-            
-            <div data-role="popup" id="popupPhoto" class="ui-content" data-theme="e" data-corners="false">
-                <h5 class="hlabel">Image URI</h5>
-                <p id="pictBox" class="content mesgBox"></p>
-                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-                <img class="popphoto" id="popImage" src="">
-            </div>
-        </div>
-        <div data-role="footer">
-            <div id="cameraStatus"></div>
-        </div>
-        
-        <script type="text/javascript" charset="utf-8" src="js/camera-min.js"></script> 
-    </div>
-    
-    
-            
+        <div class="main_content" id="main_content">            
           <div class="spinner" id="spinner">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -126,72 +85,3 @@
 
 
 
-
-<script type="text/javascript" charset="utf-8">
-    //*********************************************************    
-    // Camera Capabilities
-    //********************************************************* 
-    var pictureSource;
-    var destinationType;
-    
-    function updateCameraStatus(status) {
-        $("#cameraStatus").html(status);
-    }
-    
-    function photoOnFail(message) {
-        updateCameraStatus("ERROR: " + message);
-    }
-    
-    function onPhotoDataSuccess(imageData) {
-        $("#popImage").attr("src", "data:image/jpeg;base64," + imageData);
-        $("#popupPhoto").popup("open");
-    }
-    
-    function onPhotoURISuccess(imageURI) {
-        $("#popImage").attr("src", imageURI);
-        //$("#pictBox").empty();
-        //$("#pictBox").append(imageURI).trigger("create");
-        $("#pictBox").html(imageURI);
-        updateCameraStatus("SUCCESS: Image loaded");
-        $("#popupPhoto").popup("open");
-    }
-
-    function capturePhoto() {
-        navigator.camera.getPicture(onPhotoURISuccess, photoOnFail, { quality: 50, destinationType: destinationType.FILE_URI });
-    }
-
-    //Android ignores the allowEdit parameter
-    function capturePhotoEdit() {
-        navigator.camera.getPicture(onPhotoDataSuccess, photoOnFail, { quality: 20, allowEdit: true, destinationType: destinationType.DATA_URL });
-    }
-
-    //source could be Camera.PictureSourceType.PHOTOLIBRARY and SAVEDPHOTOALBUM, in Android, they are the same.
-    function getPhoto(source) {
-        updateCameraStatus("");        
-        navigator.camera.getPicture(onPhotoURISuccess, photoOnFail, { quality: 50, destinationType: destinationType.FILE_URI, sourceType: source });
-    }
-    
-    function getCameraReady() {
-        $("popupPhoto").popup("close");     
-        updateCameraStatus("");
-        pictureSource   = navigator.camera.PictureSourceType;
-        destinationType = navigator.camera.DestinationType;
-        
-        $('#capturePhoneButton').on('vclick', function(e) {
-            e.preventDefault();
-            capturePhoto();
-            return false;
-        });
-        
-        $('#fromPhotoLibraryButton').on('vclick', function(e){
-            e.preventDefault();
-            getPhoto(pictureSource.PHOTOLIBRARY);
-            return false;
-        });
-    }
-
-    //*********************************************************    
-    // initialize the environment
-    //********************************************************* 
-    $("#cameraMainPage").bind("pagebeforeshow", function() { getCameraReady(); } );
-</script>
