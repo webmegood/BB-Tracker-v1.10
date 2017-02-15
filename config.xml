@@ -1,6 +1,12 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-	
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.phonegap.example"
+    versionCode = "10"
+    version     = "1.0.0" >
+			
 	<name>Beep Boards Vehicle Tracker</name>
 	<description>
 		Tracks and logs client trips
