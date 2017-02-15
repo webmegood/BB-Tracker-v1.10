@@ -7,76 +7,69 @@ $("#takePicBtn").click(function(){
 
 function capturePhoto() {
 	
-		//alert("noooo!");
+
+alert("noooo!");
 
 
 
-// Take picture using device camera and retrieve image as base64-encoded string
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value
+ 
+document.addEventListener("deviceready", onDeviceReady, false);
+ 
+function onDeviceReady() {
+    pictureSource = navigator.camera.PictureSourceType;
+    destinationType = navigator.camera.DestinationType;
 }
-
-//Callback function when the picture has been successfully taken
-function onPhotoDataSuccess(imageData) {                
-    // Get image handle
-    var smallImage = document.getElementById('smallImage');
-
-    // Unhide image elements
-    smallImage.style.display = 'block';
-    smallImage.src = imageData;
-		
-		
-		alert(imageData);
-		
-		//Call Move Image Function
-		//movePic(imageData);
-		
+ 
+function clearCache() {
+    navigator.camera.cleanup();
 }
-
-//Callback function when the picture has not been successfully taken
+ 
+var retries = 0;
+function onCapturePhoto(fileURI) {
+    var win = function (r) {
+        clearCache();
+        retries = 0;
+        alert('Done!');
+    }
+ 
+    var fail = function (error) {
+        if (retries == 0) {
+            retries ++
+            setTimeout(function() {
+                onCapturePhoto(fileURI)
+            }, 1000)
+        } else {
+            retries = 0;
+            clearCache();
+            alert('Ups. Something wrong happens!');
+        }
+    }
+ 
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
+    options.mimeType = "image/jpeg";
+    options.params = {}; // if we need to send parameters to the server request
+    var ft = new FileTransfer();
+    ft.upload(fileURI, encodeURI("http://www.mediathrong.com/beepboards/tracking/bbtracker1.10/repo"), win, fail, options);
+}
+ 
+function capturePhoto() {
+    navigator.camera.getPicture(onCapturePhoto, onFail, {
+        quality: 100,
+        destinationType: destinationType.FILE_URI
+    });
+}
+ 
 function onFail(message) {
-    alert('Failed to load picture because: ' + message);
+    alert('Failed because: ' + message);
 }
 
 
 
 
 
-
-
-
-
-
-function movePic(file){ 
-    window.resolveLocalFileSystemURI(file, resolveOnSuccess, resOnError); 
-} 
-
-//Callback function when the file system uri has been resolved
-function resolveOnSuccess(entry){ 
-    var d = new Date();
-    var n = d.getTime();
-    //new file name
-    var newFileName = n + ".jpg";
-    var myFolderApp = "repo";
-
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSys) {      
-    //The folder is created if doesn't exist
-    fileSys.root.getDirectory( myFolderApp,
-                    {create:true, exclusive: false},
-                    function(directory) {
-                        entry.moveTo(directory, newFileName,  successMove, resOnError);
-                    },
-                    resOnError);
-                    },
-    resOnError);
 }
-
-//Callback function when the file has been moved successfully - inserting the complete path
-function successMove(entry) {
-    //I do my insert with "entry.fullPath" as for the path
-		alert("image uploaded");
-}
-
-function resOnError(error) {
-    alert(error.code);
-}
-
