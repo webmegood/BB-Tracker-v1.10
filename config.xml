@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+	<name>Beep Baards Vehicle Tracker</name>
+	<description>
+		Tracks and logs client trips
+	</description>
+
+	<author email="tech@beepboards.com" href="http://beepboards.com.au">
+		The Beep Boards Team
+	</author>
+
+	<preference name="phonegap-version" value="cli-6.0.0" />
+	
+	<plugin name="cordova-plugin-camera" spec="~2.3.1" />
+	
+	
+</widget>
