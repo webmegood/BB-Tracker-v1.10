@@ -1,12 +1,12 @@
-
-
 document.addEventListener('deviceready', setupGeolocation, false);
+
 
 
 
 function setupGeolocation() {
 	
-		
+	
+	
 		// Remove buttons
 		var uploadElement =  document.getElementById('uploadBtn');
 		if (typeof(uploadElement) != 'undefined' && uploadElement != null)
@@ -19,14 +19,14 @@ function setupGeolocation() {
 			restartElement.parentNode.removeChild(restartElement);
 		}		
 				
-		// Create stop button
+		// Create upload button
 		var uploadDataButton = document.createElement("div");
-		uploadDataButton.innerHTML = "Stop Tracking";
+		uploadDataButton.innerHTML = "Stop + Upload Data";
 		
-		// Append in button zone and append classes and id
-		var positionUploadBtn = document.getElementById('button_zone');
+		// Append in main content area and append classes and id
+		var positionUploadBtn = document.getElementById('main_content');
 		positionUploadBtn.appendChild(uploadDataButton);
-		uploadDataButton.className = "button button-primary";
+		uploadDataButton.className = "btn_standard btn_blue";
 		uploadDataButton.setAttribute("id", "uploadBtn");
 		
 		
@@ -108,11 +108,11 @@ function setupGeolocation() {
         distanceFilter: 10,
     	interval: 30000, // <!-- poll for position every 30 secs 
 		//locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
-        debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
+        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+        stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
     });
 
-    // Turn ON the background-geolocation system.
+    // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
     backgroundGeolocation.start();
 
     // If you wish to turn OFF background-tracking, call the #stop method.
@@ -139,7 +139,7 @@ error: function (request, status, error) {
 }
 });
 
-//alert("Data has been sent!");
+//alert("Your data has been uploaded. Thankyou.");
 
 
 
@@ -155,11 +155,7 @@ createRestartButton();
 
 
 
-
-function createRestartButton() {	
-
-		// Stop Spinner
-		$("#spinner").fadeOut(100);
+function createRestartButton() {		
 		
 		// Remove Upload button
 		var uploadElement =  document.getElementById('uploadBtn');
@@ -167,18 +163,16 @@ function createRestartButton() {
 		
 		// Create Restart button
 		var restartButton = document.createElement("div");
-		restartButton.innerHTML = "Restart Tracking";
+		restartButton.innerHTML = "Restart";
 
 		// Append Restart button in main content area and append classes and id
-		var positionRestartBtn = document.getElementById('button_zone');
+		var positionRestartBtn = document.getElementById('main_content');
 		positionRestartBtn.appendChild(restartButton);
-		restartButton.className = "button button-primary";
+		restartButton.className = "btn_standard btn_blue";
 		restartButton.setAttribute("id", "restartBtn");
 
 		// Add event handler
 		restartButton.addEventListener ("click", function() {
-				// Start Spinner
-				$("#spinner").fadeIn(100);
 		  	setupGeolocation();
 		});
 		
