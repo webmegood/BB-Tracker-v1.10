@@ -31,6 +31,7 @@ $(document).ready(function(){
 				$('.secondary').animate({"right":"-100vw"}, 50);
         $('#tracks').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').hide(0);
     });
 		
     $('#menu-account').click(function(){
@@ -39,6 +40,7 @@ $(document).ready(function(){
 				$('.secondary').animate({"right":"-100vw"}, 50);
         $('#account').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').hide(0);
     });
 
     $('#menu-jobs').click(function(){
@@ -47,6 +49,7 @@ $(document).ready(function(){
 				$('.secondary').animate({"right":"-100vw"}, 50);
         $('#jobs').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').hide(0);
     });
 
 });
@@ -60,6 +63,7 @@ $(document).ready(function(){
 				$('#tracks').animate({"right":"-100vw"}, 50);
         $('#tracksCurrent').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').delay(300).fadeIn(500);
     });
 });
 
