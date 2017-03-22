@@ -61,8 +61,8 @@ h5, h6 {
 	border-radius: 50%;
 	position: fixed;
 	z-index: 1000;
-	top: 1.5vh;
-	left: 1.5vh;
+	top: 25px;
+	left: 8px;
 	text-align:center;
   -webkit-animation: 0.7s blink step-end infinite;
   -moz-animation: 0.7s blink step-end infinite;
