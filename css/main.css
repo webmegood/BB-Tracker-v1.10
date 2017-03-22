@@ -1,21 +1,230 @@
 .main_content {
 	text-align:center;
 }
+#home {
+	z-index: 19;
+}
 .menu_strip {
-	background: #DDD;
-	height: 50px;
 	text-align: center;
 	width: 100%;
 	display: block;
-	margin: 0;
-	position: fixed;
-	top: 0px;
-	z-index: 100;
-	padding-top: 16px;
-	padding-bottom: 0px;
+	margin: 4vh 0 6vh 0;
+	position: relative;
 }
-.logo img {
-	width: 250px;
+.summary-row {
+	background-color: #EEE;
+	margin-top: 5px;
+	padding: 4px 6px;
+	display: block;
+	min-height: 24px;
+}
+.elapsed-time {
+	display: inline-block;
+	float: right;
+	position: relative;
+}
+.distance-travelled {
+	display: inline-block;
+	float: left;
+	position: relative;
+}
+.bold {
+	font-weight: 800;	
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Fjalla One', sans-serif;
+}
+h1 {
+	font-size: 2em;
+	color: #000;
+	letter-spacing: 0.05em;
+}
+h2 {
+	font-size: 1em;
+	color: #999;
+	letter-spacing: 0.05em;
+}
+h5, h6 {
+	margin:0;
+}
+.mainLogo img {
+	width: 136px;
+	height: auto;
+	position: relative;
+	margin: 15vh auto;
+	display:block;
+}
+.status {
+	border: 2px #33cc33 solid;
+	height: 28px;
+	width: 28px;
+	border-radius: 50%;
+	position: fixed;
+	z-index: 1000;
+	top: 1.5vh;
+	left: 1.5vh;
+	text-align:center;
+  -webkit-animation: 0.7s blink step-end infinite;
+  -moz-animation: 0.7s blink step-end infinite;
+  -ms-animation: 0.7s blink step-end infinite;
+  -o-animation: 0.7s blink step-end infinite;
+  animation: 0.7s blink step-end infinite;
+	animation-timing-function: ease;
+}
+.status i {
+	color: #33cc33;
+	font-size: 1em;
+	line-height: 32px;
+	display:inline-block;
+}
+@keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.pause-track, .start-track {
+	border: 4px solid #333;
+	height: 48px;
+	width: 48px;
+	border-radius: 50%;
+	position: relative;
+	left: 22px;
+	top: -5px;
+	text-align: center;
+	display: inline-block;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.35);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.35);
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.35);
+  text-align: center;
+}
+.pause-track {
+	background: linear-gradient(to left, #FDD7A0 50%, #A9FFAD 50%);
+	background-size: 200% 100%;
+	background-position:right bottom;	
+}
+.start-track {
+	background: linear-gradient(to left, #FDD7A0 50%, #A9FFAD 50%);
+	background-size: 200% 100%;
+	background-position:left bottom;	
+}
+.pause-track:hover {
+	background-position:right bottom;	
+	transition:all 0.4s ease;
+}
+.start-track:hover {
+	background-position:right bottom;	
+	transition:all 0.4s ease;
+}
+.start-track i {
+	color: #333;
+	font-size: 1.5em;
+	line-height: 50px;
+	display: inline-block;
+	position: relative;
+	left: 2px;
+}	
+.pause-track i {
+	color: #333;
+	font-size: 1.5em;
+	line-height: 50px;
+	display: inline-block;
+	position: relative;
+	left: 0px;
+}
+
+
+.divider_h {
+	width: auto;
+	height: 2px;
+	background: #EEE;
+	display: block;
+	position: fixed;
+	bottom: 15vh;
+	left: 7%;
+	right: 7%;
+	z-index: 301;
+}
+.menuArea ul {
+	display: table;
+	width: 100%;
+	position: fixed;
+	z-index: 300;
+	font-family: 'Fjalla One', sans-serif;
+	bottom: 0;
+	left: 0;
+	margin:0;
+	padding: 0;
+	background: #FFF;
+}
+.menuArea ul li {
+	height: 14vh;
+	text-align: center;
+	margin: 0;
+	line-height: 14vh;
+	padding: 0;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #FFF;
+}
+.menuArea ul li:hover {
+	cursor:pointer;
+}
+ul > li {
+	display: table-cell;
+}
+.menuArea ul li:hover, .menuArea ul li.current {
+	border-bottom-color: #AAA;
+}
+#menu-tracks {
+	width: 33%;
+}
+#menu-account {
+	width: 34%;
+}
+#menu-jobs {
+	width: 33%;
 }
 .takePicBtn {
 	display: inline-block;
@@ -75,8 +284,57 @@
 }
 
 
-
-
+.tracks-buttons {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
+	position: relative;
+}
+.track-buttons-row {
+	display: block;
+	margin-bottom: 20px;
+}
+.round-btn {
+	font-family: 'Fjalla One', sans-serif;
+	border-radius: 50%;
+	border: 6px solid #333;
+	color: #333;
+	font-size: 2em;
+	text-align: center;
+	width: 90px;
+	height: 90px;
+	text-transform: uppercase;
+	display:inline-block;
+	margin: 10px 15px 10px 15px;
+	background: linear-gradient(to left, #FFF 50%, #DDD 50%);
+	background-size: 200% 100%;
+	background-position:right bottom;	
+}
+.round-btn:hover {
+	cursor: pointer;
+	background-position:left bottom;	
+	transition:all 0.4s ease;
+}
+.round-btn i {
+	margin-bottom: 5px;
+	color: #333;
+	display: block;
+	line-height: 90px;
+}
+.round-btn .button-text {
+	font-size: 0.5em;
+	color: #333;
+	line-height: 35px;
+	display: block;
+}
+.btn-current {
+	border-color: #33cc33;
+}
+.round-btn.btn-current i, .round-btn.btn-current .button-text {
+	color: #33cc33;
+}
 .button_zone {
 	width: auto;
 	left: 25px;
@@ -97,3 +355,117 @@
 #restartBtn {
 	background: #6C9;
 }
+
+
+
+.imageRotateHorizontal{
+    -moz-animation: spinHorizontal 1.2s infinite linear;
+    -o-animation: spinHorizontal 1.2s infinite linear;    
+    -webkit-animation: spinHorizontal 1.2s infinite linear;
+    animation: spinHorizontal 1.2s infinite linear;
+}
+
+@-moz-keyframes spinHorizontal {
+    0% {
+        -moz-transform: rotateY(0deg);
+    }
+
+    100% {
+        -moz-transform: rotateY(360deg);
+    }
+}
+
+@keyframes spinHorizontal {
+	0% { 
+        transform: rotateY(0deg); 
+	}
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+@-webkit-keyframes spinHorizontal {
+	0% { 
+        -webkit-transform: rotateY(0deg); 
+	}
+    100% {
+        -webkit-transform: rotateY(360deg);
+    }
+}
+
+
+
+
+
+
+
+/*** ---- SECONDARY PAGES ---- ***/
+
+
+.secondary, #backgroundPanel {
+	width: 100vw;
+  height: 100vh;
+  float: right;
+ 	position: fixed;
+	z-index: 200;
+	right: -100vw;
+	top: 0;
+	background: #FFF;
+	display: block;
+}
+#backgroundPanel {
+	z-index: 20;
+	right: 0;
+	display: none;
+}
+
+
+
+
+
+
+.fixed_headers {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.container table:first-child {
+	display: none;
+}
+.fixed_headers td,
+.fixed_headers th {
+  min-width: 20vw;
+}
+.fixed_headers th {
+	border-color: #888;
+}
+.fixed_headers td:nth-child(3),
+.fixed_headers th:nth-child(3) {
+  width: 50vw;
+}
+.fixed_headers thead tr {
+  display: block;
+  position: relative;
+	width: 100%;
+}
+.fixed_headers tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 300px;
+}
+
+
+
+
+/*** ---- TRACKS PAGE ---- ***/
+
+
+
+
+
+
+
+
+
+
+
+
