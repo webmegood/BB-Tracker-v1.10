@@ -184,6 +184,7 @@ h5, h6 {
 	left: 0;
 	margin:0;
 	padding: 0;
+	border-top: 1px solid #DDD;
 	background: rgb(238,238,238); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -197,14 +198,14 @@ h5, h6 {
 	line-height: 12vh;
 	padding: 3px 0 0 0;
 	position: relative;
-	border-right: 1px #AAA solid;
+	border-right: 1px #BBB solid;
 }
 .menuArea ul li:nth-child(2) {
-	border-left: 1px #FFF solid;
-	border-right: 1px #AAA solid;
+	border-left: 1px #EEE solid;
+	border-right: 1px #BBB solid;
 }
 .menuArea ul li:nth-child(3) {
-	border-left: 1px #FFF solid;
+	border-left: 1px #EEE solid;
 	border-right: none;
 }
 .menuArea ul li:hover {
@@ -492,13 +493,14 @@ ul > li {
 
 .mainLogo img {
   margin: 0vh auto;
+  width: 100px;
 }
 .divider_h {
 	bottom: 22vh;
 }
 .menuArea ul li {
-	height: 17vh;
-	line-height: 17vh;
+	height: 19vh;
+	line-height: 19vh;
 }
 .pause-track, .start-track {
 	left:auto;
