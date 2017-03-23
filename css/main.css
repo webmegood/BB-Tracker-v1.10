@@ -488,8 +488,9 @@ ul > li {
 /*
 
 
-/* Larger than phablet */
-@media (min-width: 550px) {
+/* Landscape */
+@media screen 
+  and (orientation: landscape) {
 
 .mainLogo img {
   margin: 0vh auto;
@@ -507,7 +508,6 @@ ul > li {
 	bottom: 21vh;
 	top: auto;
 	margin-bottom: 27px;
-	display: none;
 }
 
 }
