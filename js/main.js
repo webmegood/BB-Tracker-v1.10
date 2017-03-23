@@ -324,15 +324,19 @@ $("#btn-track-control").click(function(){
 	
 						//change pause/start button classes
 						if ($("#play-icon").hasClass("fa-play") ) {
+						$('.start-track').fadeOut(50);
 						$("#btn-track-control").removeClass('start-track');
 						$("#play-icon").removeClass('fa-play');
 						$("#btn-track-control").addClass('pause-track');
+						$('.pause-track').fadeIn(50);
 						$("#play-icon").addClass('fa-pause');
 						$('.status').fadeIn(10);
 						} else {
+						$('.pause-track').fadeOut(50);
 						$("#btn-track-control").removeClass('pause-track');
 						$("#play-icon").removeClass('fa-pause');
 						$("#btn-track-control").addClass('start-track');
+						$('.start-track').fadeIn(50);
 						$("#play-icon").addClass('fa-play');
 						$('.status').fadeOut(10);
 						}
