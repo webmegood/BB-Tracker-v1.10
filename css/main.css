@@ -428,8 +428,8 @@ ul > li {
 
 
 .table-default {
-  width: calc(100% - 0px);
-	margin: 0 0px;
+  width: calc(100% - 24px);
+	margin: 0 12px;
 }
 .table-default th, .table-default td  {
 	padding: 12px 6px 12px 0px;
@@ -507,6 +507,7 @@ ul > li {
 	bottom: 21vh;
 	top: auto;
 	margin-bottom: 27px;
+	display: none;
 }
 
 }
