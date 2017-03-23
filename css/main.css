@@ -428,14 +428,14 @@ ul > li {
 
 
 .table-default {
-  width: calc(100% - 24px);
-	margin: 0 12px;
+  width: calc(100% - 0px);
+	margin: 0 0px;
 }
 .table-default th, .table-default td  {
 	padding: 12px 6px 12px 0px;
 }
 .table-default td {
-	border-color: #DDD;
+	border-color: #E5E5E5;
 }
 .table-default th {
 	font-weight: 800;
@@ -503,8 +503,7 @@ ul > li {
 	line-height: 19vh;
 }
 .pause-track, .start-track {
-	left:auto;
-	right: 12px;
+	left: calc(100vw - 39px);
 	bottom: 21vh;
 	top: auto;
 	margin-bottom: 27px;
