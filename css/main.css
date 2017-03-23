@@ -16,6 +16,7 @@
 	margin: 5px 12px 0 12px;
 	padding: 4px 6px;
 	display: block;
+	width: auto;
 	min-height: 24px;
 }
 .elapsed-time {
@@ -51,7 +52,7 @@ h5, h6 {
 	width: 136px;
 	height: auto;
 	position: relative;
-	margin: 15vh auto;
+	margin: 18vh auto 0;
 	display:block;
 }
 .status {
@@ -165,12 +166,12 @@ h5, h6 {
 .divider_h {
 	width: auto;
 	height: 2px;
-	background: #EEE;
+	background: #DDD;
 	display: block;
 	position: fixed;
-	bottom: 15vh;
-	left: 7%;
-	right: 7%;
+	bottom: 14vh;
+	left: 12px;
+	right: 12px;
 	z-index: 301;
 }
 .menuArea ul {
@@ -183,20 +184,28 @@ h5, h6 {
 	left: 0;
 	margin:0;
 	padding: 0;
-	background: #FFF;
+	background: rgb(238,238,238); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
 }
 .menuArea ul li {
-	height: 14vh;
+	height: 12vh;
 	text-align: center;
 	margin: 0;
-	line-height: 14vh;
-	padding: 0;
-	border-bottom-width: 4px;
-	border-bottom-style: solid;
-	border-bottom-color: #FFF;
-	border-top-width: 4px;
-	border-top-style: solid;
-	border-top-color: #FFF;
+	line-height: 12vh;
+	padding: 3px 0 0 0;
+	position: relative;
+	border-right: 1px #AAA solid;
+}
+.menuArea ul li:nth-child(2) {
+	border-left: 1px #FFF solid;
+	border-right: 1px #AAA solid;
+}
+.menuArea ul li:nth-child(3) {
+	border-left: 1px #FFF solid;
+	border-right: none;
 }
 .menuArea ul li:hover {
 	cursor:pointer;
@@ -469,6 +478,37 @@ ul > li {
 
 
 
+
+
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/*
+
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+
+.mainLogo img {
+  margin: 0vh auto;
+}
+.divider_h {
+	bottom: 22vh;
+}
+.menuArea ul li {
+	height: 17vh;
+	line-height: 17vh;
+}
+.pause-track, .start-track {
+	left:auto;
+	right: 12px;
+	bottom: 21vh;
+	top: auto;
+	margin-bottom: 27px;
+}
+
+}
 
 
 
