@@ -489,8 +489,9 @@ ul > li {
 
 
 /* Landscape */
-@media screen 
-  and (orientation: landscape) {
+/* Landscape */
+@media (orientation: landscape) {
+
 
 .mainLogo img {
   margin: 0vh auto;
