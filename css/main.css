@@ -411,6 +411,12 @@ ul > li {
 	background: #FFF;
 	display: block;
 }
+.secondary {
+	box-sizing:none; !important
+	padding: 0; !important
+	margin:0; !important
+	width: 100%; !important
+}
 #backgroundPanel {
 	z-index: 20;
 	right: 0;
@@ -488,7 +494,6 @@ ul > li {
 /*
 
 
-/* Landscape */
 /* Landscape */
 @media (orientation: landscape) {
 
