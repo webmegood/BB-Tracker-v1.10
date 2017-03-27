@@ -52,6 +52,15 @@ $(document).ready(function(){
 				$('#btn-track-control').hide(0);
     });
 
+    $('#btn-photo').click(function(){
+				$('#menu-tracks').removeClass('current');
+				$('#menu-account').removeClass('current');
+				$('.secondary').animate({"right":"-100vw"}, 50);
+        $('#photo').delay(200).animate({"right":"0px"}, 150);
+				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').hide(0);
+    });
+
 });
 
 
