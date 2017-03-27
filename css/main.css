@@ -412,10 +412,10 @@ ul > li {
 	display: block;
 }
 .secondary {
-	box-sizing:none; !important
-	padding: 0; !important
-	margin:0; !important
-	width: 100%; !important
+	box-sizing:none !important;
+	padding: 0 !important;
+	margin:0 !important;
+	width: 100% !important;
 }
 #backgroundPanel {
 	z-index: 20;
