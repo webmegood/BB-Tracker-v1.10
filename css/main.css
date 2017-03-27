@@ -505,7 +505,8 @@ ul > li {
 	line-height: 19vh;
 }
 .pause-track, .start-track {
-	left: calc(100vw - 39px);
+	right: 12px !important;
+	left:auto;
 	bottom: 21vh;
 	top: auto;
 	margin-bottom: 27px;
