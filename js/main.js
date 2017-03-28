@@ -400,3 +400,23 @@ $(document).ready(function() {
 alert (viewPortHeight);
 //$('html').css("height", 534);
 });
+
+
+ $('.menul').addClass('red').delay(1000).queue(function(next){
+         $(this).removeClass('red');
+         next();
+    });
+
+
+
+$(document).ready(function() {
+	var deviceWidth = $(window).width();
+	var deviceHeight = $(window).height();
+	if ( deviceWidth < deviceHeight ) {
+		$('body').addClass('makeLandscape').delay(1000).queue(function(next){
+			$(this).removeClass('makeLandscape');
+			$(this).addClass('makePortrait');
+			next();
+		});
+	}
+});
