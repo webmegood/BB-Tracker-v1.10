@@ -408,15 +408,12 @@ alert (viewPortHeight);
     });
 
 
-
+//force initial screen to adjust (necessary because viewport otherwise won't be full height)
 $(document).ready(function() {
-	var deviceWidth = $(window).width();
-	var deviceHeight = $(window).height();
-	if ( deviceWidth < deviceHeight ) {
-		$('html').addClass('makeLandscape').delay(1000).queue(function(next){
-			$(this).removeClass('makeLandscape');
-			$(this).addClass('makePortrait');
+		$('html').addClass('forceHeight').delay(1000).queue(function(next){
+			$(this).removeClass('forceHeight');
+			$(this).addClass('normaliseHeight');
 			next();
 		});
-	}
 });
+
