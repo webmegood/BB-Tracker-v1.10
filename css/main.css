@@ -1,6 +1,13 @@
-html {}
+html {
+	height:100%;
+}
 body {
-	min-height:100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: auto;
+	width: 100%;
+	background: #CC9;
 }
 .main_content {
 	text-align:center;
