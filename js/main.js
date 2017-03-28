@@ -395,22 +395,11 @@ $("#btn-track-control").click(function(){
 
 
 
-$(document).ready(function() {
-	var viewPortHeight = $(window).height();
-alert (viewPortHeight);
-//$('html').css("height", 534);
-});
-
-
- $('.menul').addClass('red').delay(1000).queue(function(next){
-         $(this).removeClass('red');
-         next();
-    });
 
 
 //force initial screen to adjust (necessary because viewport otherwise won't be full height)
 $(document).ready(function() {
-		$('html').addClass('forceHeight').delay(1000).queue(function(next){
+		$('html').addClass('forceHeight').delay(10).queue(function(next){
 			$(this).removeClass('forceHeight');
 			$(this).addClass('normaliseHeight');
 			next();
