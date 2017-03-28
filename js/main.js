@@ -407,7 +407,6 @@ $(document).ready(function() {
 $(document).ready(function() {
 		$('html').addClass('forceHeight').delay(1000).queue(function(next){
 			$(this).removeClass('forceHeight');
-			$(this).addClass('normaliseHeight');
 			next();
 		});
 });
