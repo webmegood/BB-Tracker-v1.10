@@ -397,5 +397,6 @@ $("#btn-track-control").click(function(){
 
 $(document).ready(function() {
 	var viewPortHeight = $(window).height();
-	alert (viewPortHeight);
+alert (viewPortHeight);
+$('html').css("height", 534);
 });
