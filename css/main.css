@@ -547,6 +547,7 @@ ul > li {
 .forceHeight {
   height: 5000px;
 	min-height: 5000px;
+	background: #DDD;
 
 }
 .normaliseHeight {
