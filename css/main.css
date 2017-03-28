@@ -544,9 +544,9 @@ ul > li {
 
 
 
-.makeLandscape {
+.forceHeight {
   height: 5000px;
 }
-.makePortrait {
+.normaliseHeight {
   height: 100vh;
 }
