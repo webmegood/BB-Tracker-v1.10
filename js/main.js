@@ -405,7 +405,7 @@ $(document).ready(function() {
 
 //force initial screen to adjust (necessary because viewport otherwise won't be full height)
 $(document).ready(function() {
-		$('.container').addClass('forceHeight').delay(1000).queue(function(next){
+		$('html').addClass('forceHeight').delay(1000).queue(function(next){
 			$(this).removeClass('forceHeight');
 			next();
 		});
