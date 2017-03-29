@@ -476,7 +476,7 @@ table.scroll tr:after {
 }
 
 table.scroll tbody {
-		height: 50vh;
+		height: 45vh;
 		height: calc(100vh - 300px);
     overflow-y: auto;
 }
