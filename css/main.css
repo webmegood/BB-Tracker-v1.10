@@ -471,10 +471,12 @@ table.scroll thead tr {
 table.scroll tr:after {
     content: ' ';
     display: block;
+    visibility: hidden;
     clear: both;
 }
 
 table.scroll tbody {
+		height: 50vh;
 		height: calc(100vh - 300px);
     overflow-y: auto;
 }
