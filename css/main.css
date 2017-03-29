@@ -545,8 +545,8 @@ ul > li {
 
 
 .forceHeight {
-  height: 5000px;
-	min-height: 5000px;
+  height: 200%;
+	min-height: 200%;
 	background: #DDD;
 
 }
