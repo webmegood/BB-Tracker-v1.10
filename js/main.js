@@ -1,3 +1,6 @@
+//reset - line 200-ish
+
+
 
 $("#takePicBtn").click(function(){
 		capturePhoto();
@@ -90,7 +93,7 @@ function showLocation(position) {
 						var lat1 = position.coords.latitude;
             var lon1 = position.coords.longitude;
 						
-						
+												
 						
 						
 						//get location name
@@ -182,10 +185,8 @@ function showLocation(position) {
 				
 					
 				//put distance and bearing together	
-				var locationData = dist + "k " + direction  + " of Melb";
+				var locationData = dist + "km " + direction  + " of Melb";
 
-
-					
 					
 						
 						var timeStamp = Math.floor(Date.now() / 1000);
@@ -203,9 +204,6 @@ function showLocation(position) {
 							var geoDataArray01 = storedNames;
 						}
 						
-
-
-
 						
 						
 						
@@ -223,12 +221,13 @@ function showLocation(position) {
 						prevlat = geoDataArray01[1][2];
 						prevlon = geoDataArray01[1][3];
 						
+						
 						//Calculate distance between 2 most recent points
 						var newlat1 = Math.PI * lat1/180;
 						var newlat2 = Math.PI * prevlat/180;
 						var newlon1 = Math.PI * lon1/180;
 						var newlon2 = Math.PI * prevlon/180;
-						var theta = currentlon1-currentlon2;
+						var theta = newlon1-newlon2;
 						var radtheta = Math.PI * theta/180;
 						var currentdist = Math.sin(newlat1) * Math.sin(newlat2) + Math.cos(newlat1) * Math.cos(newlat2) * Math.cos(radtheta);
 						currentdist = Math.acos(currentdist);
@@ -241,8 +240,9 @@ function showLocation(position) {
 					  // Retrieve currently saved total distance
 						var storedDistance = JSON.parse(localStorage.getItem("totalDistance"));
 						var totalDistance = (storedDistance + currentdist);
+						//alert(totalDistance);
 
-						document.getElementById("totalDistance").innerHTML = currentdist;
+						document.getElementById("totalDistance").innerHTML = totalDistance + "km";
 						//Save to Local Storage
 						localStorage.setItem("totalDistance", totalDistance);
 						
@@ -252,7 +252,7 @@ function showLocation(position) {
 						var watchCount = 1;
 						//if(watchCount>=2) {	 // the 2nd time we use watchPosition is supposed to be more accurate than the 1st, so ignore 1st
 							appendToTable(geoDataArray01);
-							watchCount++;
+							//watchCount++;
 						//}
 							
 						
@@ -291,6 +291,10 @@ function appendToTable(geoData) {
 						date = new Date(geoData[i][0] * 1000)
 						day = date.getDate();
 						month = date.getMonth()+1;
+						if (month < 10) {
+							month = "0" + month;
+						}
+
 						year = date.getFullYear().toString().substr(2,2);
 						hours = date.getHours();
 						if (hours < 10) {
@@ -395,10 +399,11 @@ $("#btn-track-control").click(function(){
 
 
 
-$(document).ready(function() {
-	var viewPortHeight = $(window).height();
-	alert (viewPortHeight);
-});
+
+
+
+
+
 
 
 
