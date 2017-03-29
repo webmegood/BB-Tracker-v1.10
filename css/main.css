@@ -1,6 +1,4 @@
 html, body {
-	height:100%;
-	min-height: 100%;
 }
 .main_content {
 	text-align:center;
@@ -487,9 +485,8 @@ ul > li {
 }*/
 .table-default tbody {
   /*display: block;*/
-  overflow: auto;
-  /*width: 100%;*/
-  height: calc(100% - 50%);
+  overflow-y: auto;
+  height: 50vh;
 }
 
 
@@ -545,10 +542,7 @@ ul > li {
 
 
 .forceHeight {
-  height: 200%;
-	min-height: 200%;
-	background: #DDD;
-
+  height: 1500px;
 }
 .normaliseHeight {
   height: 100%;
