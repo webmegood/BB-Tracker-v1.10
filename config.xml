@@ -24,7 +24,7 @@
     <preference name="permissions"                value="none"/>
 
     <!-- Customize your app and platform with the preference element. -->
-    <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="handset" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="all" />           <!-- all: hides the status bar at the top of the screen -->
     <preference name="webviewbounce"              value="true" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
@@ -45,7 +45,6 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
-		<plugin name="cordova-plugin-navigationbar" source="npm" />
 		<plugin name="cordova-plugin-geolocation" spec="2.4.1" source="npm" />		
 		<plugin name="cordova-plugin-mauron85-background-geolocation" spec="2.2.5" source="npm" />		
 		<plugin name="cordova-plugin-camera" spec="2.3.1" source="npm" />		
