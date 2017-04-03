@@ -1,4 +1,4 @@
-//reset - line 200-ish
+
 
 
 
@@ -84,18 +84,181 @@ $(document).ready(function(){
 
 
 
+$(document).ready(function(){
+		
+		
+	// Get Updated Total Distance Travelled
+	var totalDistance;
+	// Retrieve currently saved total distance
+	if (localStorage["totalDistance"]) {
+	var totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
+	} else {
+	var totalDistance = 0;
+	}
+	document.getElementById("totalDistance").innerHTML = totalDistance + "km";
+});
+
+
+
+
+// Get Updated Total Time Travelled
+$(document).ready(function(){
+	
+	
+	var storedElapsedTime;
+	// Retrieve currently saved elapsed time
+	var totalTime = JSON.parse(localStorage.getItem("elapsedTime"));
+	
+	
+	
+
+
+var startBtn = document.getElementById('btn-start'),
+    stopBtn = document.getElementById('btn-pause'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+		
+
+
+
+
+
+
+
+// Start timer if track is already active
+
+// Retrieve currently saved elapsed time
+var trackActivity = JSON.parse(localStorage.getItem("trackActivity"));
+
+if (trackActivity == 1) {
+	
+	
+	
+							if(navigator.geolocation){
+								 // timeout at 60000 milliseconds (60 seconds)
+								 var options = {
+									 //timeout:60000,
+									 //desiredAccuracy: 10,
+									 //stationaryRadius: 10,
+									 //distanceFilter: 10,
+									 //interval: 30000, // <!-- poll for position every 30 secs 
+									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
+									 debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
+									 stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
+									 };
+									 
+									
+									 
+									 
+									 for(count = 0; count < 1; count++){
+									 	 navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+									 }
+								
+									 setInterval(function() {
+									 	navigator.geolocation.watchPosition(showLocation, errorHandler, options);
+									 }, 20000);
+
+											 
+											
+							} else {
+								 alert("Sorry, browser does not support geolocation!");
+							}
+	
+	
+	
+	startTimer();
+	//change pause/start button classes
+	$('.btn-start').fadeOut(0);
+	$('.btn-pause').fadeIn(50);
+	$('.status').fadeIn(10);
+} else {
+	stopAfterStart(); //<-- ensures elapsed time is displayed when track is inactive
+	//change pause/start button classes
+	$('.btn-pause').fadeOut(0);
+	$('.btn-start').fadeIn(50);
+	$('.status').fadeOut(0);
+
+}
+
+
+
+function stopAfterStart() {
+  startTimer();
+  setTimeout(stopTimer,1001);
+}
+		
+
+function startTimer() {
+		
+var el = '#elapsedTime';
+var start = 1490860330,
+cDisplay = $(el);
+var format = function (t) {
+    var hours = Math.floor(t / 3600),
+        minutes = Math.floor(t / 60 % 60),
+        seconds = Math.floor(t % 60),
+        arr = [];
+    if (hours > 0) {
+        arr.push(hours == 1 ? '1:' : hours + ':');
+    }
+    if (minutes >= 10) {
+        arr.push(minutes > 1 ? minutes + ':' : minutes + ':');
+    }
+    if (minutes < 10) {
+        arr.push(minutes > 1 ? '0' + minutes + ':' : '0' + minutes + ':');
+    }
+    if (minutes > 0 || hours > 0) {
+			if (seconds >= 10) {
+        arr.push(seconds > 1 ? seconds + '' : seconds + '');
+    	} else {
+        arr.push(seconds > 1 ? '0' + seconds + '' : '0' + seconds + '');
+			}
+		}
+    cDisplay.html(arr.join(''));
+};
+interval = setInterval(function () {
+    format(new Date().getTime() / 1000 - start);
+}, 1000);	
+		
+}
+
+
+
+
+
+function stopTimer() {
+    clearInterval(interval);
+}
+
+
+
+
+
+/* Start button */
+startBtn.onclick = startTimer;
+
+/* Stop button */
+stopBtn.onclick = stopTimer;
+
+
+	
+});
+
+
+
+
+
+
 
 
 function showLocation(position) {
             
-						
-						
+												
 						var lat1 = position.coords.latitude;
             var lon1 = position.coords.longitude;
 						
-												
 						
-						
+																		
 						//get location name
 						//var locationData = latitude;
 						
@@ -118,8 +281,6 @@ function showLocation(position) {
         dist = dist * 60 * 1.1515;
         dist = dist * 1.609344; // convert to kms
 				dist = (Math.round(dist*10))/10;
-
-
 
 
 				
@@ -187,7 +348,6 @@ function showLocation(position) {
 				//put distance and bearing together	
 				var locationData = dist + "km " + direction  + " of Melb";
 
-					
 						
 						var timeStamp = Math.floor(Date.now() / 1000);
 						
@@ -204,23 +364,35 @@ function showLocation(position) {
 							var geoDataArray01 = storedNames;
 						}
 						
+						var elapsedTime = 845119;
+
+
 						
-						
-						
-						var test = [timeStamp,locationData,lat1,lon1];
+						var test = [timeStamp,locationData,lat1,lon1,elapsedTime];
 						geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
 						
 						//Save to Local Storage
 						localStorage.setItem("savedData", JSON.stringify(geoDataArray01));
 						
-						//alert(geoDataArray01);
+						
+						
+						
+						var watchCount = 1;
+						//if(watchCount>=2) {	 // the 2nd time we use watchPosition is supposed to be more accurate than the 1st, so ignore 1st
+							appendToTable(geoDataArray01);
+							//watchCount++;
+						//}
+						
+						
+						
 						
 						
 						
 						
 						prevlat = geoDataArray01[1][2];
 						prevlon = geoDataArray01[1][3];
-						
+
+
 						
 						//Calculate distance between 2 most recent points
 						var newlat1 = Math.PI * lat1/180;
@@ -237,10 +409,16 @@ function showLocation(position) {
 						currentdist = (Math.round(currentdist*10))/10;
 						
 						
+						
 					  // Retrieve currently saved total distance
-						var storedDistance = JSON.parse(localStorage.getItem("totalDistance"));
-						var totalDistance = (storedDistance + currentdist);
-						//alert(totalDistance);
+						if (localStorage["totalDistance"]) {
+							var storedDistance = JSON.parse(localStorage.getItem("totalDistance"));
+							var totalDistance = (storedDistance + currentdist);
+						} else {
+							var totalDistance = currentdist;
+						}
+						
+						
 
 						document.getElementById("totalDistance").innerHTML = totalDistance + "km";
 						//Save to Local Storage
@@ -248,12 +426,34 @@ function showLocation(position) {
 						
 						
 						
+	
+	
+					  // Retrieve currently saved elapsed time
+						var storedElapsedTime = geoDataArray01[1][4];
+												
 						
-						var watchCount = 1;
-						//if(watchCount>=2) {	 // the 2nd time we use watchPosition is supposed to be more accurate than the 1st, so ignore 1st
-							appendToTable(geoDataArray01);
-							//watchCount++;
-						//}
+						
+						
+						elapsedHours = storedElapsedTime.getHours();
+						if (elapsedHours < 10) {
+							elapsedHours = "0" + elapsedHours;
+						}
+						elapsedMinutes = storedElapsedTime.getMinutes();
+						if (elapsedMinutes < 10) {
+							elapsedMinutes = "0" + elapsedMinutes;
+						}
+						elapsedSeconds = storedElapsedTime.getSeconds();
+						if (elapsedSeconds < 10) {
+							elapsedSeconds = "0" + elapsedSeconds;
+						}
+						
+						
+						document.getElementById("elapsedTime").innerHTML = elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds;
+
+						//Save to Local Storage
+						localStorage.setItem("elapsedTime", elapsedTime);
+	
+							
 							
 						
 											
@@ -309,6 +509,7 @@ function appendToTable(geoData) {
 							seconds = "0" + seconds;
 						}
 						address = geoData[i][1];
+						
 
 						tr = $('<tr/>');
             tr.append("<td>" + day + "/" + month + "/" + year + "</td>");
@@ -319,7 +520,7 @@ function appendToTable(geoData) {
 				
 				
 				// no longer need to watch location
-				navigator.geolocation.clearWatch(watchID);
+				//navigator.geolocation.clearWatch(watchID);
 				
 }
 
@@ -332,30 +533,16 @@ function appendToTable(geoData) {
 
 
 	
-$("#btn-track-control").click(function(){
+$("#btn-start").click(function(){
 	
+	//change pause/start button classes
+	$('.btn-start').fadeOut(0);
+	$('.btn-pause').fadeIn(50);
+	$('.status').fadeIn(10);
 	
-						//change pause/start button classes
-						if ($("#play-icon").hasClass("fa-play") ) {
-						$('.start-track').fadeOut(50);
-						$("#btn-track-control").removeClass('start-track');
-						$("#play-icon").removeClass('fa-play');
-						$("#btn-track-control").addClass('pause-track');
-						$('.pause-track').fadeIn(50);
-						$("#play-icon").addClass('fa-pause');
-						$('.status').fadeIn(10);
-						} else {
-						$('.pause-track').fadeOut(50);
-						$("#btn-track-control").removeClass('pause-track');
-						$("#play-icon").removeClass('fa-pause');
-						$("#btn-track-control").addClass('start-track');
-						$('.start-track').fadeIn(50);
-						$("#play-icon").addClass('fa-play');
-						$('.status').fadeOut(10);
-						}
+	//Save active track to Local Storage
+	localStorage.setItem("trackActivity", JSON.stringify(1));
 						
-						
-						if ($("#play-icon").hasClass("fa-pause") ) {
 							
 							var watchID;
 							
@@ -363,56 +550,55 @@ $("#btn-track-control").click(function(){
 								 // timeout at 60000 milliseconds (60 seconds)
 								 var options = {
 									 //timeout:60000,
-									 desiredAccuracy: 10,
-									 stationaryRadius: 10,
-									 distanceFilter: 10,
+									 //desiredAccuracy: 10,
+									 //stationaryRadius: 10,
+									 //distanceFilter: 10,
 									 //interval: 30000, // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
 									 };
 									 
-									 //check location every 60 seconds
-										 //setInterval(function() {
-									 //}, 10000);
+									
+									 
+									 
+									 for(count = 0; count < 1; count++){
+									 	 navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+									 }
+								
+									 setInterval(function() {
+									 	navigator.geolocation.watchPosition(showLocation, errorHandler, options);
+									 }, 20000);
+
 											 
-											navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-											//watchID = navigator.geolocation.watchPosition(showLocation, errorHandler, options);
-											//navigator.geolocation.watchPosition(showLocation, errorHandler, options);
 											
-											
-											
-															 
-							}
-							
-							else {
+							} else {
 								 alert("Sorry, browser does not support geolocation!");
 							}
 							
-					} else {
-						navigator.geolocation.clearWatch(watchID);
-					}
-
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//force initial screen to adjust (necessary because viewport otherwise won't be full height)
-$(document).ready(function() {
-		$('html').addClass('forceHeight').delay(1000).queue(function(next){
-			$(this).removeClass('forceHeight');
-			next();
-		});
+	
 });
+
+
+
+
+
+
+$("#btn-pause").click(function(){
+	
+	//change pause/start button classes
+	$('.btn-pause').fadeOut(0);
+	$('.btn-start').fadeIn(50);
+	$('.status').fadeOut(0);
+	
+	//Save active track to Local Storage
+	localStorage.setItem("trackActivity", JSON.stringify(0));
+											
+	navigator.geolocation.clearWatch(watchID);
+
+});
+
+
+
+
 
