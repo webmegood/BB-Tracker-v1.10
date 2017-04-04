@@ -24,7 +24,7 @@
 
             if(navigator.geolocation){
                // timeout at 60000 milliseconds (60 seconds)
-               var options = {timeout:60000};
+               var options = {timeout:5000};
                navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
             }
             
