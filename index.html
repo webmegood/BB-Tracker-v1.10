@@ -20,7 +20,9 @@
             }
          }
 			
-         function getLocation(){
+
+
+$(document).ready(function(){
 
             if(navigator.geolocation){
                // timeout at 60000 milliseconds (60 seconds)
@@ -31,7 +33,7 @@
             else{
                alert("Sorry, browser does not support geolocation!");
             }
-         }
+});
 			
       </script>
 		
