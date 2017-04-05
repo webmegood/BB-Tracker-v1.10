@@ -35,8 +35,19 @@ $(document).ready(function(){
         $('#tracks').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').hide(0);
+				$('#go_back_to_tracks').hide(0);
     });
 		
+    $('#go_back_to_tracks').click(function(){
+				$('#menu-account').removeClass('current');
+				$('#menu-jobs').removeClass('current');
+				$('.secondary').animate({"right":"-100vw"}, 50);
+        $('#tracks').delay(200).animate({"right":"0px"}, 150);
+				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').hide(0);
+				$('#go_back_to_tracks').hide(0);
+    });
+				
     $('#menu-account').click(function(){
 				$('#menu-tracks').removeClass('current');
 				$('#menu-jobs').removeClass('current');
@@ -44,6 +55,7 @@ $(document).ready(function(){
         $('#account').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').hide(0);
+				$('#go_back_to_tracks').hide(0);
     });
 
     $('#menu-jobs').click(function(){
@@ -53,6 +65,7 @@ $(document).ready(function(){
         $('#jobs').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').hide(0);
+				$('#go_back_to_tracks').hide(0);
     });
 
     $('#btn-photo').click(function(){
@@ -62,6 +75,7 @@ $(document).ready(function(){
         $('#photo').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').hide(0);
+				$('#go_back_to_tracks').hide(0);
     });
 
 });
@@ -76,6 +90,18 @@ $(document).ready(function(){
         $('#tracksCurrent').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').delay(300).fadeIn(500);
+				$('#go_back_to_tracks').delay(300).fadeIn(500);
+    });
+});
+
+$(document).ready(function(){
+    $('#tracksLogBtn').click(function(){
+				$('#menu-tracks').addClass('current');
+				$('#tracks').animate({"right":"-100vw"}, 50);
+        $('#tracksLog').delay(200).animate({"right":"0px"}, 150);
+				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').delay(300).fadeIn(500);
+				$('#go_back_to_tracks').delay(300).fadeIn(500);
     });
 });
 
@@ -83,8 +109,8 @@ $(document).ready(function(){
 
 
 
-
 $(document).ready(function(){
+		
 		
 		
 	// Get Updated Total Distance Travelled
@@ -96,14 +122,11 @@ $(document).ready(function(){
 	var totalDistance = 0;
 	}
 	document.getElementById("totalDistance").innerHTML = totalDistance + "km";
-});
 
 
 
 
-// Get Updated Total Time Travelled
-$(document).ready(function(){
-	
+	// Get Updated Total Time Travelled	
 	
 	var storedElapsedTime;
 	// Retrieve currently saved elapsed time
@@ -127,51 +150,20 @@ var startBtn = document.getElementById('btn-start'),
 
 // Start timer if track is already active
 
+
 // Retrieve currently saved elapsed time
 var trackActivity = JSON.parse(localStorage.getItem("trackActivity"));
 
-if (trackActivity == 1) {
-	
-	
-	
-							if(navigator.geolocation){
-								 // timeout at 60000 milliseconds (60 seconds)
-								 var options = {
-									 //timeout:60000,
-									 //desiredAccuracy: 10,
-									 //stationaryRadius: 10,
-									 //distanceFilter: 10,
-									 //interval: 30000, // <!-- poll for position every 30 secs 
-									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
-									 debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
-									 stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
-									 };
-									 
-									
-									 
-									 
-									 for(count = 0; count < 1; count++){
-									 	 navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-									 }
-								
-									 setInterval(function() {
-									 	navigator.geolocation.watchPosition(showLocation, errorHandler, options);
-									 }, 20000);
-
-											 
-											
-							} else {
-								 alert("Sorry, browser does not support geolocation!");
-							}
-	
-	
+if (trackActivity == 1) {	
 	
 	startTimer();
 	//change pause/start button classes
 	$('.btn-start').fadeOut(0);
 	$('.btn-pause').fadeIn(50);
 	$('.status').fadeIn(10);
+	
 } else {
+	
 	stopAfterStart(); //<-- ensures elapsed time is displayed when track is inactive
 	//change pause/start button classes
 	$('.btn-pause').fadeOut(0);
@@ -243,7 +235,6 @@ stopBtn.onclick = stopTimer;
 
 	
 });
-
 
 
 
@@ -379,7 +370,12 @@ function showLocation(position) {
 						
 						var watchCount = 1;
 						//if(watchCount>=2) {	 // the 2nd time we use watchPosition is supposed to be more accurate than the 1st, so ignore 1st
-							appendToTable(geoDataArray01);
+							
+							
+							document.getElementById("current_location").innerHTML = locationData;
+							
+							
+							//appendToTable(geoDataArray01);
 							//watchCount++;
 						//}
 						
@@ -480,49 +476,6 @@ function showLocation(position) {
 
 
 
-function appendToTable(geoData) {			
-
-				//remove current rows from table (except header row)
-				$("#current-tracks tbody tr").remove(); 
-
-				var tr;
-        for (var i = 0; i < geoData.length; i++) {
-										
-						date = new Date(geoData[i][0] * 1000)
-						day = date.getDate();
-						month = date.getMonth()+1;
-						if (month < 10) {
-							month = "0" + month;
-						}
-
-						year = date.getFullYear().toString().substr(2,2);
-						hours = date.getHours();
-						if (hours < 10) {
-							hours = "0" + hours;
-						}
-						minutes = date.getMinutes();
-						if (minutes < 10) {
-							minutes = "0" + minutes;
-						}
-						seconds = date.getSeconds();
-						if (seconds < 10) {
-							seconds = "0" + seconds;
-						}
-						address = geoData[i][1];
-						
-
-						tr = $('<tr/>');
-            tr.append("<td>" + day + "/" + month + "/" + year + "</td>");
-            tr.append("<td>" + hours + ":" + minutes + ":" + seconds + "</td>");
-            tr.append("<td>" + address + "</td>");
-            $('#current-tracks').append(tr);
-        }
-				
-				
-				// no longer need to watch location
-				//navigator.geolocation.clearWatch(watchID);
-				
-}
 
 	
 
@@ -548,27 +501,37 @@ $("#btn-start").click(function(){
 							
 							if(navigator.geolocation){
 								 // timeout at 60000 milliseconds (60 seconds)
+								 //var options = {
+									 
 								 var options = {
+
+									 
+									 
 									 //timeout:60000,
 									 //desiredAccuracy: 10,
 									 //stationaryRadius: 10,
 									 //distanceFilter: 10,
-									 //interval: 30000, // <!-- poll for position every 30 secs 
+									 interval: 30000, // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
-									 debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
-									 stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
+									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
+									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
+									 
 									 };
 									 
 									
 									 
-									 
-									 for(count = 0; count < 1; count++){
-									 	 navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-									 }
+									 //for(count = 0; count < 1; count++){
+									 	 //navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+									 //}
 								
-									 setInterval(function() {
-									 	navigator.geolocation.watchPosition(showLocation, errorHandler, options);
-									 }, 20000);
+									 //setInterval(function() {
+									 	//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+										navigator.geolocation.watchPosition(showLocation, errorHandler, options);
+										
+									 	//var test11 = navigator.geolocation.watchPosition(showLocation, errorHandler, options);
+										//alert(test11);
+										
+									 //}, 5000);
 
 											 
 											
