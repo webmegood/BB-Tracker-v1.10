@@ -565,3 +565,18 @@ $("#btn-pause").click(function(){
 
 
 
+
+
+//test connectivity
+
+var connectivity = require('connectivity')
+ 
+connectivity(function (online) {
+  if (online) {
+		$('#no-connectivity').hide();
+		$('#yes-connectivity').show();
+  } else {
+		$('#yes-connectivity').hide();
+		$('#no-connectivity').show();
+  }
+})
