@@ -490,6 +490,8 @@ ul > li {
 
 .connectivity-msg {
 	padding: 0 8px;
+	line-height: 1em;
+	margin-top: 15vh;
 }
 
 table.scroll {
