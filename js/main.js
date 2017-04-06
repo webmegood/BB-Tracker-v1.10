@@ -248,7 +248,7 @@ function showLocation(position) {
 						var lat1 = position.coords.latitude;
             var lon1 = position.coords.longitude;
 						
-						
+						alert(lat1);
 																		
 						//get location name
 						//var locationData = latitude;
@@ -351,7 +351,7 @@ function showLocation(position) {
 						if (storedNames === "") {
 							var geoDataArray01 = [];
 						} else {
-							//storedNames = [];
+							storedNames = [];
 							var geoDataArray01 = storedNames;
 						}
 						
@@ -373,7 +373,7 @@ function showLocation(position) {
 							
 							
 							document.getElementById("current_location").innerHTML = locationData;
-							
+							alert(geoDataArray01);
 							
 							//appendToTable(geoDataArray01);
 							//watchCount++;
@@ -451,22 +451,23 @@ function showLocation(position) {
 	
 							
 							
-						
-											
-         }
+}
+
+
+
+
+
 
          function errorHandler(err) {
             if(err.code == 1) {
                alert("Error: Access is denied!");
             }
-            
             else if( err.code == 2) {
                alert("Error: Position is unavailable!");
             }
 						
+				 }
 						
-						
-}
 			
 
 			
