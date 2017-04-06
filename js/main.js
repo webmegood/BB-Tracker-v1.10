@@ -571,12 +571,19 @@ $("#btn-pause").click(function(){
 
 
 
-document.addEventListener("offline", onOffline, false);
- 
+//go offline
+document.addEventListener("offline", onOffline, false); 
 function onOffline() {
 	$('#yes-connectivity').hide();
 	$('#no-connectivity').show();
 }			
-				
+
+
+// go online
+document.addEventListener("online", onOnline, false);
+function onOnline() {
+	$('#no-connectivity').hide();
+	$('#yes-connectivity').show();
+}				
 				
 			
