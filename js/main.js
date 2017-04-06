@@ -569,66 +569,49 @@ $("#btn-pause").click(function(){
 
 //test connectivity
 
-document.addEventListener("deviceready", function(){
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
       
 			
 function onDeviceReady() {
-      var myHostToObserve = "www.appfeel.com";
-      
-      document.removeEventListener('deviceready', onDeviceReady, false);
-      
-      document.addEventListener(connectivity.events.onReachabilityChanged, onReachabilityChanged, false)
-      connectivity.observeRemoteHostName(myHostToObserve);
-    }
-    
-    function onReachabilityChanged(e) {
-      console.log(e.interface);
-      switch(e.interface) {
-        case connectivity.DISCONNECTED:
-          console.log('DISCONNECTED');
-          break;
-        case WIFI:
-          console.log('WIFI');
-          break;
-        case WIMAX:
-          console.log('WIMAX');
-          break;
-        case ETHERNET:
-          console.log('ETHERNET');
-          break;
-        case MOBILE:
-          console.log('MOBILE');
-          break;
-        case UNDEFINED:
-          console.log('UNDEFINED');
-          break;
-      }
-      
-      if (e.connected) {
-        console.log("Is connected");
-				$('#no-connectivity').hide();
-				$('#yes-connectivity').show();
-      } else {
-        console.log("Is not connected");
-				$('#yes-connectivity').hide();
-				$('#no-connectivity').show();
 
-      }
-      
-      switch(e.observer) {
-        case HOST:
-          console.log('HOST');
-          break;
-        case INTERNET:
-          console.log('INTERNET');
-          break;
-        case LOCALWIFI:
-          console.log('LOCALWIFI');
-          break;
-      }
-    }			
+
+function checkConnection() {
+    var networkState = navigator.connection.type;
+ 
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+ 
+            alert('Connection type: ' + states[networkState]);
+
+						$('#no-connectivity').hide();
+						$('#yes-connectivity').show();
+
+}
+ 
+checkConnection();
+
+
+
+}
+
+
+
+
+
+document.addEventListener("offline", onOffline, false);
+ 
+function onOffline() {
+    alert("gone offline"); 
+}			
+				
+				
 			
- },false);
- 
- 
- 
