@@ -570,7 +570,6 @@ $("#btn-pause").click(function(){
 //test connectivity
 
 
-
 //go offline
 document.addEventListener("offline", onOffline, false); 
 function onOffline() {
