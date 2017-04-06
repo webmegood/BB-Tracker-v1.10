@@ -488,7 +488,9 @@ ul > li {
 
 
 
-
+.connectivity-msg {
+	padding: 0 8px;
+}
 
 table.scroll {
   width: calc(100% - 24px);
