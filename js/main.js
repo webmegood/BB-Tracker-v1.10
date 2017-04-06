@@ -569,14 +569,66 @@ $("#btn-pause").click(function(){
 
 //test connectivity
 
-var connectivity = require('connectivity')
+document.addEventListener("deviceready", function(){
+      
+			
+function onDeviceReady() {
+      var myHostToObserve = "www.appfeel.com";
+      
+      document.removeEventListener('deviceready', onDeviceReady, false);
+      
+      document.addEventListener(connectivity.events.onReachabilityChanged, onReachabilityChanged, false)
+      connectivity.observeRemoteHostName(myHostToObserve);
+    }
+    
+    function onReachabilityChanged(e) {
+      console.log(e.interface);
+      switch(e.interface) {
+        case connectivity.DISCONNECTED:
+          console.log('DISCONNECTED');
+          break;
+        case WIFI:
+          console.log('WIFI');
+          break;
+        case WIMAX:
+          console.log('WIMAX');
+          break;
+        case ETHERNET:
+          console.log('ETHERNET');
+          break;
+        case MOBILE:
+          console.log('MOBILE');
+          break;
+        case UNDEFINED:
+          console.log('UNDEFINED');
+          break;
+      }
+      
+      if (e.connected) {
+        console.log("Is connected");
+				$('#no-connectivity').hide();
+				$('#yes-connectivity').show();
+      } else {
+        console.log("Is not connected");
+				$('#yes-connectivity').hide();
+				$('#no-connectivity').show();
+
+      }
+      
+      switch(e.observer) {
+        case HOST:
+          console.log('HOST');
+          break;
+        case INTERNET:
+          console.log('INTERNET');
+          break;
+        case LOCALWIFI:
+          console.log('LOCALWIFI');
+          break;
+      }
+    }			
+			
+ },false);
  
-connectivity(function (online) {
-  if (online) {
-		$('#no-connectivity').hide();
-		$('#yes-connectivity').show();
-  } else {
-		$('#yes-connectivity').hide();
-		$('#no-connectivity').show();
-  }
-})
+ 
+ 
