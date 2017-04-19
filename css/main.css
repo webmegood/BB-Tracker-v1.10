@@ -1,5 +1,33 @@
 html, body {
 }
+.overlay {
+	background: #333;
+	position: fixed;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1000;
+}
+.spinner-uploading {
+	position: fixed;
+	width: 120px;
+	height: 30px;
+	text-align: center;
+	top: 50%;
+	margin-top: -25px;
+	left: 50%;
+	margin-left: -76px;
+	z-index: 1001;
+	border: white 2px solid;
+	border-radius: 4px;
+	padding: 8px 14px;
+	color: white;
+	font-size: 1em;
+	line-height: 30px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
 .main_content {
 	text-align:center;
 }
@@ -533,21 +561,27 @@ table.scroll thead th:nth-child(3) {
 		width: calc(34% - 6px);
 		text-align:center;
 }
-table.scroll .upload-btn {
+table.scroll .btn-list {
+	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
 	background-color: #E7FFC3;
 	padding: 2px 6px 2px 6px;
 	position:relative;
 	margin-top: -6px;
 	top: 3px;
-	border: 1px #CCC solid;
+	border: 1px #555 solid;
 	border-radius: 4px;
+	cursor: pointer;
 }
-thead tr th { 
-    height: 46px;
-    line-height: 46px;
-		border-color: #888;
-    /*text-align: left;*/
+table.scroll thead th { 
+  height: 46px;
+  line-height: 46px;
+	border-color: #888;
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	font-weight:100;
+	padding: 12px 6px 0px 0px;
+  /*text-align: left;*/
 }
 table.scroll .fa-check {
 	color: #3C3;
