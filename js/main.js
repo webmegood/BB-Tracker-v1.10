@@ -2,6 +2,7 @@
 
 
 
+
 $("#takePicBtn").click(function(){
 		capturePhoto();
 });
@@ -112,7 +113,11 @@ $(document).ready(function(){
 $(document).ready(function(){
 		
 		
-		
+
+	var watchID;
+	var geoLoc;
+
+
 	// Get Updated Total Distance Travelled
 	var totalDistance;
 	// Retrieve currently saved total distance
@@ -240,6 +245,8 @@ stopBtn.onclick = stopTimer;
 
 
 
+var storedNames = "";
+
 
 
 function showLocation(position) {
@@ -248,7 +255,6 @@ function showLocation(position) {
 						var lat1 = position.coords.latitude;
             var lon1 = position.coords.longitude;
 						
-						alert(lat1);
 																		
 						//get location name
 						//var locationData = latitude;
@@ -261,16 +267,16 @@ function showLocation(position) {
 						
 				//get distance from Melbourne		
 				var radlat1 = Math.PI * lat1/180;
-        var radlat2 = Math.PI * lat2/180;
-        var radlon1 = Math.PI * lon1/180;
-        var radlon2 = Math.PI * lon2/180;
-        var theta = lon1-lon2;
-        var radtheta = Math.PI * theta/180;
-        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-        dist = Math.acos(dist);
-        dist = dist * 180/Math.PI;
-        dist = dist * 60 * 1.1515;
-        dist = dist * 1.609344; // convert to kms
+				var radlat2 = Math.PI * lat2/180;
+				var radlon1 = Math.PI * lon1/180;
+				var radlon2 = Math.PI * lon2/180;
+				var theta = lon1-lon2;
+				var radtheta = Math.PI * theta/180;
+				var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+				dist = Math.acos(dist);
+				dist = dist * 180/Math.PI;
+				dist = dist * 60 * 1.1515;
+				dist = dist * 1.609344; // convert to kms
 				dist = (Math.round(dist*10))/10;
 
 
@@ -344,15 +350,14 @@ function showLocation(position) {
 						
 						
 						
-						// Retrieve from Local Storage
-						var storedNames = JSON.parse(localStorage.getItem("savedData"));
-
 						
-						if (storedNames === "") {
-							var geoDataArray01 = [];
-						} else {
-							storedNames = [];
+						if(storedNames) {
 							var geoDataArray01 = storedNames;
+							alert(geoDataArray01);
+							//alert("stored");
+						} else {
+							var geoDataArray01 = [];
+							alert("empty");
 						}
 						
 						var elapsedTime = 845119;
@@ -361,9 +366,11 @@ function showLocation(position) {
 						
 						var test = [timeStamp,locationData,lat1,lon1,elapsedTime];
 						geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
-						
+						//alert(test);
 						//Save to Local Storage
 						localStorage.setItem("savedData", JSON.stringify(geoDataArray01));
+						// Retrieve from Local Storage
+						storedNames = JSON.parse(localStorage.getItem("savedData"));
 						
 						
 						
@@ -373,14 +380,11 @@ function showLocation(position) {
 							
 							
 							document.getElementById("current_location").innerHTML = locationData;
-							alert(geoDataArray01);
+							//alert(geoDataArray01);
 							
 							//appendToTable(geoDataArray01);
 							//watchCount++;
 						//}
-						
-						
-						
 						
 						
 						
@@ -449,8 +453,7 @@ function showLocation(position) {
 						//Save to Local Storage
 						localStorage.setItem("elapsedTime", elapsedTime);
 	
-							
-							
+						
 }
 
 
@@ -498,21 +501,18 @@ $("#btn-start").click(function(){
 	localStorage.setItem("trackActivity", JSON.stringify(1));
 						
 							
-							var watchID;
+							var id;
 							
 							if(navigator.geolocation){
-								 // timeout at 60000 milliseconds (60 seconds)
-								 //var options = {
-									 
+
+
 								 var options = {
 
-									 
-									 
-									 //timeout:60000,
+									 timeout:10000
 									 //desiredAccuracy: 10,
 									 //stationaryRadius: 10,
 									 //distanceFilter: 10,
-									 interval: 30000, // <!-- poll for position every 30 secs 
+									 //interval: 5000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
@@ -521,20 +521,10 @@ $("#btn-start").click(function(){
 									 
 									
 									 
-									 //for(count = 0; count < 1; count++){
-									 	 //navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-									 //}
-								
-									 //setInterval(function() {
-									 	//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-										navigator.geolocation.watchPosition(showLocation, errorHandler, options);
+										geoLoc = navigator.geolocation;
+										watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
 										
-									 	//var test11 = navigator.geolocation.watchPosition(showLocation, errorHandler, options);
-										//alert(test11);
-										
-									 //}, 5000);
-
-											 
+	
 											
 							} else {
 								 alert("Sorry, browser does not support geolocation!");
@@ -558,9 +548,31 @@ $("#btn-pause").click(function(){
 	//Save active track to Local Storage
 	localStorage.setItem("trackActivity", JSON.stringify(0));
 											
-	navigator.geolocation.clearWatch(watchID);
+	geoLoc.clearWatch(watchID);
 
 });
+
+
+
+
+$("#btn_upload").click(function(){
+	$('.overlay').fadeIn(100);
+	$('.spinner-uploading').delay(100).fadeIn(10);
+	
+	// Retrieve from Local Storage
+	storedNames = JSON.parse(localStorage.getItem("savedData"));
+	
+	$.ajax({
+			type: "POST",
+			dataType: "json",
+      cache: false,
+			url: "http://www.mediathrong.com/beepboards/scripts/upload_track_data.php",
+			data: {data:storedNames}
+	});
+
+});
+
+
 
 
 
