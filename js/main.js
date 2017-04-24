@@ -111,7 +111,6 @@ $(document).ready(function(){
 
 
 
-	var totalDistance = "";
 
 
 
