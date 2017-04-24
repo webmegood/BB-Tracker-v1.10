@@ -185,7 +185,9 @@ function add() {
     timer();
 }
 function timer() {
-    t = setTimeout(add, 1000);
+  t = setTimeout(add, 1000);
+	//Save elapsed "active" time (in secs) to Local Storage
+	localStorage.setItem("activeTime", t);
 }
 
 
@@ -358,7 +360,9 @@ function showLocation(position) {
 							//alert("empty");
 						}
 						
-						var elapsedTime = 845119;
+						// Retrieve currently saved elapsed time
+						var elapsedTime = JSON.parse(localStorage.getItem("activeTime"));
+
 
 
 						
