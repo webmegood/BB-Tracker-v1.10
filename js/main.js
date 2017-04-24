@@ -119,16 +119,13 @@ $(document).ready(function(){
 
 
 	// Get Updated Total Distance Travelled
-	var totalDistance;
+	//var totalDistance;
 	// Retrieve currently saved total distance
 	if (localStorage["totalDistance"]) {
-	var totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
+	  var totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
 	} else {
-	var totalDistance = 0;
+	  var totalDistance =0;
 	}
-	document.getElementById("totalDistance").innerHTML = totalDistance + "km";
-
-
 
 
 	// Get Updated Total Time Travelled	
@@ -407,8 +404,6 @@ function showLocation(position) {
 						currentdist = currentdist * 60 * 1.1515;
 						currentdist = currentdist * 1.609344; // convert to kms
 						currentdist = (Math.round(currentdist*10))/10;
-						
-						
 						
 					  // Retrieve currently saved total distance
 						if (localStorage["totalDistance"]) {
