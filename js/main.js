@@ -128,12 +128,12 @@ $(document).ready(function(){
 	//var totalDistance;
 	// Retrieve currently saved total distance
 	if (localStorage["totalDistance"]) {
-	  totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
+	  var totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
+		document.getElementById("totalDistance").innerHTML = totalDistance + "km";
 	} else {
-	  totalDistance = 0;
+	  var totalDistance = 0;
 	}
 
-	document.getElementById("totalDistance").innerHTML = totalDistance + "km";
 
 
 
