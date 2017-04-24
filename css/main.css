@@ -94,6 +94,18 @@ h5, h6 {
 	margin: 18vh auto 0;
 	display:block;
 }
+.btn-clear-bg {
+	display: block;
+}
+#btn-clear {
+	padding: 6px;
+	border: 1px solid #0066CC;
+	background: #EDF3F2;
+	text-transform: uppercase;
+	color: #666666;
+	font-size: 1em;
+	display: inline-block;
+}
 .go_back_btn_area {
 	position: fixed;
 	z-index: 1000;
