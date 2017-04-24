@@ -150,13 +150,54 @@ $(document).ready(function(){
 	
 
 
-var startBtn = document.getElementById('btn-start'),
+var h6 = document.getElementsByTagName('h6')[0],
+		startBtn = document.getElementById('btn-start'),
     stopBtn = document.getElementById('btn-pause'),
     seconds = 0, minutes = 0, hours = 0,
     t;
 		
 
 
+
+
+
+
+
+
+
+
+
+
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    h6.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+
+
+
+
+/* Start button */
+startBtn.onclick = timer;
+
+/* Stop button */
+stopBtn.onclick = function() {
+    clearTimeout(t);
+}
 
 
 
@@ -170,7 +211,7 @@ var trackActivity = JSON.parse(localStorage.getItem("trackActivity"));
 
 if (trackActivity == 1) {	
 	
-	startTimer();
+	timer();
 	//change pause/start button classes
 	$('.btn-start').fadeOut(0);
 	$('.btn-pause').fadeIn(50);
@@ -193,58 +234,6 @@ function stopAfterStart() {
   setTimeout(stopTimer,1001);
 }
 		
-
-function startTimer() {
-		
-var el = '#elapsedTime';
-var start = 1490860330,
-cDisplay = $(el);
-var format = function (t) {
-    var hours = Math.floor(t / 3600),
-        minutes = Math.floor(t / 60 % 60),
-        seconds = Math.floor(t % 60),
-        arr = [];
-    if (hours > 0) {
-        arr.push(hours == 1 ? '1:' : hours + ':');
-    }
-    if (minutes >= 10) {
-        arr.push(minutes > 1 ? minutes + ':' : minutes + ':');
-    }
-    if (minutes < 10) {
-        arr.push(minutes > 1 ? '0' + minutes + ':' : '0' + minutes + ':');
-    }
-    if (minutes > 0 || hours > 0) {
-			if (seconds >= 10) {
-        arr.push(seconds > 1 ? seconds + '' : seconds + '');
-    	} else {
-        arr.push(seconds > 1 ? '0' + seconds + '' : '0' + seconds + '');
-			}
-		}
-    cDisplay.html(arr.join(''));
-};
-interval = setInterval(function () {
-    format(new Date().getTime() / 1000 - start);
-}, 1000);	
-		
-}
-
-
-
-
-
-function stopTimer() {
-    clearInterval(interval);
-}
-
-
-
-
-
-/* Start button */
-startBtn.onclick = startTimer;
-
-/* Stop button */
-stopBtn.onclick = stopTimer;
 
 
 	
