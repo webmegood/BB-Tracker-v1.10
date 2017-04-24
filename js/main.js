@@ -417,13 +417,11 @@ function showLocation(position) {
 						currentdist = currentdist * 1.609344; // convert to kms
 						currentdist = (Math.round(currentdist*10))/10;
 						
-						var storedDistance = JSON.parse(localStorage.getItem("totalDistance"));
-						currentdist = (storedDistance + 150);
 						
 					  // Retrieve currently saved total distance
 						if (localStorage["totalDistance"]) {
-							//var storedDistance = JSON.parse(localStorage.getItem("totalDistance"));
-							var totalDistance = currentdist;
+							var storedDistance = JSON.parse(localStorage.getItem("totalDistance"));
+							var totalDistance = (storedDistance + currentdist);
 						} else {
 							var totalDistance = currentdist;
 						}
@@ -586,7 +584,8 @@ $("#btn_upload").click(function(){
 
 
 $("#btn-clear").click(function(){
-		localStorage.setItem("totalDistance", 0);
+		//localStorage.setItem("totalDistance", 0);
+		localStorage.removeItem("totalDistance");
 });
 
 
