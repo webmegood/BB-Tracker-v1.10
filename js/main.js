@@ -509,7 +509,7 @@ $("#btn-start").click(function(){
 
 								 var options = {
 
-									 timeout:10000
+									 timeout:1
 									 //desiredAccuracy: 10,
 									 //stationaryRadius: 10,
 									 //distanceFilter: 10,
