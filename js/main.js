@@ -584,8 +584,9 @@ $("#btn_upload").click(function(){
 
 
 $("#btn-clear").click(function(){
-		//localStorage.setItem("totalDistance", 0);
-		localStorage.removeItem("totalDistance");
+		localStorage.setItem("totalDistance", 0);
+		//localStorage.removeItem("totalDistance");
+		document.getElementById("totalDistance").innerHTML = totalDistance;
 });
 
 
