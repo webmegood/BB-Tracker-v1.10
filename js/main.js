@@ -110,6 +110,13 @@ $(document).ready(function(){
 
 
 
+
+	var totalDistance = "";
+
+
+
+
+
 $(document).ready(function(){
 		
 		
@@ -122,9 +129,9 @@ $(document).ready(function(){
 	//var totalDistance;
 	// Retrieve currently saved total distance
 	if (localStorage["totalDistance"]) {
-	  var totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
+	  totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
 	} else {
-	  var totalDistance =0;
+	  totalDistance = 0;
 	}
 
 
@@ -567,6 +574,12 @@ $("#btn_upload").click(function(){
 
 });
 
+
+
+
+$("#btn-clear").click(function(){
+		localStorage.setItem("totalDistance", 0);
+});
 
 
 
