@@ -353,11 +353,11 @@ function showLocation(position) {
 						
 						if(storedNames) {
 							var geoDataArray01 = storedNames;
-							alert(geoDataArray01);
+							//alert(geoDataArray01);
 							//alert("stored");
 						} else {
 							var geoDataArray01 = [];
-							alert("empty");
+							//alert("empty");
 						}
 						
 						var elapsedTime = 845119;
