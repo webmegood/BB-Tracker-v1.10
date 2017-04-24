@@ -133,6 +133,12 @@ $(document).ready(function(){
 	  totalDistance = 0;
 	}
 
+	document.getElementById("totalDistance").innerHTML = totalDistance + "km";
+
+
+
+
+
 
 	// Get Updated Total Time Travelled	
 	
