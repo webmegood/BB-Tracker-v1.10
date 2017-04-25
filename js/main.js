@@ -509,11 +509,11 @@ $("#btn-start").click(function(){
 
 								 var options = {
 
-									 timeout:1
-									 //desiredAccuracy: 10,
-									 //stationaryRadius: 10,
-									 //distanceFilter: 10,
-									 //interval: 5000 // <!-- poll for position every 30 secs 
+									 //timeout:10000
+									 desiredAccuracy: 10,
+									 stationaryRadius: 10,
+									 distanceFilter: 10,
+									 interval: 2500 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
