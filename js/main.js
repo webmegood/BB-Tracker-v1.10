@@ -516,9 +516,9 @@ $("#btn-start").click(function(){
 								 var options = {
 									 
 									 
-									 timeout: 20000,
+									 timeout: 0,
 									 enableHighAccuracy: true,
-									 maximumAge: Infinity									 
+									 maximumAge: 1000000000									 
 
 
 									 //timeout:20000,
