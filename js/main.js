@@ -509,10 +509,12 @@ $("#btn-start").click(function(){
 
 								 var options = {
 
-									 //timeout:10000
+									 timeout:20000,
 									 desiredAccuracy: 10,
 									 stationaryRadius: 10,
 									 distanceFilter: 10,
+									 enableHighAccuracy: true,
+									 maximumAge: 0,
 									 interval: 10000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
@@ -524,7 +526,7 @@ $("#btn-start").click(function(){
 									 
 										geoLoc = navigator.geolocation;
 										//watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
-										watchID = geoLoc.getCurrentPosition(showLocation, errorHandler, options);
+										navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 										
 	
 											
