@@ -504,18 +504,18 @@ $("#btn-start").click(function(){
 							
 							var id;
 							
-							if(navigator.geolocation){
+							//if(navigator.geolocation){
 
 
 								 var options = {
 
-									 timeout:20000,
+									 //timeout:20000,
 									 desiredAccuracy: 10,
 									 stationaryRadius: 10,
 									 distanceFilter: 10,
-									 enableHighAccuracy: true,
-									 maximumAge: 0,
-									 interval: 10000 // <!-- poll for position every 30 secs 
+									 //enableHighAccuracy: true,
+									 //maximumAge: 0,
+									 interval: 20000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
@@ -524,15 +524,15 @@ $("#btn-start").click(function(){
 									 
 									
 									 
-										geoLoc = navigator.geolocation;
+										//geoLoc = navigator.geolocation;
 										//watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
 										navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 										
 	
 											
-							} else {
-								 alert("Sorry, browser does not support geolocation!");
-							}
+							//} else {
+								 //alert("Sorry, browser does not support geolocation!");
+							//}
 							
 	
 });
