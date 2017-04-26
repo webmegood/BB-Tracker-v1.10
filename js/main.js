@@ -504,35 +504,41 @@ $("#btn-start").click(function(){
 							
 							var id;
 							
-							//if(navigator.geolocation){
+							if(navigator.geolocation){
 
 
+									 
+								geoLoc = navigator.geolocation;
+								watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
+								//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+								
+								
 								 var options = {
+									 
+									 
+									 timeout: 0,
+									 enableHighAccuracy: true,
+									 maximumAge: Infinity									 
+
 
 									 //timeout:20000,
-									 desiredAccuracy: 10,
-									 stationaryRadius: 10,
-									 distanceFilter: 10,
+									 //desiredAccuracy: 10,
+									 //stationaryRadius: 10,
+									 //distanceFilter: 10,
 									 //enableHighAccuracy: true,
 									 //maximumAge: 0,
-									 interval: 20000 // <!-- poll for position every 30 secs 
+									 //interval: 20000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
 									 
 									 };
-									 
-									
-									 
-										//geoLoc = navigator.geolocation;
-										//watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
-										navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-										
+								
 	
 											
-							//} else {
-								 //alert("Sorry, browser does not support geolocation!");
-							//}
+							} else {
+								 alert("Sorry, browser does not support geolocation!");
+							}
 							
 	
 });
@@ -560,8 +566,8 @@ $("#btn-pause").click(function(){
 
 
 $("#btn_upload").click(function(){
-	$('.overlay').fadeIn(100);
-	$('.spinner-uploading').delay(100).fadeIn(10);
+	$('.overlay').fadeIn(100).delay(3010).fadeOut(100);
+	$('.spinner-uploading').delay(100).fadeIn(10).delay(3000).fadeOut(100);
 	
 	// Retrieve from Local Storage
 	storedNames = JSON.parse(localStorage.getItem("savedData"));
@@ -571,7 +577,9 @@ $("#btn_upload").click(function(){
 			dataType: "json",
       cache: false,
 			url: "http://www.mediathrong.com/beepboards/scripts/upload_track_data.php",
-			data: {data:storedNames}
+			data: {data:storedNames},
+			success: function (data) {
+			}
 	});
 
 });
