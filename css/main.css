@@ -27,6 +27,12 @@ html, body {
 	line-height: 30px;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
+  -webkit-animation: 0.7s blink step-end infinite;
+  -moz-animation: 0.7s blink step-end infinite;
+  -ms-animation: 0.7s blink step-end infinite;
+  -o-animation: 0.7s blink step-end infinite;
+  animation: 0.7s blink step-end infinite;
+	animation-timing-function: ease;
 }
 .main_content {
 	text-align:center;
