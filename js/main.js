@@ -515,7 +515,7 @@ $("#btn-start").click(function(){
 									 
 									 timeout: 0,
 									 enableHighAccuracy: true,
-									 maximumAge: Infinity									 
+									 maximumAge: 10000									 
 
 
 									 //timeout:20000,
@@ -579,8 +579,6 @@ $("#btn_upload").click(function(){
       cache: false,
 			url: "http://www.mediathrong.com/beepboards/scripts/upload_track_data.php",
 			data: {data:storedNames},
-			success: function (data) {
-			}
 	});
 
 });
