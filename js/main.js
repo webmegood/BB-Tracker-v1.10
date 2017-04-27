@@ -251,7 +251,7 @@ var storedNames = "";
 
 function showLocation(position) {
             
-												
+
 						var lat1 = position.coords.latitude;
             var lon1 = position.coords.longitude;
 						
@@ -501,7 +501,15 @@ $("#btn-start").click(function(){
 	//Save active track to Local Storage
 	localStorage.setItem("trackActivity", JSON.stringify(1));
 						
-							
+			
+			
+			
+			
+
+
+
+
+			
 							var id;
 							
 							if(navigator.geolocation){
@@ -511,22 +519,21 @@ $("#btn-start").click(function(){
 			
 			
 			
-function setDelay() {
 
 								
 								
 								 var options = {
 									 
 									 
-									 timeout: 10000,
-									 enableHighAccuracy: true
+									 //timeout: 10000,
+									 enableHighAccuracy: true,
 									 //maximumAge: Infinity									 
 
 
 									 //timeout:20000,
 									 //desiredAccuracy: 10,
 									 //stationaryRadius: 10,
-									 //distanceFilter: 10,
+									 distanceFilter: 25
 									 //enableHighAccuracy: true,
 									 //maximumAge: 0,
 									 //interval: 20000 // <!-- poll for position every 30 secs 
@@ -537,6 +544,7 @@ function setDelay() {
 									 };
 								
 	
+
 								geoLoc = navigator.geolocation;
 								watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
 								//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
@@ -544,11 +552,6 @@ function setDelay() {
 
 
 
-
-setTimeout(setDelay, 10000);
-}
-
-setDelay();
 
 
 
