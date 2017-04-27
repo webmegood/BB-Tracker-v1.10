@@ -505,9 +505,14 @@ $("#btn-start").click(function(){
 							var id;
 							
 							if(navigator.geolocation){
+								
+								
+			
+			
+			
+			
+function setDelay() {
 
-
-									 
 								
 								
 								 var options = {
@@ -537,7 +542,21 @@ $("#btn-start").click(function(){
 								//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 
 
-							} else {
+
+
+
+setTimeout(setDelay, 10000);
+}
+
+setDelay();
+
+
+
+
+
+
+
+} else {
 								 alert("Sorry, browser does not support geolocation!");
 							}
 							
