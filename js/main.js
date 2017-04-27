@@ -515,7 +515,7 @@ $("#btn-start").click(function(){
 									 
 									 timeout: 0,
 									 enableHighAccuracy: true,
-									 maximumAge: 10000000000000									 
+									 maximumAge: Infinity									 
 
 
 									 //timeout:20000,
@@ -588,6 +588,10 @@ $("#btn_upload").click(function(){
 
 $("#btn-clear").click(function(){
 		localStorage.setItem("totalDistance", 0);
+		localStorage.setItem("activeTime", 0);
+		localStorage.setItem("savedData", 0);
+		localStorage.setItem("elapsedTime", 0);
+		localStorage.setItem("trackActivity", 0);
 		//localStorage.removeItem("totalDistance");
 		document.getElementById("totalDistance").innerHTML = "";
 });
