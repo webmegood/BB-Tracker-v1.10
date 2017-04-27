@@ -526,7 +526,7 @@ $("#btn-start").click(function(){
 									 
 									 
 									 //timeout: 10000,
-									 enableHighAccuracy: true,
+									 enableHighAccuracy: true
 									 //maximumAge: Infinity									 
 
 
@@ -545,10 +545,15 @@ $("#btn-start").click(function(){
 								
 	
 
-								geoLoc = navigator.geolocation;
-								watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
-								//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-
+								//geoLoc = navigator.geolocation;
+								//watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
+								
+								
+var int=self.setInterval(function(){getLocation()},10000);
+function getLocation()
+  {								
+								navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+	}
 
 
 
