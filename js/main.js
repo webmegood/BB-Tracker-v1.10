@@ -533,7 +533,7 @@ $("#btn-start").click(function(){
 									 //timeout:20000,
 									 //desiredAccuracy: 10,
 									 //stationaryRadius: 10,
-									 distanceFilter: 25
+									 //distanceFilter: 100,
 									 //enableHighAccuracy: true,
 									 //maximumAge: 0,
 									 //interval: 20000 // <!-- poll for position every 30 secs 
