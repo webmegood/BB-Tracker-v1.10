@@ -508,9 +508,6 @@ $("#btn-start").click(function(){
 
 
 									 
-								geoLoc = navigator.geolocation;
-								watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
-								//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 								
 								
 								 var options = {
@@ -518,7 +515,7 @@ $("#btn-start").click(function(){
 									 
 									 timeout: 0,
 									 enableHighAccuracy: true,
-									 maximumAge: 1000000000									 
+									 maximumAge: Infinity									 
 
 
 									 //timeout:20000,
@@ -535,7 +532,11 @@ $("#btn-start").click(function(){
 									 };
 								
 	
-											
+								geoLoc = navigator.geolocation;
+								watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
+								//navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+
+
 							} else {
 								 alert("Sorry, browser does not support geolocation!");
 							}
