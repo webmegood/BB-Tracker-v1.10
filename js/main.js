@@ -527,7 +527,7 @@ $("#btn-start").click(function(){
 									 
 									 
 									 //timeout: 10000,
-									 enableHighAccuracy: true
+									 enableHighAccuracy: true,
 									 //maximumAge: Infinity									 
 
 
@@ -537,7 +537,7 @@ $("#btn-start").click(function(){
 									 //distanceFilter: 100,
 									 //enableHighAccuracy: true,
 									 //maximumAge: 0,
-									 //interval: 10000 // <!-- poll for position every 30 secs 
+									 interval: 10000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
