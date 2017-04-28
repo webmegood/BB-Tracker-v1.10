@@ -367,7 +367,8 @@ function showLocation(position) {
 
 						
 						var test = [timeStamp,locationData,lat1,lon1,elapsedTime];
-						geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
+						//geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
+						geoDataArray01 = push.(test);
 						//alert(test);
 						//Save to Local Storage
 						localStorage.setItem("savedData", JSON.stringify(geoDataArray01));
@@ -526,7 +527,7 @@ $("#btn-start").click(function(){
 									 
 									 
 									 //timeout: 10000,
-									 enableHighAccuracy: true
+									 enableHighAccuracy: true,
 									 //maximumAge: Infinity									 
 
 
@@ -536,7 +537,7 @@ $("#btn-start").click(function(){
 									 //distanceFilter: 100,
 									 //enableHighAccuracy: true,
 									 //maximumAge: 0,
-									 //interval: 20000 // <!-- poll for position every 30 secs 
+									 interval: 10000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
@@ -549,12 +550,7 @@ $("#btn-start").click(function(){
 								//watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
 								
 								
-var int=self.setInterval(function(){getLocation()},10000);
-function getLocation()
-  {								
 								navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-	}
-
 
 
 
