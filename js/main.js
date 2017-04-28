@@ -367,8 +367,8 @@ function showLocation(position) {
 
 						
 						var test = [timeStamp,locationData,lat1,lon1,elapsedTime];
-						//geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
-						geoDataArray01.push(test);
+						geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
+						//geoDataArray01.push(test);
 						//alert(test);
 						//Save to Local Storage
 						localStorage.setItem("savedData", JSON.stringify(geoDataArray01));
