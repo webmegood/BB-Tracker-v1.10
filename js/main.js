@@ -368,7 +368,7 @@ function showLocation(position) {
 						
 						var test = [timeStamp,locationData,lat1,lon1,elapsedTime];
 						//geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
-						geoDataArray01 = push.(test);
+						geoDataArray01.push(test);
 						//alert(test);
 						//Save to Local Storage
 						localStorage.setItem("savedData", JSON.stringify(geoDataArray01));
@@ -378,7 +378,7 @@ function showLocation(position) {
 						
 						
 						
-						var watchCount = 1;
+						//var watchCount = 1;
 						//if(watchCount>=2) {	 // the 2nd time we use watchPosition is supposed to be more accurate than the 1st, so ignore 1st
 							
 							
@@ -527,7 +527,7 @@ $("#btn-start").click(function(){
 									 
 									 
 									 //timeout: 10000,
-									 enableHighAccuracy: true,
+									 enableHighAccuracy: true
 									 //maximumAge: Infinity									 
 
 
@@ -537,7 +537,7 @@ $("#btn-start").click(function(){
 									 //distanceFilter: 100,
 									 //enableHighAccuracy: true,
 									 //maximumAge: 0,
-									 interval: 10000 // <!-- poll for position every 30 secs 
+									 //interval: 10000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
@@ -582,7 +582,7 @@ $("#btn-pause").click(function(){
 	//Save active track to Local Storage
 	localStorage.setItem("trackActivity", JSON.stringify(0));
 											
-	geoLoc.clearWatch(watchID);
+	//geoLoc.clearWatch(watchID);
 
 });
 
