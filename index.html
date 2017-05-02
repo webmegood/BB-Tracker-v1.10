@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/map.css">
 
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -39,6 +40,10 @@
 
 </head>
 <body>
+
+
+
+
 
   <!-- 1.0 Home Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -146,11 +151,12 @@
                 <th>Date</th>
                 <th>Distance</th>
                 <th>Uploaded</th>
+                <th>MAP</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>29/03/17</td><td>72.6km</td><td><div class="btn-list" id="btn_upload">Upload</div></td></tr>
-              <tr><td>28/03/17</td><td>33.6km</td><td><i class="fa fa-check"></i></td></tr>
+              <tr><td>29/03/17</td><td>72.6 km</td><td><div class="btn-list" id="btn_upload">Upload</div></td><td><i class="fa fa-road"></i></td></tr>
+              <tr><td>28/03/17</td><td>33.6 km</td><td><i class="fa fa-check"></i></td><td><i class="fa fa-road mapUploaded"></i></td></tr>
             </tbody>
           </table>
         
@@ -277,8 +283,17 @@
   
 	<div class="overlay" style="display:none"></div>
   <div class="spinner-uploading" style="display:none">uploading</div>
+  <div class="spinner-loading" style="display:none"><img src="images/loader.gif"></div>
 
 
+
+
+  <!-- 11.0 Map
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	
+	<div id="map">
+
+	</div>
 
 
 
@@ -310,5 +325,7 @@
 
 <!--script type="text/javascript" src="js/gps.js"></script-->
 <script type="text/javascript" src="js/main.js"></script>
-
-
+<script type="text/javascript" src="js/loadmap.js"></script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeupsWFDSSqyXxo9e5liXPRrFRuM4VSdU&callback=loadMap">
+</script>
