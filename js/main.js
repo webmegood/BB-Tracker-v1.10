@@ -252,9 +252,11 @@ var storedNames = "";
 function showLocation(position) {
             
 
-						var lat1 = position.coords.latitude;
-            var lon1 = position.coords.longitude;
+		
+		var lat1 = position.coords.latitude;
+    var lon1 = position.coords.longitude;
 						
+
 
 //get location name
 						//var locationData = latitude;
@@ -344,7 +346,7 @@ function showLocation(position) {
 					
 				//put distance and bearing together	
 				var locationData = dist + "km " + direction  + " of Melb";
-
+				alert(locationData);
 						
 						//var timeStamp = Math.floor(Date.now() / 1000); //(is unix server time, but need offline...so use from GPS)
 						var timeStamp = position.timestamp;
@@ -563,13 +565,13 @@ $("#btn-start").click(function(){
 
 
 function checkLocation(){
-	
+
 // Retrieve currently saved elapsed time
 var locationCheckingStatus = JSON.parse(localStorage.getItem("stopLocationChecking"));
 
 if (locationCheckingStatus == 0) {
 	} else {
-    setTimeout(checkLocation, 10000); //check location every X seconds
+    setTimeout(checkLocation, 30000); //check location every 30 seconds
 		navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 	}
 }
