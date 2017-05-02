@@ -255,8 +255,8 @@ function showLocation(position) {
 						var lat1 = position.coords.latitude;
             var lon1 = position.coords.longitude;
 						
-																		
-						//get location name
+
+//get location name
 						//var locationData = latitude;
 						
 						//compare with Melbourne
@@ -564,13 +564,11 @@ $("#btn-start").click(function(){
 
 function checkLocation(){
 	
-alert("initial firing");
 // Retrieve currently saved elapsed time
 var locationCheckingStatus = JSON.parse(localStorage.getItem("stopLocationChecking"));
 
 if (locationCheckingStatus == 0) {
 	} else {
-		alert("location checking");
 		navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
     setTimeout(checkLocation, 10000); //check location every X seconds
 	}
@@ -622,7 +620,7 @@ $("#btn_upload").click(function(){
 	
 	// Retrieve from Local Storage
 	storedNames = JSON.parse(localStorage.getItem("savedData"));
-	
+	alert(storedNames);
 	$.ajax({
 			type: "POST",
 			dataType: "json",
