@@ -1,5 +1,6 @@
 html, body {
 }
+#map {}
 .overlay {
 	background: #333;
 	position: fixed;
@@ -8,6 +9,16 @@ html, body {
 	width: 100vw;
 	height: 100vh;
 	z-index: 1000;
+}
+.spinner-loading {
+	position: fixed;
+	width: 32px;
+	height: 32px;
+	top: 50%;
+	margin-top: -16px;
+	left: 50%;
+	margin-left: -16px;
+	z-index: 1001;
 }
 .spinner-uploading {
 	position: fixed;
@@ -39,6 +50,7 @@ html, body {
 }
 #home {
 	z-index: 19;
+	height: 100vh;
 }
 .menu_strip {
 	text-align: center;
@@ -342,7 +354,7 @@ ul > li {
 	line-height: 60px;
 }
 
-/* LOADER */
+/* INITIAL LOADER */
 .spinner {
   width: 120px;
   height: 120px;
@@ -572,11 +584,21 @@ table.scroll tbody td,
 table.scroll thead th {
 		padding: 12px 6px 12px 0px;
     float: left;
-		width: calc(33% - 6px);
+		width: calc(12% - 6px);
+}
+table.scroll tbody td:nth-child(2),
+table.scroll thead th:nth-child(2) {
+		width: calc(44% - 6px);
+		text-align:center;
 }
 table.scroll tbody td:nth-child(3),
 table.scroll thead th:nth-child(3) {
-		width: calc(34% - 6px);
+		width: calc(30% - 6px);
+		text-align:center;
+}
+table.scroll tbody td:nth-child(4),
+table.scroll thead th:nth-child(4) {
+		width: calc(14% - 6px);
 		text-align:center;
 }
 table.scroll .btn-list {
@@ -604,7 +626,13 @@ table.scroll thead th {
 table.scroll .fa-check {
 	color: #3C3;
 }
-
+.fa-road {
+	font-size: 1.2em;
+	opacity: 0.25;
+}
+.fa-road.mapUploaded {
+	opacity: 1;
+}
 
 
 
