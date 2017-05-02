@@ -367,8 +367,8 @@ function showLocation(position) {
 
 						
 						var test = [timeStamp,locationData,lat1,lon1,elapsedTime];
-						geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
-						//geoDataArray01.push(test);
+						//geoDataArray01.unshift(test); //reverse order to have most recent entry showing first						
+						geoDataArray01.push(test);
 						//alert(test);
 						//Save to Local Storage
 						localStorage.setItem("savedData", JSON.stringify(geoDataArray01));
@@ -485,10 +485,10 @@ function showLocation(position) {
 
 	
 
-
-
-
-
+	
+	
+	
+	
 
 
 	
@@ -499,8 +499,13 @@ $("#btn-start").click(function(){
 	$('.btn-pause').fadeIn(50);
 	$('.status').fadeIn(10);
 	
+	
 	//Save active track to Local Storage
 	localStorage.setItem("trackActivity", JSON.stringify(1));
+	
+	
+	//Set pause indicator to ensure checkLocation function starts
+	localStorage.setItem("stopLocationChecking", 1);
 						
 			
 			
@@ -527,7 +532,7 @@ $("#btn-start").click(function(){
 									 
 									 
 									 //timeout: 10000,
-									 enableHighAccuracy: true,
+									 enableHighAccuracy: true
 									 //maximumAge: Infinity									 
 
 
@@ -537,7 +542,7 @@ $("#btn-start").click(function(){
 									 //distanceFilter: 100,
 									 //enableHighAccuracy: true,
 									 //maximumAge: 0,
-									 interval: 10000 // <!-- poll for position every 30 secs 
+									 //interval: 10000 // <!-- poll for position every 30 secs 
 									 //locationService: backgroundGeoLocation.service.ANDROID_FUSED_LOCATION,
 									 //debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
 									 //stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates							 
@@ -549,8 +554,29 @@ $("#btn-start").click(function(){
 								//geoLoc = navigator.geolocation;
 								//watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
 								
-								
-								navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+	
+	
+	
+	
+	
+
+
+
+function checkLocation(){
+	
+
+// Retrieve currently saved elapsed time
+var locationCheckingStatus = JSON.parse(localStorage.getItem("stopLocationChecking"));
+
+if (locationCheckingStatus == 0) {
+	} else {
+		navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+    setTimeout(checkLocation, 10000); //check location every X seconds
+	}
+}
+
+checkLocation();	
+	
 
 
 
@@ -581,8 +607,8 @@ $("#btn-pause").click(function(){
 	
 	//Save active track to Local Storage
 	localStorage.setItem("trackActivity", JSON.stringify(0));
-											
-	//geoLoc.clearWatch(watchID);
+	//Set pause indicator to ensure checkLocation function stops
+	localStorage.setItem("stopLocationChecking", 0);
 
 });
 
@@ -603,6 +629,8 @@ $("#btn_upload").click(function(){
 			url: "http://www.mediathrong.com/beepboards/scripts/upload_track_data.php",
 			data: {data:storedNames},
 	});
+	
+	clearAllSavedData();
 
 });
 
@@ -610,6 +638,19 @@ $("#btn_upload").click(function(){
 
 
 $("#btn-clear").click(function(){
+ clearAllSavedData();
+});
+
+
+
+
+
+
+
+
+
+function clearAllSavedData() {
+	
 		localStorage.setItem("totalDistance", 0);
 		localStorage.setItem("activeTime", 0);
 		localStorage.setItem("savedData", 0);
@@ -617,10 +658,8 @@ $("#btn-clear").click(function(){
 		localStorage.setItem("trackActivity", 0);
 		//localStorage.removeItem("totalDistance");
 		document.getElementById("totalDistance").innerHTML = "";
-});
 
-
-
+}
 
 
 
