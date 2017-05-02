@@ -346,8 +346,8 @@ function showLocation(position) {
 				var locationData = dist + "km " + direction  + " of Melb";
 
 						
-						var timeStamp = Math.floor(Date.now() / 1000);
-						
+						//var timeStamp = Math.floor(Date.now() / 1000); //(is unix server time, but need offline...so use from GPS)
+						var timeStamp = position.timestamp;
 						
 						
 						
@@ -569,8 +569,8 @@ var locationCheckingStatus = JSON.parse(localStorage.getItem("stopLocationChecki
 
 if (locationCheckingStatus == 0) {
 	} else {
-		navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
     setTimeout(checkLocation, 10000); //check location every X seconds
+		navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 	}
 }
 
@@ -620,7 +620,7 @@ $("#btn_upload").click(function(){
 	
 	// Retrieve from Local Storage
 	storedNames = JSON.parse(localStorage.getItem("savedData"));
-	alert(storedNames);
+	//alert(storedNames);
 	$.ajax({
 			type: "POST",
 			dataType: "json",
