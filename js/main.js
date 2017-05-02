@@ -564,12 +564,13 @@ $("#btn-start").click(function(){
 
 function checkLocation(){
 	
-
+alert("initial firing");
 // Retrieve currently saved elapsed time
 var locationCheckingStatus = JSON.parse(localStorage.getItem("stopLocationChecking"));
 
 if (locationCheckingStatus == 0) {
 	} else {
+		alert("location checking");
 		navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
     setTimeout(checkLocation, 10000); //check location every X seconds
 	}
