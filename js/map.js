@@ -35,7 +35,7 @@ function loadMap(d) {
 
 
 
-        downloadUrl("scripts/getCoords.php", function(data) {
+        downloadUrl("http://www.mediathrong.com/beepboards/scripts/getCoords.php", function(data) {
         
 				var xml = data.responseXML;
 				
