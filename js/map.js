@@ -144,12 +144,7 @@ marker.addListener('click', (function(marker,infowincontent,infowindow){
 		map.fitBounds(bounds);	
 	
 	
-										
-		//(optional) restore the zoom level after the map is done scaling
-		var listener = google.maps.event.addListener(map, "idle", function () {
-				map.setZoom(14);
-				google.maps.event.removeListener(listener);
-		});
+
 
 
 
