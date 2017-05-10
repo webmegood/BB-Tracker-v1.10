@@ -1,13 +1,4 @@
-//When clicking on active road icons
 
-$(".mapUploaded").click(function(){
-	$('.overlay').fadeIn(100).delay(1210).fadeOut(100);
-	$('.spinner-loading').delay(100).fadeIn(10).delay(1200).fadeOut(100);
-	$('.container').fadeOut(10);
-	$('#map').fadeOut(0).delay(1200).fadeIn(50);
-	$('#go_back_to_tracks').hide(0);
-	$('#go_back_to_tracks_log').show(0);
-});
 
 
 
