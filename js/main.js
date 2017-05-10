@@ -106,7 +106,17 @@ $(document).ready(function(){
     });
 });
 
-
+$(document).ready(function(){
+    $('#go_back_to_tracks_log').click(function(){
+				$('#menu-tracks').addClass('current');
+				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').delay(300).fadeIn(500);
+				$('.container').show();
+				$('#map').hide();
+				$('#go_back_to_tracks_log').hide(0);
+				$('#go_back_to_tracks').delay(300).fadeIn(500);
+    });
+});
 
 
 

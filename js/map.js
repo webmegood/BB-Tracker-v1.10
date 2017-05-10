@@ -5,6 +5,8 @@ $(".mapUploaded").click(function(){
 	$('.spinner-loading').delay(100).fadeIn(10).delay(1200).fadeOut(100);
 	$('.container').fadeOut(10);
 	$('#map').fadeOut(0).delay(1200).fadeIn(50);
+	$('#go_back_to_tracks').hide(0);
+	$('#go_back_to_tracks_log').show(0);
 });
 
 
@@ -144,7 +146,12 @@ marker.addListener('click', (function(marker,infowincontent,infowindow){
 		map.fitBounds(bounds);	
 	
 	
-
+										
+		//(optional) restore the zoom level after the map is done scaling
+		var listener = google.maps.event.addListener(map, "idle", function () {
+				map.setZoom(7);
+				google.maps.event.removeListener(listener);
+		});
 
 
 
