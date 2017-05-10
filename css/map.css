@@ -1,5 +1,5 @@
 #map {
-	height: 100vh;
+	height: calc(88vh - 1px);
 	width: 100vw;
 	left: 0;
 	top: 0;
