@@ -28,7 +28,7 @@ function loadMap(d) {
 
 
 
-        downloadUrl("http://www.mediathrong.com/beepboards/scripts/getCoords.php", function(data) {
+        downloadUrl("http://www.mediathrong.com/beepboards/scripts/getCoords.php?date=1494825016343", function(data) {
         
 				var xml = data.responseXML;
 				

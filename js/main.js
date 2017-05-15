@@ -377,7 +377,7 @@ function showLocation(position) {
 					
 				//put distance and bearing together	
 				var locationData = dist + "km " + direction  + " of Melb";
-				alert(locationData);
+				//alert(locationData);
 						
 						//var timeStamp = Math.floor(Date.now() / 1000); //(is unix server time, but need offline...so use from GPS)
 						var timeStamp = position.timestamp;
@@ -602,7 +602,7 @@ var locationCheckingStatus = JSON.parse(localStorage.getItem("stopLocationChecki
 
 if (locationCheckingStatus == 0) {
 	} else {
-    setTimeout(checkLocation, 30000); //check location every 30 seconds
+    setTimeout(checkLocation, 5000); //check location every 30 seconds
 		navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 	}
 }
