@@ -24,11 +24,11 @@ function loadMap(d) {
 						
 						
 
+var activeDate = 1494825016343;
 
 
 
-
-        downloadUrl("http://www.mediathrong.com/beepboards/scripts/getCoords.php?date=1494825016343", function(data) {
+        downloadUrl("http://www.mediathrong.com/beepboards/scripts/getCoords.php?active_date=" + activeDate, function(data) {
         
 				var xml = data.responseXML;
 				
