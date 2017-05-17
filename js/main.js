@@ -653,7 +653,7 @@ $("#btn_upload").click(function(){
 	
 	// Retrieve from Local Storage
 	storedNames = JSON.parse(localStorage.getItem("savedData"));
-	//alert(storedNames);
+	alert(storedNames);
 	$.ajax({
 			type: "POST",
 			dataType: "json",
