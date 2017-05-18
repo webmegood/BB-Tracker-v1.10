@@ -105,6 +105,12 @@ h2 {
 h5, h6 {
 	margin:0;
 }
+.elapsed-time h6 {
+    display: inline;
+    width: 60px;
+    text-align: left;
+    float: left;
+}
 .mainLogo img {
 	width: 136px;
 	height: auto;
@@ -621,6 +627,8 @@ table.scroll .btn-list {
 	margin-top: -6px;
 	top: 3px;
 	border-radius: 4px;
+}
+table.scroll .btn-list#btn_upload {
 	cursor: pointer;
 }
 table.scroll thead th { 
