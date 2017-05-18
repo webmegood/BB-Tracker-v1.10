@@ -155,6 +155,7 @@
               </tr>
             </thead>
             <tbody>
+              <tr><td>30/03/17</td><td>-</td><td><div class="btn-list" id="btn_upload_temp" style="opacity: 0.4">Upload</div></td><td><i class="fa fa-road"></i></td></tr>
               <tr><td>29/03/17</td><td>-</td><td><div class="btn-list" id="btn_upload">Upload</div></td><td><i class="fa fa-road"></i></td></tr>
               <tr><td>28/03/17</td><td>pending</i></td><td><i class="fa fa-check"></i></td><td><i class="fa fa-road mapUploaded"></i></td></tr>
               <tr><td>27/03/17</td><td>33.64 <i class="fa fa-search-plus"></i></td><td><i class="fa fa-check"></i></td><td><i class="fa fa-road mapUploaded"></i></td></tr>
@@ -198,6 +199,8 @@
       <div class="twelve columns" style="text-align:center">
         <div class="menu_strip">
     			<h1>ACCOUNT</h1>
+					<button type="button" onclick="fetchfromMysqlDatabase();">Load Data from Mysql Database</button>
+					<div id="res3"></div>
         </div>
       </div>
     </div>
