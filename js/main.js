@@ -139,10 +139,7 @@ $(document).ready(function(){
     });
 });
 
-
-
-
-
+			
 
 
 
@@ -648,18 +645,23 @@ $("#btn-pause").click(function(){
 
 
 $("#btn_upload").click(function(){
-	$('.overlay').fadeIn(100).delay(3010).fadeOut(100);
-	$('.spinner-uploading').delay(100).fadeIn(10).delay(3000).fadeOut(100);
 	
 	// Retrieve from Local Storage
 	storedNames = JSON.parse(localStorage.getItem("savedData"));
-	alert(storedNames);
 	$.ajax({
 			type: "POST",
 			dataType: "json",
       cache: false,
 			url: "http://www.mediathrong.com/beepboards/scripts/upload_track_data.php",
 			data: {data:storedNames},
+      beforeSend: function() {
+      	$('.overlay').show();
+				$('.spinner-uploading').show();
+      },
+			success: function() {
+      	$('.overlay').hide();
+				$('.spinner-uploading').hide();
+      }
 	});
 	
 	clearAllSavedData();
@@ -715,4 +717,24 @@ function onOnline() {
 	$('#yes-connectivity').show();
 }				
 				
+			
+
+
+
+
+
+function fetchfromMysqlDatabase() {
+                  $.ajax({
+                    type: "GET",
+                    dataType: "html",
+                    url: "http://www.mediathrong.com/beepboards/scripts/getTrackLogs.php",
+                    cache: false,
+                    beforeSend: function() {
+                       $('#res3').html('loading please wait...');
+                    },
+                    success: function(htmldata) {
+                       $('#res3').html(htmldata);
+                    }
+                  });
+                }
 			
