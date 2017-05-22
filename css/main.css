@@ -1,6 +1,9 @@
 html, body {
 }
 input {}
+.button.button-primary, .button.button-primary:hover {
+	background-color: #3C3;
+}
 #map {}
 .overlay {
 	background: #333;
