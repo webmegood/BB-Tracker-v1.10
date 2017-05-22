@@ -45,11 +45,54 @@
 
 
 
+
+  <!-- 0.0 Authentication Area
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+  <div class="container" id="authenticate">
+    <div class="row">
+      <div class="twelve columns" style="text-align:center">
+        <div class="menu_strip">
+    			<h1>LOG IN</h1>
+        </div>
+
+        <div>
+            <input type="text" name="txt-email" id="txt-email" value="" placeholder="Email Address" style="width: 100%">
+            <input type="password" name="txt-password" id="txt-password" value="" placeholder="Password" style="width: 100%">
+            <fieldset>
+							<input type="checkbox" name="chck-rememberme" id="chck-rememberme" checked="" style="display: inline-block; margin-right: 4px">
+							<label style="display: inline">Remember me</label>
+            </fieldset>
+            <a id="btn-submit" class="button button-primary">Submit</a>
+            <p><a href="begin-password-reset.html">Can't access your account?</a></p>
+            <div style="max-width:80vw; display: none">
+                <div class="ui-content">
+                    <h3>LOG IN FAILED</h3>
+                    <p>Did you enter the right credentials?</p>
+                    <div class="mc-text-center"><a href="#" data-rel="back" class="button button-primary">OK</a></div>
+                </div>
+            </div>
+        </div>
+
+
+
+          
+      </div>
+    </div>
+  </div>  
+
+
+
+
+
+
+
   <!-- 1.0 Home Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   
     
-  <div class="container" id="home">
+  <div class="container" id="home" style="display: none">
     <div class="row">
       <div class="twelve columns" style="text-align:center">
         <div class="menu_strip">
@@ -244,7 +287,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 
-        <div class="menuArea">
+        <div class="menuArea" style="display: none">
         	<ul>
           	<li id="menu-tracks">TRACKS</li>
           	<li id="menu-jobs">JOBS</li>
@@ -287,9 +330,7 @@
 	<div class="overlay" style="display:none"></div>
   <div class="spinner-uploading" style="display:none">uploading</div>
   <div class="spinner-loading" style="display:none"><img src="images/loader.gif"></div>
-
-
-
+  <div class="upload-error" style="display:none">error</div>
 
   <!-- 11.0 Map
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
