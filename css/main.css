@@ -1,5 +1,6 @@
 html, body {
 }
+input {}
 #map {}
 .overlay {
 	background: #333;
@@ -20,7 +21,7 @@ html, body {
 	margin-left: -16px;
 	z-index: 1001;
 }
-.spinner-uploading {
+.spinner-uploading, .upload-error {
 	position: fixed;
 	width: 120px;
 	height: 30px;
