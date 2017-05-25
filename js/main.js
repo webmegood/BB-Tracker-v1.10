@@ -5,7 +5,6 @@ $("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(8000).fa
 		//$('#authenticate').delay(2000).fadeIn(400);
 
 });
-						$('.container').show();
 						$('#authenticate').hide();
 						$('.secondary').delay(2000).animate({"right":"-100vw"}, 50);
 						$('#tracks').delay(2000).animate({"right":"0px"}, 150);
@@ -62,7 +61,7 @@ $(document).ready(function(){
 				$('#go_back_to_tracks_log').hide(0);
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
-				$('#landing').hide(0);
+				$('#landing').hide();
     });
 		
     $('#go_back_to_tracks').click(function(){
@@ -75,6 +74,7 @@ $(document).ready(function(){
 				$('#map').hide();
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
+				$('#landing').hide();
     });
 				
     $('#menu-account').click(function(){
@@ -88,6 +88,7 @@ $(document).ready(function(){
 				$('#go_back_to_tracks_log').hide(0);
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
+				$('#landing').hide();
     });
 
     $('#menu-jobs').click(function(){
@@ -101,6 +102,7 @@ $(document).ready(function(){
 				$('#go_back_to_tracks_log').hide(0);
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
+				$('#landing').hide();
     });
 
     $('#btn-photo').click(function(){
@@ -111,6 +113,7 @@ $(document).ready(function(){
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
+				$('#landing').hide();
     });
 
 });
