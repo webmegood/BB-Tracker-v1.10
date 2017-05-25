@@ -1,5 +1,44 @@
 
 
+// Look for (and retrieve) stored authentication details
+$(document).ready(function() {
+
+
+var books = localStorage.getItem("loggedIn");
+
+if(books==null) {
+
+		alert("hlp");		
+
+} else {
+		
+alert("exists");
+		
+						$('#authenticate').hide();
+						$('.spinner-logging-in').hide();
+						$('.overlay').hide();
+						$('#landing').show();
+						$('.secondary').delay(1000).animate({"right":"-100vw"}, 50);
+						$('#tracks').delay(1000).animate({"right":"0px"}, 150);
+						$('#menu').delay(3000).fadeIn(50);
+
+}
+	
+});
+
+
+
+
+//Log Out
+
+$("#logout").click(function(){
+	localStorage.setItem("storedEmail", null);
+	localStorage.setItem("storedPassword", null);
+	location.reload();
+});
+
+
+
 
 
 
@@ -12,7 +51,9 @@ $("#takePicBtn").click(function(){
 
 $(document).ready(function() {
 $("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(6000).fadeOut(500).delay(250).queue(function(){
-    $(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
+    //$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
+		$('#landing').delay(2000).fadeOut(200);
+		$('#authenticate').delay(2000).fadeIn(400);
 });	
 });
 
@@ -650,17 +691,22 @@ $("#btn_upload").click(function(){
 	storedNames = JSON.parse(localStorage.getItem("savedData"));
 	$.ajax({
 			type: "POST",
-			dataType: "json",
+			//dataType: "json",
       cache: false,
-			url: "http://www.mediathrong.com/beepboards/scripts/upload_track_data.php",
+			url: "http://www.mediathrong.com/beepboards/tracking/v1.0/scripts/upload_track_data.php",
 			data: {data:storedNames},
       beforeSend: function() {
       	$('.overlay').show();
 				$('.spinner-uploading').show();
       },
-			success: function() {
-      	$('.overlay').hide();
-				$('.spinner-uploading').hide();
+			success: function(data) {
+				if (data == "done") {
+					$('.overlay').hide();
+					$('.spinner-uploading').hide();
+				} else {
+					$('.spinner-uploading').hide();
+					$('.upload-error').hide();
+				}
       }
 	});
 	
@@ -724,10 +770,14 @@ function onOnline() {
 
 
 function fetchfromMysqlDatabase() {
+	
+			var userid = storedUser;
+			
                   $.ajax({
                     type: "GET",
                     dataType: "html",
                     url: "http://www.mediathrong.com/beepboards/scripts/getTrackLogs.php",
+										data: {data:userid},
                     cache: false,
                     beforeSend: function() {
                        $('#res3').html('loading please wait...');
