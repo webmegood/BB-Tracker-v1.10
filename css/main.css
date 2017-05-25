@@ -24,7 +24,7 @@ input {}
 	margin-left: -16px;
 	z-index: 1001;
 }
-.spinner-uploading, .upload-error {
+.spinner-uploading, .spinner-logging-in, .upload-error {
 	position: fixed;
 	width: 120px;
 	height: 30px;
@@ -114,6 +114,23 @@ h5, h6 {
     width: 60px;
     text-align: left;
     float: left;
+}
+#landing .mainLogo img {
+	width: 136px;
+	height: auto;
+	position: relative;
+	margin: 50vh auto 0;
+	top: -68px;
+	display:block;
+}
+.mainTitle img {
+	width: 160px;
+	height: auto;
+	position: relative;
+	left: 50%;
+	margin-left: -80px;
+	margin-top: 40px;
+	display:block;
 }
 .mainLogo img {
 	width: 136px;
