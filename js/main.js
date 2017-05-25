@@ -69,6 +69,8 @@ $(document).ready(function(){
 				$('.secondary').animate({"right":"-100vw"}, 50);
         $('#tracks').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('.container').show();
+				$('#map').hide();
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
     });
