@@ -32,7 +32,7 @@ $("#logout").click(function(){
 	localStorage.setItem("loggedIn", null);
 	localStorage.setItem("storedEmail", null);
 	localStorage.setItem("storedPassword", null);
-	location.delay(500).reload();
+	location.reload();
 });
 
 
