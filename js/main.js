@@ -1,24 +1,16 @@
-
-
-// Look for (and retrieve) stored authentication details
 $(document).ready(function() {
+$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(8000).fadeOut(500).delay(250).queue(function(){
+    //$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
+		//$('#landing').delay(2000).fadeOut(200);
+		//$('#authenticate').delay(2000).fadeIn(400);
+
+});
+
+						$('.secondary').delay(2000).animate({"right":"-100vw"}, 50);
+						$('#tracks').delay(2000).animate({"right":"0px"}, 150);
+						$('#menu').delay(5000).fadeIn(50);
 
 
-var loggedIn = localStorage.getItem("loggedIn");
-
-if(loggedIn==null) {} else {
-		
-		
-						$('#authenticate').hide();
-						$('.spinner-logging-in').hide();
-						$('.overlay').hide();
-						$('#landing').show();
-						$('.secondary').delay(1000).animate({"right":"-100vw"}, 50);
-						$('#tracks').delay(1000).animate({"right":"0px"}, 150);
-						$('#menu').delay(3000).fadeIn(50);
-
-}
-	
 });
 
 
@@ -44,14 +36,6 @@ $("#takePicBtn").click(function(){
 
 
 
-
-$(document).ready(function() {
-$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(6000).fadeOut(500).delay(250).queue(function(){
-    //$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
-		$('#landing').delay(2000).fadeOut(200);
-		$('#authenticate').delay(2000).fadeIn(400);
-});	
-});
 
 
 $(document).ready(function() {
