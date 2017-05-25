@@ -5,6 +5,7 @@ $("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(8000).fa
 		//$('#authenticate').delay(2000).fadeIn(400);
 
 });
+						$('.container').show();
 						$('#authenticate').hide();
 						$('.secondary').delay(2000).animate({"right":"-100vw"}, 50);
 						$('#tracks').delay(2000).animate({"right":"0px"}, 150);
