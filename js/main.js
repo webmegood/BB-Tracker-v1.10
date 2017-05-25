@@ -61,6 +61,7 @@ $(document).ready(function(){
 				$('#go_back_to_tracks_log').hide(0);
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
+				$('#landing').hide(0);
     });
 		
     $('#go_back_to_tracks').click(function(){
