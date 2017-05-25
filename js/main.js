@@ -4,6 +4,8 @@
 $(document).ready(function() {
 
 
+alert(loggedIn);
+
 var loggedIn = localStorage.getItem("loggedIn");
 
 if(loggedIn==null) {} else {
@@ -27,10 +29,10 @@ if(loggedIn==null) {} else {
 //Log Out
 
 $("#logout").click(function(){
+	localStorage.setItem("loggedIn", null);
 	localStorage.setItem("storedEmail", null);
 	localStorage.setItem("storedPassword", null);
-	localStorage.setItem("loggedIn", null);
-	location.reload();
+	location.delay(500).reload();
 });
 
 
