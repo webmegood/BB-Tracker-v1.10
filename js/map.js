@@ -11,6 +11,8 @@ function loadMap(d) {
    					var point;
             var flightPlanCoordinates=new Array();
             var map = new google.maps.Map(document.getElementById("map"), {
+                center: new google.maps.LatLng(-37.863276, 145.107977),
+                zoom: 12,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 mapTypeControl: false,
                 mapTypeControlOptions: {
@@ -24,7 +26,7 @@ function loadMap(d) {
 						
 						
 
-var activeDate = 1494825016343;
+var activeDate = 1494920489000;
 
 
 
