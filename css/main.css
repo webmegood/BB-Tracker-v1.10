@@ -618,11 +618,11 @@ table.scroll tbody td,
 table.scroll thead th {
 		padding: 12px 6px 12px 0px;
     float: left;
-		width: calc(15% - 6px);
+		width: calc(18% - 6px);
 }
 table.scroll tbody td:nth-child(2),
 table.scroll thead th:nth-child(2) {
-		width: calc(41% - 6px);
+		width: calc(38% - 6px);
 		text-align:center;
 }
 table.scroll tbody td:nth-child(3),
