@@ -1,7 +1,7 @@
 $(document).ready(function() {
 $("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(8000).fadeOut(500).delay(250).queue(function(){
     //$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
-		//$('#landing').delay(2000).fadeOut(200);
+		$('#landing').delay(2000).fadeOut(200);
 		//$('#authenticate').delay(2000).fadeIn(400);
 
 });
