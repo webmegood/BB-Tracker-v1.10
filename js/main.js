@@ -4,15 +4,10 @@
 $(document).ready(function() {
 
 
-var books = localStorage.getItem("loggedIn");
+var loggedIn = localStorage.getItem("loggedIn");
 
-if(books==null) {
-
-		alert("hlp");		
-
-} else {
+if(loggedIn==null) {} else {
 		
-alert("exists");
 		
 						$('#authenticate').hide();
 						$('.spinner-logging-in').hide();
@@ -34,6 +29,7 @@ alert("exists");
 $("#logout").click(function(){
 	localStorage.setItem("storedEmail", null);
 	localStorage.setItem("storedPassword", null);
+	localStorage.setItem("loggedIn", null);
 	location.reload();
 });
 
