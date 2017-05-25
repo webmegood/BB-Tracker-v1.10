@@ -5,10 +5,10 @@ $("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(8000).fa
 		//$('#authenticate').delay(2000).fadeIn(400);
 
 });
-
+						$('#authenticate').hide();
 						$('.secondary').delay(2000).animate({"right":"-100vw"}, 50);
 						$('#tracks').delay(2000).animate({"right":"0px"}, 150);
-						$('#menu').delay(5000).fadeIn(50);
+						$('#menu').delay(4200).fadeIn(50);
 
 
 });
