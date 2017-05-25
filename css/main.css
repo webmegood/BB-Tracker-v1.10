@@ -85,6 +85,10 @@ input {}
 	float: right;
 	position: relative;
 }
+.elapsed-time h6 {
+	position: relative;
+	margin-top: 2px;
+}
 .distance-travelled {
 	display: inline-block;
 	float: left;
