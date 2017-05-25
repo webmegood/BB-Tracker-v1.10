@@ -4,8 +4,6 @@
 $(document).ready(function() {
 
 
-alert(loggedIn);
-
 var loggedIn = localStorage.getItem("loggedIn");
 
 if(loggedIn==null) {} else {
