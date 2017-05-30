@@ -653,6 +653,14 @@ table.scroll .btn-list {
 	top: 3px;
 	border-radius: 4px;
 }
+.btn_form {
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	background-color: #3C3;
+	color: #FFF;
+	height: 4vh;
+	line-height: 4vh;
+}
 table.scroll .btn-list#btn_upload {
 	cursor: pointer;
 }
