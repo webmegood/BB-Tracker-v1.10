@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 
+
 var loggedIn = localStorage.getItem("loggedIn");
 
 
@@ -14,6 +15,8 @@ if (loggedIn == 1) {
 		$('#tracks').animate({"right":"0px"}, 150);
 
 } else {
+	
+		$('#landing').fadeIn(100);
 		
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
