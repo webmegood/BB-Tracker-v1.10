@@ -8,6 +8,8 @@ var loggedIn = localStorage.getItem("loggedIn");
 
 
 if (loggedIn == 1) {
+	
+		$('#landing').fadeOut(0);
 			
 		$('#authenticate').hide();
 		$('#menu').fadeIn(50);
