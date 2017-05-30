@@ -7,17 +7,13 @@ var loggedIn = localStorage.getItem("loggedIn");
 
 
 if (loggedIn == 1) {
-	
-	alert("#1");
-		
+			
 		$('#authenticate').hide();
-		$('#menu').delay(400).fadeIn(50);
+		$('#menu').fadeIn(50);
 		$('.secondary').animate({"right":"-100vw"}, 50);
-		$('#tracks').delay(400).animate({"right":"0px"}, 150);
+		$('#tracks').animate({"right":"0px"}, 150);
 
 } else {
-		alert("#2");
-
 		
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
