@@ -1,16 +1,32 @@
 $(document).ready(function() {
-$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(8000).fadeOut(500).delay(250).queue(function(){
-    //$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
-		$('#landing').delay(2000).fadeOut(200);
-		//$('#authenticate').delay(2000).fadeIn(400);
-
-});
-						$('#authenticate').hide();
-						$('.secondary').delay(2000).animate({"right":"-100vw"}, 50);
-						$('#tracks').delay(2000).animate({"right":"0px"}, 150);
-						$('#menu').delay(4200).fadeIn(50);
 
 
+var loggedIn = localStorage.getItem("loggedIn");
+
+
+
+
+if (loggedIn == 1) {
+	
+	alert("#1");
+		
+		$('#authenticate').hide();
+		$('#menu').delay(400).fadeIn(50);
+		$('.secondary').animate({"right":"-100vw"}, 50);
+		$('#tracks').delay(400).animate({"right":"0px"}, 150);
+
+} else {
+		alert("#2");
+
+		
+		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
+				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
+				$('#landing').fadeOut(0);
+				$('#authenticate').delay(0).fadeIn(10);
+		});
+						
+	}
+	
 });
 
 
