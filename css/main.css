@@ -653,13 +653,14 @@ table.scroll .btn-list {
 	top: 3px;
 	border-radius: 4px;
 }
-.btn_form {
-	font-family: 'Fjalla One', sans-serif;
-	text-transform: uppercase;
-	background-color: #3C3;
-	color: #FFF;
-	height: 4vh;
-	line-height: 4vh;
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
+	height: 60px;
+	font-size: 20px;
+}
+label, legend {
+    display: block;
+    margin-bottom: .5rem;
+    font-weight: 300;
 }
 table.scroll .btn-list#btn_upload {
 	cursor: pointer;
