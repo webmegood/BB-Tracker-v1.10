@@ -10,7 +10,7 @@ emailPasswordIsValid = function(email,password) {
   if (authenticateEmailTest === true){
 		
 			if (authenticatePasswordTest === true){		
-	  		checkCredentials();
+	  		checkCredentials(email,password);
 			}	else {
 				$('#add_err').show();
 				document.getElementById("add_err").innerHTML = "Please check your password";
@@ -49,7 +49,7 @@ checkCredentials = function(email,password) {
 					if(data==false) { //not correctly logged in
 					
 						$("#add_err").css('display', 'inline', 'important');
-						$("#add_err").html("Incorrect details. Please try again.");
+						$("#add_err").html("Your email & password do not match. Please try again.");
 
 					} else {
 						
