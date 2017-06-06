@@ -85,15 +85,15 @@
     			<h1>LOG IN</h1>
         </div>
 
-        <div style="margin-top: 100px">
+        <div style="margin-top: 75px">
 						<form action="./" method="post">
             <input type="text" name="txt-email" id="txt-email" value="" placeholder="Email Address" style="width: 100%">
             <input type="password" name="txt-password" id="txt-password" value="" placeholder="Password" style="width: 100%">
-            <fieldset>
+            <fieldset class="keep-logged-in-panel">
 							<input name="chck-rememberme" type="checkbox" id="chck-rememberme" style="display: inline-block; margin-right: 4px" value="1" checked="">
 							<label style="display: inline">Keep me logged in</label>
             </fieldset>
-						<input type="submit" id="btn-login" name="btn-login" value="Login" class="button button-primary btn_form" style="	font-family: 'Fjalla One', sans-serif;
+						<input type="submit" id="btn-login" name="btn-login" value="Log In" class="button button-primary btn_form" style="	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
 	font-size:20px;
 	background-color: #3C3;
@@ -101,10 +101,10 @@
 	color: #FFF;
 	height: 60px;
 	line-height: 62px ">
+	
+						<div class="form_error" id="add_err"></div>
             <p style="margin-top: 25px; position:relative"><a href="begin-password-reset.html">Can't access your account?</a></p>
 						</form>
-
-						<div class="err" id="add_err"></div>
 
         </div>
 
