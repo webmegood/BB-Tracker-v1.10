@@ -1,21 +1,42 @@
-$(document).ready(function(){
-	$("#add_err").css('display', 'none', 'important');
-	 $("#btn-login").click(function(){	
-		  email=$("#txt-email").val();
-		  password=$("#txt-password").val();
-		  rememberMe=$("#chck-rememberme").val();
+emailPasswordIsValid = function(email,password) {
+
+    var regEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	authenticateEmailTest = regEmail.test(email);
+	
+	//password must have between 6 to 20 characters which contain at least one numeric digit, one uppercase, and one lowercase letter
+	var regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
+	authenticatePasswordTest = regPassword.test(password);
+	
+    if ( (authenticateEmailTest === true) && (authenticatePasswordTest === true) ){
+	  checkCredentials();
+	} else {
+	  $('#add_err').show();
+	  document.getElementById("add_err").innerHTML = "Your email or password is incorrect";
+	}
+
+};
+
+
+
+
+
+
+
+
+checkCredentials = function(email,password) {
+	
 		  $.ajax({
 		   type: "POST",
-			 dataType: "json",
+		   dataType: "json",
 		   url: "http://www.mediathrong.com/beepboards/tracking/v1.0/scripts/checkLogin.php",
-			 data: "email="+email+"&password="+password,
+		   data: "email="+email+"&password="+password,
 		   beforeSend:function() {
-      	$('.overlay').show();
-				$('.spinner-logging-in').show();
+			 $('.overlay').show();
+			 $('.spinner-logging-in').show();
 		   },
 		   success: function(data) {  
-			 
-      	$('.overlay').hide();
+
+			$('.overlay').hide();
 				$('.spinner-logging-in').hide();
 			 
 					if(data==false) { //not correctly logged in
@@ -44,6 +65,26 @@ $(document).ready(function(){
 					}
 		   }
 		});
-		return false;
+	
+}
+
+
+
+
+
+
+
+$(document).ready(function(){
+	$("#add_err").css('display', 'none', 'important');
+	$("#btn-login").click(function(){	
+		 email=$("#txt-email").val();
+		 password=$("#txt-password").val();
+		 rememberMe=$("#chck-rememberme").val();
+		 
+		 //check if email has been entered correctly
+		 emailPasswordIsValid(email,password);
+		 return false;
+
+		 
 	});
 });

@@ -2,15 +2,14 @@ $(document).ready(function() {
 
 
 
-var loggedIn = localStorage.getItem("loggedIn");
-
+//var loggedIn = localStorage.getItem("loggedIn");
+var loggedIn = 2;
 
 
 
 if (loggedIn == 1) {
 	
 		$('#landing').fadeOut(0);
-			
 		$('#authenticate').hide();
 		$('#menu').fadeIn(50);
 		$('.secondary').animate({"right":"-100vw"}, 50);
@@ -495,8 +494,7 @@ function showLocation(position) {
 						} else {
 							var totalDistance = currentdist;
 						}
-						
-						
+						totalDistance = Math.round( totalDistance * 10 ) / 10;						
 
 						document.getElementById("totalDistance").innerHTML = totalDistance + "km";
 						//Save to Local Storage
