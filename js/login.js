@@ -7,11 +7,18 @@ emailPasswordIsValid = function(email,password) {
 	var regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
 	authenticatePasswordTest = regPassword.test(password);
 	
-    if ( (authenticateEmailTest === true) && (authenticatePasswordTest === true) ){
-	  checkCredentials();
+  if (authenticateEmailTest === true){
+		
+			if (authenticatePasswordTest === true){		
+	  		checkCredentials();
+			}	else {
+				$('#add_err').show();
+				document.getElementById("add_err").innerHTML = "Please check your password";
+			}	
+		
 	} else {
 	  $('#add_err').show();
-	  document.getElementById("add_err").innerHTML = "Your email or password is incorrect";
+	  document.getElementById("add_err").innerHTML = "Please check your email";
 	}
 
 };
