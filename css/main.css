@@ -1,6 +1,21 @@
 html, body {
 }
-input {}
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
+	border: 1px solid #999;
+}
+.keep-logged-in-panel {
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	padding: 12px 8px 2px 8px;
+	background-color: #EEE;	
+}
+.form_error {
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	font-size: 100%;
+	color: #FF0033;
+	margin-top: 25px;
+}
 .button.button-primary, .button.button-primary:hover {
 	background-color: #333;
 }
