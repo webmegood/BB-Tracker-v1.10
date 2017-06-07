@@ -11,6 +11,7 @@ emailPasswordIsValid = function(email,password) {
 		
 			if (authenticatePasswordTest === true){		
 	  		checkCredentials(email,password);
+				//alert(email + " - " + password);
 			}	else {
 				$('#add_err').show();
 				document.getElementById("add_err").innerHTML = "Please check your password";
@@ -31,21 +32,22 @@ emailPasswordIsValid = function(email,password) {
 
 
 checkCredentials = function(email,password) {
-	
-		  $.ajax({
+
+		  
+			$.ajax({
 		   type: "POST",
 		   dataType: "json",
 		   url: "http://www.mediathrong.com/beepboards/tracking/v1.0/scripts/checkLogin.php",
 		   data: "email="+email+"&password="+password,
 		   beforeSend:function() {
-			 $('.overlay').show();
-			 $('.spinner-logging-in').show();
+				 $('.overlay').show();
+				 $('.spinner-logging-in').show();
 		   },
-		   success: function(data) {  
-
-			$('.overlay').hide();
-				$('.spinner-logging-in').hide();
-			 
+		   success:function(data) {  
+			alert(email + " - " + password);
+					$('.overlay').hide();
+					$('.spinner-logging-in').hide();
+			 alert("done");
 					if(data==false) { //not correctly logged in
 					
 						$("#add_err").css('display', 'inline', 'important');
@@ -70,7 +72,9 @@ checkCredentials = function(email,password) {
 						}
 						
 					}
+				 
 		   }
+				
 		});
 	
 }

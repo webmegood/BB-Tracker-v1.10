@@ -4,10 +4,10 @@ $(document).ready(function() {
 
 //var loggedIn = localStorage.getItem("loggedIn");
 var loggedIn = 2;
+var connected = 0; // ie. 1 = connected, 0 = not connected
 
 
-
-if (loggedIn == 1) {
+if ((loggedIn == 1) && (connected == 1)) {
 	
 		$('#landing').fadeOut(0);
 		$('#authenticate').hide();
@@ -15,17 +15,21 @@ if (loggedIn == 1) {
 		$('.secondary').animate({"right":"-100vw"}, 50);
 		$('#tracks').animate({"right":"0px"}, 150);
 
-} else {
+} else if (connected == 0) {
 	
 		$('#landing').fadeIn(100);
 		
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
 				$('#landing').fadeOut(0);
-				$('#authenticate').delay(0).fadeIn(10);
+				//$('#authenticate').delay(0).fadeIn(10);
+				//$('#menu').show();
+				$('#menu').fadeTo('slow', 0.4);
+				$('.secondary').animate({"right":"-100vw"}, 50);
+				$('#tracks').animate({"right":"0px"}, 150);
 		});
 						
-	}
+}
 	
 });
 
