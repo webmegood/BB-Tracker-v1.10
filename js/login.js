@@ -44,9 +44,10 @@ checkCredentials = function(email,password) {
 				 $('.spinner-logging-in').show();
 		   },
 		   success:function(data) {  
+			    alert(email + " - " + password);
 					$('.overlay').hide();
 					$('.spinner-logging-in').hide();
-			    alert(data);
+			    alert("done");
 					if(data==false) { //not correctly logged in
 					
 						$("#add_err").css('display', 'inline', 'important');
