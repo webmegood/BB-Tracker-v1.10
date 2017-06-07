@@ -8,7 +8,7 @@ var connected = 1; // ie. 1 = connected, 0 = not connected
 
 
 if ((loggedIn == 1) && (connected == 1)) {
-	
+		alert("1-1");
 		$('#landing').fadeOut(0);
 		$('#authenticate').hide();
 		$('#menu-fader').hide();
@@ -17,7 +17,7 @@ if ((loggedIn == 1) && (connected == 1)) {
 		$('#tracks').animate({"right":"0px"}, 150);
 
 } else if (connected == 0) {
-	
+		alert("0");
 		$('#landing').fadeIn(100);
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
@@ -30,8 +30,10 @@ if ((loggedIn == 1) && (connected == 1)) {
 		});
 						
 } else {
+			alert("else");
 		
 		$('#menu-fader').hide();
+		$('#menu').show();
 		$('#landing').fadeIn(100);
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
