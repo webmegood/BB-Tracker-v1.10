@@ -3,14 +3,15 @@ $(document).ready(function() {
 
 
 //var loggedIn = localStorage.getItem("loggedIn");
-var loggedIn = 2;
-var connected = 0; // ie. 1 = connected, 0 = not connected
+var loggedIn = 0;
+var connected = 1; // ie. 1 = connected, 0 = not connected
 
 
 if ((loggedIn == 1) && (connected == 1)) {
 	
 		$('#landing').fadeOut(0);
 		$('#authenticate').hide();
+		$('#menu-fader').hide();
 		$('#menu').fadeIn(50);
 		$('.secondary').animate({"right":"-100vw"}, 50);
 		$('#tracks').animate({"right":"0px"}, 150);
@@ -18,17 +19,26 @@ if ((loggedIn == 1) && (connected == 1)) {
 } else if (connected == 0) {
 	
 		$('#landing').fadeIn(100);
-		
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
 				$('#landing').fadeOut(0);
 				//$('#authenticate').delay(0).fadeIn(10);
-				//$('#menu').show();
-				$('#menu').fadeTo('slow', 0.4);
+				$('#menu-fader').show();
+				$('#menu').show();
 				$('.secondary').animate({"right":"-100vw"}, 50);
 				$('#tracks').animate({"right":"0px"}, 150);
 		});
 						
+} else {
+		
+		$('#menu-fader').hide();
+		$('#landing').fadeIn(100);
+		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
+				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
+				$('#landing').fadeOut(0);
+				$('#authenticate').delay(0).fadeIn(10);
+		});
+
 }
 	
 });
