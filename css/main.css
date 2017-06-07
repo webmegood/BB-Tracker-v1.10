@@ -14,7 +14,7 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
 	text-transform: uppercase;
 	font-size: 100%;
 	color: #FF0033;
-	margin-top: 25px;
+	margin-top: 10px;
 }
 .button.button-primary, .button.button-primary:hover {
 	background-color: #333;
