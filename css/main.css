@@ -339,6 +339,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4fe200', end
 	right: 12px;
 	z-index: 301;
 }
+.menuOverlay {
+	background: #FFF;
+	opacity: 0.4;
+	display: table;
+	width: 100%;
+	height: calc(12vh + 3px);
+	position: fixed;
+	z-index: 301;
+	bottom: 0;
+	left: 0;
+	display:block;
+}
 .menuArea ul {
 	display: table;
 	width: 100%;
