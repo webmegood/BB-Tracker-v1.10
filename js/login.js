@@ -13,12 +13,12 @@ emailPasswordIsValid = function(email,password) {
 	  		checkCredentials(email,password);
 				//alert(email + " - " + password);
 			}	else {
-				$('#add_err').show();
+				$('#add_err').css('opacity', 1);
 				document.getElementById("add_err").innerHTML = "Please check your password";
 			}	
 		
 	} else {
-	  $('#add_err').show();
+		$('#add_err').css('opacity', 1);
 	  document.getElementById("add_err").innerHTML = "Please check your email";
 	}
 
@@ -44,13 +44,14 @@ checkCredentials = function(email,password) {
 				 $('.spinner-logging-in').show();
 		   },
 		   success:function(data) {  
-			    alert(email + " - " + password);
+			    //alert(email + " - " + password);
 					$('.overlay').hide();
 					$('.spinner-logging-in').hide();
-			    alert("done");
+				  //alert("done");
 					if(data==false) { //not correctly logged in
 					
 						$("#add_err").css('display', 'inline', 'important');
+						$('#add_err').css('opacity', 1);
 						$("#add_err").html("Your email & password do not match. Please try again.");
 
 					} else {
@@ -86,7 +87,8 @@ checkCredentials = function(email,password) {
 
 
 $(document).ready(function(){
-	$("#add_err").css('display', 'none', 'important');
+	$("#add_err").css('display', 'block', 'important');
+	$("#add_err").css('opacity', 0);
 	$("#btn-login").click(function(){	
 		 email=$("#txt-email").val();
 		 password=$("#txt-password").val();

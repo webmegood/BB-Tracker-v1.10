@@ -1,11 +1,11 @@
-$(document).ready(function() {
-
-
-
-//var loggedIn = localStorage.getItem("loggedIn");
-var loggedIn = 0;
+var loggedIn = 1;
 var connected = 1; // ie. 1 = connected, 0 = not connected
 
+
+
+$(document).ready(function() {
+
+//var loggedIn = localStorage.getItem("loggedIn");
 
 if ((loggedIn == 1) && (connected == 1)) {
 		$('#landing').fadeOut(0);
@@ -21,9 +21,11 @@ if ((loggedIn == 1) && (connected == 1)) {
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
 				$('#landing').fadeOut(0);
 				//$('#authenticate').delay(0).fadeIn(10);
+				$('#tracksLogBtn').css("opacity", .2);
+				$('#tracksSettingsBtn').css("opacity", .2);
 				$('#menu-fader').show();
 				$('#menu').show();
-				$('.secondary').animate({"right":"-100vw"}, 50);
+				$('.secondary').animate({"right":"-100vw"}, 20);
 				$('#tracks').animate({"right":"0px"}, 150);
 		});
 						
@@ -149,19 +151,28 @@ $(document).ready(function(){
 
 
 
+// Main Buttons
+
 $(document).ready(function(){
-    $('#tracksCurrentBtn').click(function(){
+   
+	  $('#tracksCurrentBtn').click(function(){
 				$('#menu-tracks').addClass('current');
 				$('#tracks').animate({"right":"-100vw"}, 50);
         $('#tracksCurrent').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').delay(300).fadeIn(500);
+				$('#go_back_to_tracks').delay(300).fadeIn(500);
 				$('#landing').hide();				
     });
+
 });
 
+
 $(document).ready(function(){
-    $('#tracksLogBtn').click(function(){
+
+	if ((loggedIn == 1) && (connected == 1)) { //only allow buttons to be active if there's a connection
+    
+		$('#tracksLogBtn').click(function(){
 				$('#menu-tracks').addClass('current');
 				$('#tracks').animate({"right":"-100vw"}, 50);
         $('#tracksLog').delay(200).animate({"right":"0px"}, 150);
@@ -170,7 +181,29 @@ $(document).ready(function(){
 				$('#go_back_to_tracks').delay(300).fadeIn(500);
 				$('#landing').hide();
     });
+		
+    $('#tracksSettingsBtn').click(function(){
+				$('#menu-tracks').addClass('current');
+				$('#tracks').animate({"right":"-100vw"}, 50);
+        $('#tracksLog').delay(200).animate({"right":"0px"}, 150);
+				$('#backgroundPanel').delay(1000).fadeIn(0);
+				$('#btn-track-control').delay(300).fadeIn(500);
+				$('#go_back_to_tracks').delay(300).fadeIn(500);
+				$('#landing').hide();
+    });
+		
+	}
+
 });
+		
+		
+
+
+
+
+
+
+
 
 
 //When clicking on active road icons
