@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
 	font-size: 2em;
-	color: #000;
+	color: #b4a1a1;
 	letter-spacing: 0.05em;
 }
 h2 {
@@ -361,28 +361,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4fe200', end
 	left: 0;
 	margin:0;
 	padding: 0;
-	border-top: 1px solid #DDD;
-	background: rgb(238,238,238); /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+	border-top: 1px solid #777;
+
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5d5454+0,302c2c+100 */
+background: #5d5454; /* Old browsers */
+background: -moz-linear-gradient(top, #5d5454 0%, #302c2c 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #5d5454 0%,#302c2c 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #5d5454 0%,#302c2c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d5454', endColorstr='#302c2c',GradientType=0 ); /* IE6-9 */
+
 }
 .menuArea ul li {
+	color: #b7a6a6;
 	height: 12vh;
 	text-align: center;
 	margin: 0;
 	line-height: 12vh;
 	padding: 3px 0 0 0;
 	position: relative;
-	border-right: 1px #BBB solid;
+	border-right: 1px #333 solid;
 }
 .menuArea ul li:nth-child(2) {
-	border-left: 1px #EEE solid;
-	border-right: 1px #BBB solid;
+	border-left: 1px #777 solid;
+	border-right: 1px #333 solid;
 }
 .menuArea ul li:nth-child(3) {
-	border-left: 1px #EEE solid;
+	border-left: 1px #777 solid;
 	border-right: none;
 }
 .menuArea ul li:hover {
@@ -475,18 +479,19 @@ ul > li {
 .round-btn {
 	font-family: 'Fjalla One', sans-serif;
 	border-radius: 50%;
-	border: 6px solid #333;
 	color: #333;
 	font-size: 2em;
 	text-align: center;
 	width: 90px;
 	height: 90px;
 	text-transform: uppercase;
-	display:inline-block;
-	margin: 10px 15px 10px 15px;
-	background: linear-gradient(to left, #FFF 50%, #DDD 50%);
+	display: inline-block;
+	margin: 10px 25px;
+	border: solid 1px #AAA;
+	opacity: 0.6;
 	background-size: 200% 100%;
-	background-position:right bottom;	
+	background-position: right bottom;
+	background-color: #9F9595;
 }
 .round-btn:hover {
 	cursor: pointer;
@@ -495,13 +500,13 @@ ul > li {
 }
 .round-btn i {
 	margin-bottom: 5px;
-	color: #333;
+	color: #444;
 	display: block;
 	line-height: 90px;
 }
 .round-btn .button-text {
 	font-size: 0.5em;
-	color: #333;
+	color: #e9dede;
 	line-height: 35px;
 	display: block;
 }
@@ -579,14 +584,17 @@ ul > li {
 
 .secondary, #backgroundPanel {
 	width: 100vw;
-  height: 100vh;
-  float: right;
- 	position: fixed;
+	height: 100vh;
+	float: right;
+	position: fixed;
 	z-index: 200;
 	right: -100vw;
 	top: 0;
-	background: #FFF;
 	display: block;
+	background-image: url(../images/main_bg.jpg);
+	background-color: #5D5454;
+	background-repeat: no-repeat;
+	background-position: center bottom 12vh;
 }
 .secondary {
 	box-sizing:none !important;
