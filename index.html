@@ -187,15 +187,20 @@
       </div>
     </div>
     <div class="row" style="display:block">
+
+
+        <div class="position-row"><span id="current_location">Location Not Detected</span></div>
+          <div class="btn-start" id="btn-start" style="display: inline-block"><i class="fa fa-play" id="play-icon"></i></div>
+          <div class="btn-pause" id="btn-pause" style="display: none"><i class="fa fa-pause" id="pause-icon"></i></div>
+        
+        
       <div style="text-align:center">
         <div class="summary-row">
-          <div class="distance-travelled"><i class="fa fa-line-chart"></i> <span class="bold" id="totalDistance">0.0 km</span></div>
-          <div class="elapsed-time"><span class="bold"><h6 style="display: inline"><time>00:00:00</time></span></h6> <i class="fa fa-clock-o"></i></div>
+          <div class="elapsed-time" id="elapsedTime"><time>00:00:00</time></div>
+          <div class="distance-travelled"><span id="totalDistance">0.0 km</span></div>
         </div>
-        <div class="position-row"><span id="current_location">Location Not Detected</span></div>
-				<!--div class="btn-clear-bg"><div id="btn-clear">C</div></div-->
-        <div class="btn-start" id="btn-start" style="display: inline-block"><i class="fa fa-play" id="play-icon"></i></div>
-        <div class="btn-pause" id="btn-pause" style="display: none"><i class="fa fa-pause" id="pause-icon"></i></div>
+        
+                
       </div>
     </div>
   </div>
@@ -363,7 +368,8 @@
   
 	<div class="indicator_area">
     <div class="photo-notification" style="display:none"><i class="fa fa-camera"></i></div>
-    <div class="status" style="display:none"><i class="fa fa-wifi"></i></div>
+    <div class="status" style="display:inline-block"><i class="fa fa-wifi"></i></div>
+    <div class="status_blink" style="display:none"><i class="fa fa-wifi"></i></div>
 	</div>
 
 
