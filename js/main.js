@@ -300,9 +300,13 @@ function add() {
     
     h6.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
 
-    timer();
+    startTimer();
 }
-function timer() {
+
+
+
+
+function startTimer() {
   t = setTimeout(add, 1000);
 	//Save elapsed "active" time (in secs) to Local Storage
 	localStorage.setItem("activeTime", t);
@@ -310,14 +314,18 @@ function timer() {
 
 
 
+function stopTimer() {
+    clearInterval(interval);
+}
+
+
+
 
 /* Start button */
-startBtn.onclick = timer;
+startBtn.onclick = startTimer;
 
 /* Stop button */
-stopBtn.onclick = function() {
-    clearTimeout(t);
-}
+stopBtn.onclick = stopTimer;
 
 
 
@@ -331,11 +339,11 @@ var trackActivity = JSON.parse(localStorage.getItem("trackActivity"));
 
 if (trackActivity == 1) {	
 	
-	timer();
-	//change pause/start button classes
+	startTimer();	//change pause/start button classes
 	$('.btn-start').fadeOut(0);
 	$('.btn-pause').fadeIn(50);
-	$('.status').fadeIn(10);
+	$('.status').hide();
+	$('.status_blink').show();
 	
 } else {
 	
@@ -343,8 +351,8 @@ if (trackActivity == 1) {
 	//change pause/start button classes
 	$('.btn-pause').fadeOut(0);
 	$('.btn-start').fadeIn(50);
-	$('.status').fadeOut(0);
-
+	$('.status_blink').hide();
+	$('.status').show();
 }
 
 
@@ -555,15 +563,15 @@ function showLocation(position) {
 						
 						
 						
-						elapsedHours = storedElapsedTime.getHours();
+						var elapsedHours = storedElapsedTime.getHours();
 						if (elapsedHours < 10) {
 							elapsedHours = "0" + elapsedHours;
 						}
-						elapsedMinutes = storedElapsedTime.getMinutes();
+						var elapsedMinutes = storedElapsedTime.getMinutes();
 						if (elapsedMinutes < 10) {
 							elapsedMinutes = "0" + elapsedMinutes;
 						}
-						elapsedSeconds = storedElapsedTime.getSeconds();
+						var elapsedSeconds = storedElapsedTime.getSeconds();
 						if (elapsedSeconds < 10) {
 							elapsedSeconds = "0" + elapsedSeconds;
 						}
@@ -616,7 +624,8 @@ $("#btn-start").click(function(){
 	//change pause/start button classes
 	$('.btn-start').fadeOut(0);
 	$('.btn-pause').fadeIn(50);
-	$('.status').fadeIn(10);
+	$('.status').hide();
+	$('.status_blink').show();
 	
 	
 	//Save active track to Local Storage
@@ -721,7 +730,8 @@ $("#btn-pause").click(function(){
 	//change pause/start button classes
 	$('.btn-pause').fadeOut(0);
 	$('.btn-start').fadeIn(50);
-	$('.status').fadeOut(0);
+	$('.status_blink').hide();
+	$('.status').show();
 	
 	//Save active track to Local Storage
 	localStorage.setItem("trackActivity", JSON.stringify(0));
