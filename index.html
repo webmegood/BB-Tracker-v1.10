@@ -12,8 +12,11 @@
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;">
+  <!-- see bookmarked notes on this under 'security -> 'How does Content Security Policy Work?' -->
+  <!-- The above meta allows 'everything' -->
 
-  <!-- FONT
+  <!-- FONTS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -31,6 +34,7 @@
   
 	<script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="phonegap.js"></script>
+	<script type="text/javascript" src="js/localforage.min.js"></script>
 	<script type="text/javascript" src="js/image-capture.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>
 
@@ -196,8 +200,14 @@
         
       <div style="text-align:center">
         <div class="summary-row">
-          <div class="elapsed-time" id="elapsedTime"><time>00:00:00</time></div>
-          <div class="distance-travelled"><span id="totalDistance">0.0 km</span></div>
+          <div class="elapsed-time">
+          	<div class="digi-display">
+          		<div id="elapsedHours">00</div><span>:</span>
+              <div id="elapsedMinutes">00</div><span>:</span>
+              <div id="elapsedSeconds">00</div>
+            </div>
+          </div>
+          <div class="distance-travelled"><div class="digi-distance" id="totalDistance">0.0</div><div class="digi-kms">KM</div></div>
         </div>
         
                 
@@ -423,3 +433,106 @@
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeupsWFDSSqyXxo9e5liXPRrFRuM4VSdU&callback=loadMap">
 </script>
+
+<script>
+// TIMER
+
+//var elapsedTime = document.getElementById('elapsedTime'),
+var elapsedHours = document.getElementById('elapsedHours'),
+		elapsedMinutes = document.getElementById('elapsedMinutes'),
+		elapsedSeconds = document.getElementById('elapsedSeconds'),
+    start = document.getElementById('btn-start'),
+    stop = document.getElementById('btn-pause'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    //elapsedTime.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+
+    elapsedHours.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00");
+    elapsedMinutes.textContent = (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00");
+    elapsedSeconds.textContent = (seconds > 9 ? seconds : "0" + seconds);
+
+
+
+
+
+    timer();
+}
+function timer() {
+  t = setTimeout(add, 1000);
+	localforage.setItem("activeTime", elapsedTime.textContent);
+}
+
+
+
+/* Start button */
+start.onclick = timer;
+
+/* Stop button */
+stop.onclick = function() {
+    clearTimeout(t);
+}
+
+
+
+
+
+// Start timer if track is already active
+
+var trackActivity = JSON.parse(localforage.getItem("trackActivity"));
+
+alert(trackActivity);
+
+if (trackActivity == 1) {	
+	
+	timer();	//change pause/start button classes
+	$('.btn-start').fadeOut(0);
+	$('.btn-pause').fadeIn(50);
+	$('.status').hide();
+	$('.status_blink').show();
+	
+} else {
+	
+	//stopAfterStart(); //<-- ensures elapsed time is displayed when track is inactive
+	if( typeof elapsedTime !== 'undefined' ) {
+		var elapsedHours = "00";
+		var elapsedMinutes = "00";
+		var elapsedSeconds = "00";
+	}
+
+	$("#elapsedHours").html(elapsedHours);
+	$("#elapsedMinutes").html(elapsedMinutes);
+	$("#elapsedHours").html(elapsedHours);
+
+
+	//change pause/start button classes
+	$('.btn-pause').fadeOut(0);
+	$('.btn-start').fadeIn(50);
+	$('.status_blink').hide();
+	$('.status').show();
+}
+
+
+
+function stopAfterStart() {
+  timer();
+  setTimeout(stop,1001);
+}
+	
+	
+	
+
+</script>
+
