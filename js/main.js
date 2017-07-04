@@ -3,9 +3,61 @@ var connected = 1; // ie. 1 = connected, 0 = not connected
 
 
 
-$(document).ready(function() {
 
-//var loggedIn = localStorage.getItem("loggedIn");
+
+
+
+
+
+
+	
+var server = "https://mediathrong.com";
+  var fingerprint = "D2:2E:57:B9:E7:AD:D0:BB:2C:5F:95:4F:A8:EA:AD:76:99:5B:10:32";
+
+  window.plugins.sslCertificateChecker.check(
+          successCallback,
+          errorCallback,
+          server,
+          fingerprint);
+
+   function successCallback(message) {
+     alert(message);
+     // Message is always: CONNECTION_SECURE.
+     // Now do something with the trusted server.
+   }
+
+   function errorCallback(message) {
+     alert(message);
+     if (message == "CONNECTION_NOT_SECURE") {
+       // There is likely a man in the middle attack going on, be careful!
+     } else if (message.indexOf("CONNECTION_FAILED") >- 1) {
+       // There was no connection (yet). Internet may be down. Try again (a few times) after a little timeout.
+     }
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+	
+	
+
+
+clean(document); // clean the DOM of unwanted nodes/spaces via the 'clean' function
+
+//var loggedIn = localforage.getItem("loggedIn");
 
 if ((loggedIn == 1) && (connected == 1)) {
 		$('#landing').fadeOut(0);
@@ -49,9 +101,10 @@ if ((loggedIn == 1) && (connected == 1)) {
 //Log Out
 
 $("#logout").click(function(){
-	localStorage.setItem("loggedIn", null);
-	localStorage.setItem("storedEmail", null);
-	localStorage.setItem("storedPassword", null);
+	localforage.setItem("loggedIn", null);
+	localforage.setItem("storedEmail", null);
+	localforage.setItem("storedPassword", null);
+	localforage.setItem("data", null);
 	location.reload();
 });
 
@@ -245,9 +298,9 @@ $(document).ready(function(){
 	// Get Updated Total Distance Travelled
 	//var totalDistance;
 	// Retrieve currently saved total distance
-	if (localStorage["totalDistance"]) {
-	  var totalDistance = JSON.parse(localStorage.getItem("totalDistance"));
-		document.getElementById("totalDistance").innerHTML = totalDistance + "km";
+	if (localforage["totalDistance"]) {
+	  var totalDistance = JSON.parse(localforage.getItem("totalDistance"));
+		document.getElementById("totalDistance").textContent = totalDistance;
 	} else {
 	  var totalDistance = 0;
 	}
@@ -258,109 +311,6 @@ $(document).ready(function(){
 
 
 
-	// Get Updated Total Time Travelled	
-	
-	var storedElapsedTime;
-	// Retrieve currently saved elapsed time
-	var totalTime = JSON.parse(localStorage.getItem("elapsedTime"));
-	
-	
-	
-
-
-var h6 = document.getElementsByTagName('h6')[0],
-		startBtn = document.getElementById('btn-start'),
-    stopBtn = document.getElementById('btn-pause'),
-    seconds = 0, minutes = 0, hours = 0,
-    t;
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-function add() {
-    seconds++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes >= 60) {
-            minutes = 0;
-            hours++;
-        }
-    }
-    
-    h6.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-
-    startTimer();
-}
-
-
-
-
-function startTimer() {
-  t = setTimeout(add, 1000);
-	//Save elapsed "active" time (in secs) to Local Storage
-	localStorage.setItem("activeTime", t);
-}
-
-
-
-function stopTimer() {
-    clearInterval(interval);
-}
-
-
-
-
-/* Start button */
-startBtn.onclick = startTimer;
-
-/* Stop button */
-stopBtn.onclick = stopTimer;
-
-
-
-
-
-// Start timer if track is already active
-
-
-// Retrieve currently saved elapsed time
-var trackActivity = JSON.parse(localStorage.getItem("trackActivity"));
-
-if (trackActivity == 1) {	
-	
-	startTimer();	//change pause/start button classes
-	$('.btn-start').fadeOut(0);
-	$('.btn-pause').fadeIn(50);
-	$('.status').hide();
-	$('.status_blink').show();
-	
-} else {
-	
-	stopAfterStart(); //<-- ensures elapsed time is displayed when track is inactive
-	//change pause/start button classes
-	$('.btn-pause').fadeOut(0);
-	$('.btn-start').fadeIn(50);
-	$('.status_blink').hide();
-	$('.status').show();
-}
-
-
-
-function stopAfterStart() {
-  startTimer();
-  setTimeout(stopTimer,1001);
-}
 		
 
 
@@ -489,7 +439,7 @@ function showLocation(position) {
 						}
 						
 						// Retrieve currently saved elapsed time
-						var elapsedTime = JSON.parse(localStorage.getItem("activeTime"));
+						elapsedTime = JSON.parse(localforage.getItem("activeTime"));
 
 
 
@@ -499,18 +449,20 @@ function showLocation(position) {
 						geoDataArray01.push(test);
 						//alert(test);
 						//Save to Local Storage
-						localStorage.setItem("savedData", JSON.stringify(geoDataArray01));
+						localforage.setItem("savedData", JSON.stringify(geoDataArray01));
 						// Retrieve from Local Storage
-						storedNames = JSON.parse(localStorage.getItem("savedData"));
+						storedNames = JSON.parse(localforage.getItem("savedData"));
 						
-						
+
+
+
 						
 						
 						//var watchCount = 1;
 						//if(watchCount>=2) {	 // the 2nd time we use watchPosition is supposed to be more accurate than the 1st, so ignore 1st
 							
 							
-							document.getElementById("current_location").innerHTML = locationData;
+							document.getElementById("current_location").textContent = locationData;
 							//alert(geoDataArray01);
 							
 							//appendToTable(geoDataArray01);
@@ -541,17 +493,17 @@ function showLocation(position) {
 						
 						
 					  // Retrieve currently saved total distance
-						if (localStorage["totalDistance"]) {
-							var storedDistance = JSON.parse(localStorage.getItem("totalDistance"));
+						if (localforage["totalDistance"]) {
+							var storedDistance = JSON.parse(localforage.getItem("totalDistance"));
 							var totalDistance = (storedDistance + currentdist);
 						} else {
 							var totalDistance = currentdist;
 						}
 						totalDistance = Math.round( totalDistance * 10 ) / 10;						
 
-						document.getElementById("totalDistance").innerHTML = totalDistance + "km";
+						document.getElementById("totalDistance").textContent = totalDistance;
 						//Save to Local Storage
-						localStorage.setItem("totalDistance", totalDistance);
+						localforage.setItem("totalDistance", totalDistance);
 						
 						
 						
@@ -563,24 +515,24 @@ function showLocation(position) {
 						
 						
 						
-						var elapsedHours = storedElapsedTime.getHours();
-						if (elapsedHours < 10) {
-							elapsedHours = "0" + elapsedHours;
-						}
-						var elapsedMinutes = storedElapsedTime.getMinutes();
-						if (elapsedMinutes < 10) {
-							elapsedMinutes = "0" + elapsedMinutes;
-						}
-						var elapsedSeconds = storedElapsedTime.getSeconds();
-						if (elapsedSeconds < 10) {
-							elapsedSeconds = "0" + elapsedSeconds;
-						}
+						//elapsedHours = storedElapsedTime.getHours();
+						//if (elapsedHours < 10) {
+							//elapsedHours = "0" + elapsedHours;
+						//}
+						//elapsedMinutes = storedElapsedTime.getMinutes();
+						//if (elapsedMinutes < 10) {
+							//elapsedMinutes = "0" + elapsedMinutes;
+						//}
+						//elapsedSeconds = storedElapsedTime.getSeconds();
+						//if (elapsedSeconds < 10) {
+							//elapsedSeconds = "0" + elapsedSeconds;
+						//}
 						
 						
-						document.getElementById("elapsedTime").innerHTML = elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds;
+						//document.getElementById("elapsedTime").textContent = elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds;
 
 						//Save to Local Storage
-						localStorage.setItem("elapsedTime", elapsedTime);
+						localforage.setItem("elapsedTime", elapsedTime);
 	
 						
 }
@@ -629,11 +581,10 @@ $("#btn-start").click(function(){
 	
 	
 	//Save active track to Local Storage
-	localStorage.setItem("trackActivity", JSON.stringify(1));
-	
+	localforage.setItem("trackActivity", JSON.stringify(1));
 	
 	//Set pause indicator to ensure checkLocation function starts
-	localStorage.setItem("stopLocationChecking", 1);
+	localforage.setItem("stopLocationChecking", 1);
 						
 			
 			
@@ -693,7 +644,7 @@ $("#btn-start").click(function(){
 function checkLocation(){
 
 // Retrieve currently saved elapsed time
-var locationCheckingStatus = JSON.parse(localStorage.getItem("stopLocationChecking"));
+var locationCheckingStatus = JSON.parse(localforage.getItem("stopLocationChecking"));
 
 if (locationCheckingStatus == 0) {
 	} else {
@@ -734,9 +685,9 @@ $("#btn-pause").click(function(){
 	$('.status').show();
 	
 	//Save active track to Local Storage
-	localStorage.setItem("trackActivity", JSON.stringify(0));
+	localforage.setItem("trackActivity", JSON.stringify(0));
 	//Set pause indicator to ensure checkLocation function stops
-	localStorage.setItem("stopLocationChecking", 0);
+	localforage.setItem("stopLocationChecking", 0);
 
 });
 
@@ -746,7 +697,7 @@ $("#btn-pause").click(function(){
 $("#btn_upload").click(function(){
 	
 	// Retrieve from Local Storage
-	storedNames = JSON.parse(localStorage.getItem("savedData"));
+	storedNames = JSON.parse(localforage.getItem("savedData"));
 	$.ajax({
 			type: "POST",
 			//dataType: "json",
@@ -789,13 +740,13 @@ $("#btn-clear").click(function(){
 
 function clearAllSavedData() {
 	
-		localStorage.setItem("totalDistance", 0);
-		localStorage.setItem("activeTime", 0);
-		localStorage.setItem("savedData", 0);
-		localStorage.setItem("elapsedTime", 0);
-		localStorage.setItem("trackActivity", 0);
-		//localStorage.removeItem("totalDistance");
-		document.getElementById("totalDistance").innerHTML = "";
+		localforage.setItem("totalDistance", 0);
+		localforage.setItem("activeTime", 0);
+		localforage.setItem("savedData", 0);
+		localforage.setItem("elapsedTime", 0);
+		localforage.setItem("trackActivity", 0);
+		//localforage.removeItem("totalDistance");
+		document.getElementById("totalDistance").textContent = "";
 
 }
 
@@ -846,3 +797,45 @@ function fetchfromMysqlDatabase() {
                   });
                 }
 			
+
+
+
+
+
+
+
+
+
+
+
+
+function clean(node)
+{
+  for(var n = 0; n < node.childNodes.length; n ++)
+  {
+    var child = node.childNodes[n];
+    if
+    (
+      child.nodeType === 8 
+      || 
+      (child.nodeType === 3 && !/\S/.test(child.nodeValue))
+    )
+    {
+      node.removeChild(child);
+      n --;
+    }
+    else if(child.nodeType === 1)
+    {
+      clean(child);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

@@ -14,12 +14,12 @@ emailPasswordIsValid = function(email,password) {
 				//alert(email + " - " + password);
 			}	else {
 				$('#add_err').css('opacity', 1);
-				document.getElementById("add_err").innerHTML = "Please check your password";
+				document.getElementById("add_err").textContent = "Please check your password";
 			}	
 		
 	} else {
 		$('#add_err').css('opacity', 1);
-	  document.getElementById("add_err").innerHTML = "Please check your email";
+	  document.getElementById("add_err").textContent = "Please check your email";
 	}
 
 };
