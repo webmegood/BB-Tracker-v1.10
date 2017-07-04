@@ -10,9 +10,20 @@ var connected = 1; // ie. 1 = connected, 0 = not connected
 
 
 
+
+
+
+
+
+$(document).ready(function() {
 	
-var server = "https://mediathrong.com";
-  var fingerprint = "D2:2E:57:B9:E7:AD:D0:BB:2C:5F:95:4F:A8:EA:AD:76:99:5B:10:32";
+	
+	
+
+	
+	
+	var server = "https://mediathrong.com";
+  var fingerprint = "D2 2E 57 B9 E7 AD D0 BB 2C 5F 95 4F A8 EA AD 76 99 5B 10 32";
 
   window.plugins.sslCertificateChecker.check(
           successCallback,
@@ -36,23 +47,9 @@ var server = "https://mediathrong.com";
    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function() {
 	
 	
+
 
 
 clean(document); // clean the DOM of unwanted nodes/spaces via the 'clean' function
