@@ -6,7 +6,7 @@ a, a:hover, a:active {
 }
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
 	border: 1px solid #999;
-	background-color: #444;
+	background-color: transparent;
 	color: #EEE;
 }
 .keep-logged-in-panel {
@@ -18,7 +18,7 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
 	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
 	font-size: 100%;
-	color: #FF0033;
+	color: #D28942;
 	margin-top: 10px;
 }
 .button.button-primary, .button.button-primary:hover {
