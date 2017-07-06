@@ -3,12 +3,13 @@ html, body {
 }
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
 	border: 1px solid #999;
+	background-color: #444;
+	color: #EEE;
 }
 .keep-logged-in-panel {
 	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
 	padding: 12px 8px 2px 8px;
-	background-color: #EEE;	
 }
 .form_error {
 	font-family: 'Fjalla One', sans-serif;
@@ -634,10 +635,8 @@ ul > li {
 	float: right;
 	position: fixed;
 	z-index: 200;
-	right: -100vw;
+	right: 0vw;
 	top: 0;
-	display: block;
-
 
 
 
@@ -652,16 +651,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', end
 
 
 }
+
+
+
+#landing, #authenticate, #home, #tracks, #tracksCurrent, #tracksLog, #jobs, #account, #photo {
+	display: none;
+	z-index: 21;
+}
+
+
 .secondary {
 	box-sizing:none !important;
 	padding: 0 !important;
 	margin:0 !important;
 	width: 100% !important;
+	z-index: 21;
 }
 #backgroundPanel {
 	z-index: 20;
 	right: 0;
-	display: none;
 }
 
 
