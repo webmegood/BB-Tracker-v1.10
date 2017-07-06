@@ -1,4 +1,4 @@
-var loggedIn = 1;
+var loggedIn = 0;
 var connected = 1; // ie. 1 = connected, 0 = not connected
 
 
@@ -15,39 +15,7 @@ var connected = 1; // ie. 1 = connected, 0 = not connected
 
 
 
-$(document).ready(function() {
-	
-	
-	
-
-	
-	
-	var server = "https://mediathrong.com";
-  var fingerprint = "D2 2E 57 B9 E7 AD D0 BB 2C 5F 95 4F A8 EA AD 76 99 5B 10 32";
-
-  window.plugins.sslCertificateChecker.check(
-          successCallback,
-          errorCallback,
-          server,
-          fingerprint);
-
-   function successCallback(message) {
-     alert(message);
-     // Message is always: CONNECTION_SECURE.
-     // Now do something with the trusted server.
-   }
-
-   function errorCallback(message) {
-     alert(message);
-     if (message == "CONNECTION_NOT_SECURE") {
-       // There is likely a man in the middle attack going on, be careful!
-     } else if (message.indexOf("CONNECTION_FAILED") >- 1) {
-       // There was no connection (yet). Internet may be down. Try again (a few times) after a little timeout.
-     }
-   }
-
-
-	
+$(document).ready(function() {	
 	
 
 
@@ -85,6 +53,7 @@ if ((loggedIn == 1) && (connected == 1)) {
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
 				$('#landing').fadeOut(0);
+				$('#status').fadeOut(0);
 				$('#authenticate').delay(0).fadeIn(10);
 		});
 
