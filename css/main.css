@@ -1,6 +1,9 @@
 html, body {
 	color: #999;
 }
+.container {
+	z-index: 21;
+}
 a, a:hover, a:active {
 	color: #999;
 }
@@ -20,6 +23,16 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
 	font-size: 100%;
 	color: #D28942;
 	margin-top: 10px;
+}
+.toggle-pincode-login-btn {
+	font-size: 10px;
+	padding: 3px 6px;
+	background: #444;
+	color: #000;
+	display: inline-block;
+	position: fixed;
+	right: 2vw;
+	bottom: 2vh;
 }
 .button.button-primary, .button.button-primary:hover {
 	background-color: #333;
@@ -856,4 +869,52 @@ table.scroll tbody {
 .normaliseHeight {
   height: 100%;
   min-height: 100%;
+}
+
+
+
+
+/** Pincode Area **/
+
+.pincode_display {
+	margin-bottom: 20px;
+}
+.pincode_display_digit {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 32px;
+	display: inline-block;
+	margin-right: 10px;
+	margin-left: 10px;
+	line-height: 42px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
+	padding-bottom: 6px;
+}
+.pincode_keypad {}
+.pincode_keypad_row {
+	display: block;
+	width: auto;
+	margin-right: 10vw;
+	margin-left: 10vw;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.pincode_keypad_digit {
+	font-family: 'Fjalla One', sans-serif;
+	display: inline-block;
+	margin-right: 10px;
+	margin-left: 10px;
+	line-height: 40px;
+	width: 40px;
+	height:40px;
+	text-align: center;
+	border: 1px solid #999;
+	border-radius: 50%;
+	color: #999;
+	font-size: 36px;
+	padding: 12px;
 }
