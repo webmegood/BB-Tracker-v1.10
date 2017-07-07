@@ -57,11 +57,11 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   
     
-  <div class="container" id="landing" style="display: none">
+  <div class="container" id="landing" style="display: none; opacity: 0.5">
     <div class="row">
       <div class="twelve columns" style="text-align:center">
           <div class="mainLogo">
-						<img src="images/logo_lg.jpg" alt="Beep Boards Logo" id='imageLoading'>
+						<img src="images/logo_splash.png" alt="Beep Boards Logo" id='imageLoading'>
 					</div>
           <div class="mainTitle">
 						<img src="images/title.png" alt="Beep Boards">
@@ -78,11 +78,11 @@
 
 
 
-  <!-- 0.0 Authentication Area
+  <!-- 0.0 Authentication Area - Login
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 
-  <div class="container" id="authenticate" style="height: 100vh; display: none">
+  <div class="container" id="login-screen" style="height: 100vh; display: none">
     <div class="row">
       <div class="twelve columns" style="text-align:center">
         <div class="menu_strip">
@@ -104,11 +104,14 @@
 	border-color:#3C3;
 	color: #FFF;
 	height: 60px;
-	line-height: 62px ">
+	line-height: 62px;
+  font-weight: 200">
 	
 						<div class="form_error" id="add_err">...</div>
             <p style="margin-top: 25px; position:relative"><a href="begin-password-reset.html">Can't access your account?</a></p>
 						</form>
+            
+            <p class="toggle-pincode-login-btn" id="show-pincode">show pincode</p>
 
         </div>
 
@@ -124,6 +127,80 @@
 
 
 
+  <!-- 0.1 Authentication Area - Pincode
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+  <div class="container" id="pincode-screen" style="height: 100vh; display: none">
+    <div class="row">
+      <div class="twelve columns" style="text-align:center">
+        <div class="menu_strip">
+    			<h1>ENTER YOUR 4 DIGIT PIN</h1>
+        </div>
+
+        <div style="margin-top: 0px">
+        
+        		<div class="pincode_display">
+            	<div class="pincode_display_digit">*</div>
+            	<div class="pincode_display_digit">*</div>
+            	<div class="pincode_display_digit">*</div>
+            	<div class="pincode_display_digit">*</div>
+            </div>
+            
+            <div class="pincode_keypad">
+							<div class="pincode_keypad_row">
+              	<div class="pincode_keypad_digit">1</div>
+              	<div class="pincode_keypad_digit">2</div>
+              	<div class="pincode_keypad_digit">3</div>
+              </div>
+							<div class="pincode_keypad_row">
+              	<div class="pincode_keypad_digit">4</div>
+              	<div class="pincode_keypad_digit">5</div>
+              	<div class="pincode_keypad_digit">6</div>
+              </div>
+							<div class="pincode_keypad_row">
+              	<div class="pincode_keypad_digit">7</div>
+              	<div class="pincode_keypad_digit">8</div>
+              	<div class="pincode_keypad_digit">9</div>
+              </div>
+							<div class="pincode_keypad_row">
+              	<div class="pincode_keypad_digit">0</div>
+              </div>
+
+            </div>
+            
+						<div class="form_error" id="add_err"></div>
+            <p style="margin-top: 25px; position:relative">
+            	<a id="show-login" class="button button-primary btn_form" style="
+              
+              
+font-family: 'Fjalla One', sans-serif;
+text-transform: uppercase;
+font-size: 20px;
+background-color: #333;
+border: #777 1px solid;
+color: #999;
+height: 60px;
+line-height: 62px;
+font-weight: 200;              
+              
+              
+              ">Cancel & Log In</a>
+            </p>
+            
+            <p class="toggle-pincode-login-btn" id="show-login-temp">show login</p>
+
+        </div>
+
+
+
+          
+      </div>
+    </div>
+  </div>  
+  
+  
+  
 
   <!-- 1.0 Home Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
