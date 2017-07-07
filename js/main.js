@@ -26,7 +26,8 @@ clean(document); // clean the DOM of unwanted nodes/spaces via the 'clean' funct
 
 if ((loggedIn == 1) && (connected == 1)) {
 		$('#landing').fadeOut(0);
-		$('#authenticate').hide();
+		$('#login-screen').hide();
+		$('#pincode-screen').hide();
 		$('#menu-fader').hide();
 		$('#menu').fadeIn(50);
 		$('.secondary').animate({"right":"-100vw"}, 50);
@@ -37,7 +38,8 @@ if ((loggedIn == 1) && (connected == 1)) {
 		$("#imageLoading").addClass("imageRotateHorizontal").fadeIn(1000).delay(4000).queue(function(){
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
 				$('#landing').fadeOut(0);
-				//$('#authenticate').delay(0).fadeIn(10);
+				//$('#login-screen').delay(0).fadeIn(10);
+				//$('#pincode-screen').delay(0).fadeIn(10);
 				$('#tracksLogBtn').css("opacity", .2);
 				$('#tracksSettingsBtn').css("opacity", .2);
 				$('#menu-fader').show();
@@ -54,13 +56,26 @@ if ((loggedIn == 1) && (connected == 1)) {
 				//$(this).removeClass("imageRotateHorizontal").dequeue().fadeIn(750);
 				$('#landing').fadeOut(0);
 				$('#status').fadeOut(0);
-				$('#authenticate').delay(0).fadeIn(10);
+				$('#login-screen').delay(0).fadeIn(10);
 		});
 
 }
 	
 });
 
+
+
+// Toggle Authentication Screens - Login / Pincode
+
+$("#show-pincode").click(function(){
+		$('#login-screen').hide();
+		$('#pincode-screen').show();
+});
+
+$("#show-login-temp").click(function(){
+		$('#pincode-screen').hide();
+		$('#login-screen').show();
+});
 
 
 
