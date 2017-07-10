@@ -903,13 +903,25 @@ table.scroll tbody {
 	display: inline-block;
 	margin-right: 12px;
 	margin-left: 12px;
-	line-height: 34px;
+	line-height: 37px;
 	width: 34px;
 	height:34px;
 	text-align: center;
-	border: 1px solid #999;
+	border: 2px solid #999;
 	border-radius: 50%;
 	color: #999;
 	font-size: 30px;
 	padding: 10px;
+}
+.pincode_keypad_text {
+	font-family: 'Fjalla One', sans-serif;
+	display: inline-block;
+	line-height: 37px;
+	width: 0px;
+	height: 34px;
+	text-align: center;
+	color: #999;
+	font-size: 18px;
+	left: 18px;
+	position: relative;
 }
