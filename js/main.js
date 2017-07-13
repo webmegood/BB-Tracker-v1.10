@@ -818,5 +818,118 @@ function clean(node)
 
 
 
+// Pincode Screen //
+
+$("#pkd01").click(function(){
+	pincodeFill(1);
+});
+$("#pkd02").click(function(){
+	pincodeFill(2);
+});
+$("#pkd03").click(function(){
+	pincodeFill(3);
+});
+$("#pkd04").click(function(){
+	pincodeFill(4);
+});
+$("#pkd05").click(function(){
+	pincodeFill(5);
+});
+$("#pkd06").click(function(){
+	pincodeFill(6);
+});
+$("#pkd07").click(function(){
+	pincodeFill(7);
+});
+$("#pkd08").click(function(){
+	pincodeFill(8);
+});
+$("#pkd09").click(function(){
+	pincodeFill(9);
+});
+$("#pkd00").click(function(){
+	pincodeFill(0);
+});
+
+
+function pincodeFill(digit) {
+	
+	if ( $("#pd01").is(".pdFill") ) {
+		
+		if ( $("#pd02").is(".pdFill") ) {
+			
+			if ( $("#pd03").is(".pdFill") ) {
+				
+				if ( $("#pd04").is(".pdFill") ) {
+				} else {
+					$('#pd04').addClass('pdFill');
+					var digit4 = digit;
+					var pincodeTemp4 = localforage.getItem("pincode");
+					pincodeTemp4 = ("" + pincodeTemp4 + digit4);
+					//localforage.setItem("pincode", pincodeTemp4);
+					//checkPinCredentials(pincodeTemp4);
+					alert(pincodeTemp4);
+				}
+				
+			} else {
+				$('#pd03').addClass('pdFill');
+				var digit3 = digit;
+				var pincodeTemp3 = localforage.getItem("pincode");
+				pincodeTemp3 = ("" + pincodeTemp3 + digit3);
+				localforage.setItem("pincode", pincodeTemp3);
+			}
+			
+		} else {
+			$('#pd02').addClass('pdFill');
+			var digit2 = digit;
+			var pincodeTemp2 = localforage.getItem("pincode");
+			pincodeTemp2 = ("" + pincodeTemp2 + digit2);
+			localforage.setItem("pincode", pincodeTemp2);
+			alert(pincodeTemp2);
+		}
+		
+	} else {
+		$('#pd01').addClass('pdFill');
+		var digit1 = digit;
+		var pincodeTemp1 = digit1;
+		localforage.setItem("pincode", pincodeTemp1);
+		alert(pincodeTemp1);
+	}
+}
+
+
+
+
+
+
+
+
+function checkPinCredentials(pincode) {
+	
+			var email = "peter.cassidy@mediathrong.com";
+
+                  $.ajax({
+		   							type: "POST",
+		   							dataType: "json",
+                    url: "http://www.mediathrong.com/beepboards/tracking/v1.1/scripts/checkPin.php",
+		   							data: "email="+email+"&pincode="+pincode,
+                    cache: false,
+                    beforeSend: function() {
+											$('.overlay').show();
+											$('.spinner-logging-in').show();
+                    },
+                    success: function(data) {
+											$('.overlay').hide();
+											$('.spinner-logging-in').hide();
+                    },
+										error: function() {
+											alert("Failed");
+										}
+                  });
+                }
+
+
+
+
 
 
