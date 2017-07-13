@@ -57,7 +57,7 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
 	margin-left: -16px;
 	z-index: 1001;
 }
-.spinner-uploading, .spinner-logging-in, .upload-error {
+.spinner-uploading, .upload-error {
 	position: fixed;
 	width: 120px;
 	height: 30px;
@@ -82,6 +82,42 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
   animation: 0.7s blink step-end infinite;
 	animation-timing-function: ease;
 }
+.spinner-logging-in {
+  width: 72px;
+  height: 72px;
+  background-color: #CCC;
+	position: fixed;
+	top: 50%;
+	margin-top: -36px;
+	left: 50%;
+	margin-left: -36px;
+	z-index: 1001;
+  border-radius: 50%;  
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+
+
 .main_content {
 	text-align:center;
 }
@@ -877,7 +913,7 @@ table.scroll tbody {
 /** Pincode Area **/
 
 .pincode_display {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 .pincode_display_digit {
 	font-family: 'Fjalla One', sans-serif;
@@ -888,6 +924,10 @@ table.scroll tbody {
 	line-height: 40px;
 	width: 30px;
 	padding-bottom: 0px;
+	width: 10px;
+	height: 10px;
+	border: 1px solid #999;
+	border-radius: 50%;
 }
 .pincode_keypad {}
 .pincode_keypad_row {
@@ -924,4 +964,7 @@ table.scroll tbody {
 	font-size: 18px;
 	left: 18px;
 	position: relative;
+}
+.pdFill {
+	background: #999;
 }
