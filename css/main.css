@@ -962,8 +962,14 @@ table.scroll tbody {
 	text-align: center;
 	color: #999;
 	font-size: 18px;
-	left: 18px;
 	position: relative;
+	top: -5px;
+}
+.pincode_keypad_clear {
+	right: 60px;
+}
+.pincode_keypad_cancel {
+	left: 18px;
 }
 .pdFill {
 	background: #999;
