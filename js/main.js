@@ -13,10 +13,9 @@ var connected = 1; // ie. 1 = connected, 0 = not connected
 
 
 
-
-
 $(document).ready(function() {	
 	
+
 
 
 
@@ -79,10 +78,27 @@ $("#show-login-temp").click(function(){
 
 
 
+// Clear Pincode
+
+$("#clear-pincode").click(function(){
+		$('#pd01').removeClass('pdFill');
+		$('#pd02').removeClass('pdFill');
+		$('#pd03').removeClass('pdFill');
+		$('#pd04').removeClass('pdFill');
+		localforage.setItem('pincode', '').then(function(value) {
+			}, function(error) {
+				console.error(error);
+			});
+});
+
+
+
+
 //Log Out
 
 $("#logout").click(function(){
 	localforage.setItem("loggedIn", null);
+	localforage.setItem("emailIdentity", null);
 	localforage.setItem("storedEmail", null);
 	localforage.setItem("storedPassword", null);
 	localforage.setItem("data", null);
@@ -120,7 +136,6 @@ $(document).ready(function(){
 				$('.secondary').animate({"right":"-100vw"}, 50);
         $('#tracks').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
-				$('.container').show();
 				$('#map').hide();
 				$('#go_back_to_tracks_log').hide(0);
 				$('#btn-track-control').hide(0);
@@ -134,7 +149,6 @@ $(document).ready(function(){
 				$('.secondary').animate({"right":"-100vw"}, 50);
         $('#tracks').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
-				$('.container').show();
 				$('#map').hide();
 				$('#btn-track-control').hide(0);
 				$('#go_back_to_tracks').hide(0);
@@ -145,9 +159,8 @@ $(document).ready(function(){
 				$('#menu-tracks').removeClass('current');
 				$('#menu-jobs').removeClass('current');
 				$('.secondary').animate({"right":"-100vw"}, 50);
-        $('#account').delay(200).animate({"right":"0px"}, 150);
+        $('#account').show().delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
-				$('.container').show();
 				$('#map').hide();
 				$('#go_back_to_tracks_log').hide(0);
 				$('#btn-track-control').hide(0);
@@ -159,9 +172,8 @@ $(document).ready(function(){
 				$('#menu-tracks').removeClass('current');
 				$('#menu-account').removeClass('current');
 				$('.secondary').animate({"right":"-100vw"}, 50);
-        $('#jobs').delay(200).animate({"right":"0px"}, 150);
+        $('#jobs').show().delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
-				$('.container').show();
 				$('#map').hide();
 				$('#go_back_to_tracks_log').hide(0);
 				$('#btn-track-control').hide(0);
@@ -192,7 +204,8 @@ $(document).ready(function(){
 	  $('#tracksCurrentBtn').click(function(){
 				$('#menu-tracks').addClass('current');
 				$('#tracks').animate({"right":"-100vw"}, 50);
-        $('#tracksCurrent').delay(200).animate({"right":"0px"}, 150);
+        $('#tracksCurrent').show();
+				$('#tracksCurrent').delay(200).animate({"right":"0px"}, 150);
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').delay(300).fadeIn(500);
 				$('#go_back_to_tracks').delay(300).fadeIn(500);
@@ -256,7 +269,6 @@ $(document).ready(function(){
 				$('#menu-tracks').addClass('current');
 				$('#backgroundPanel').delay(1000).fadeIn(0);
 				$('#btn-track-control').delay(300).fadeIn(500);
-				$('.container').show();
 				$('#map').hide();
 				$('#go_back_to_tracks_log').hide(0);
 				$('#go_back_to_tracks').delay(300).fadeIn(500);
@@ -864,36 +876,83 @@ function pincodeFill(digit) {
 				} else {
 					$('#pd04').addClass('pdFill');
 					var digit4 = digit;
-					var pincodeTemp4 = localforage.getItem("pincode");
-					pincodeTemp4 = ("" + pincodeTemp4 + digit4);
-					//localforage.setItem("pincode", pincodeTemp4);
-					//checkPinCredentials(pincodeTemp4);
-					alert(pincodeTemp4);
+
+
+
+		
+					// Use err as your first argument.
+					localforage.getItem('pincode', function(err, value) {
+						if (err) {
+							console.error('Error');
+						} else {
+							pincodeTemp4 = value;
+							pincodeTemp4 = ("" + pincodeTemp4 + digit4);
+							// A full setItem() call with Promises.
+							localforage.setItem('pincode', pincodeTemp4).then(function(value) {
+								//alert(value + ' was set!');
+								checkPinCredentials(pincodeTemp4);
+							}, function(error) {
+								console.error(error);
+							});
+						}
+					});
 				}
 				
 			} else {
 				$('#pd03').addClass('pdFill');
 				var digit3 = digit;
-				var pincodeTemp3 = localforage.getItem("pincode");
-				pincodeTemp3 = ("" + pincodeTemp3 + digit3);
-				localforage.setItem("pincode", pincodeTemp3);
+				// Use err as your first argument.
+				localforage.getItem('pincode', function(err, value) {
+					if (err) {
+						console.error('Error');
+					} else {
+						pincodeTemp3 = value;
+						pincodeTemp3 = ("" + pincodeTemp3 + digit3);
+						// A full setItem() call with Promises.
+						localforage.setItem('pincode', pincodeTemp3).then(function(value) {
+							//alert(value + ' was set!');
+						}, function(error) {
+							console.error(error);
+						});
+					}
+				});
 			}
 			
 		} else {
 			$('#pd02').addClass('pdFill');
-			var digit2 = digit;
-			var pincodeTemp2 = localforage.getItem("pincode");
-			pincodeTemp2 = ("" + pincodeTemp2 + digit2);
-			localforage.setItem("pincode", pincodeTemp2);
-			alert(pincodeTemp2);
+			var digit2 = digit;			
+			// Use err as your first argument.
+			localforage.getItem('pincode', function(err, value) {
+				if (err) {
+					console.error('Error');
+				} else {
+					pincodeTemp2 = value;
+					pincodeTemp2 = ("" + pincodeTemp2 + digit2);
+					// A full setItem() call with Promises.
+					localforage.setItem('pincode', pincodeTemp2).then(function(value) {
+						//alert(value + ' was set!');
+					}, function(error) {
+						console.error(error);
+					});
+				}
+			});
 		}
 		
 	} else {
 		$('#pd01').addClass('pdFill');
 		var digit1 = digit;
 		var pincodeTemp1 = digit1;
-		localforage.setItem("pincode", pincodeTemp1);
-		alert(pincodeTemp1);
+		// A full setItem() call with Promises.
+		localforage.setItem('pincode', pincodeTemp1).then(function(value) {
+			//alert(value + ' was set!');
+		}, function(error) {
+			console.error(error);
+		});
+
+
+
+
+
 	}
 }
 
@@ -905,25 +964,57 @@ function pincodeFill(digit) {
 
 
 function checkPinCredentials(pincode) {
-	
-			var email = "peter.cassidy@mediathrong.com";
+						
+
+					//var emailString = localforage.getItem("emailIdentity");
+					var emailString = "peter.cassidy@mediathrong.com";
+			
+			
+			
 
                   $.ajax({
 		   							type: "POST",
 		   							dataType: "json",
-                    url: "http://www.mediathrong.com/beepboards/tracking/v1.1/scripts/checkPin.php",
-		   							data: "email="+email+"&pincode="+pincode,
+                    url: "https://www.mediathrong.com/beepboards/tracking/v1.1/scripts/checkPin.php",
+		   							data: "email="+emailString+"&pincode="+pincode,
                     cache: false,
                     beforeSend: function() {
 											$('.overlay').show();
 											$('.spinner-logging-in').show();
                     },
                     success: function(data) {
-											$('.overlay').hide();
-											$('.spinner-logging-in').hide();
+											$('.overlay').delay(1500).fadeOut(500);
+											$('.spinner-logging-in').delay(1500).fadeOut(500);
+											$('#pincode-screen').hide();
+											$('#login-screen').fadeOut(0);
+											$('#menu').fadeIn(50);
+											$('.secondary').animate({"right":"-100vw"}, 50);
+											$('#menu-account').removeClass('current');
+											$('#menu-jobs').removeClass('current');
+											$('.secondary').animate({"right":"-100vw"}, 50);
+											$('#tracks').show().animate({"right":"0px"}, 150);
+											$('#backgroundPanel').delay(1000).fadeIn(0);
+											$('#map').hide();
+											$('#go_back_to_tracks_log').hide(0);
+											$('#btn-track-control').hide(0);
+											$('#go_back_to_tracks').hide(0);
+											$('#landing').hide();
                     },
 										error: function() {
-											alert("Failed");
+											$('.overlay').hide();
+											$('.spinner-logging-in').hide();
+											$('.form_error').show();
+											
+											
+		$('#pd01').removeClass('pdFill');
+		$('#pd02').removeClass('pdFill');
+		$('#pd03').removeClass('pdFill');
+		$('#pd04').removeClass('pdFill');
+		localforage.setItem('pincode', '').then(function(value) {
+			}, function(error) {
+				console.error(error);
+			});
+											
 										}
                   });
                 }
