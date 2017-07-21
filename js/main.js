@@ -72,6 +72,7 @@ $("#show-pincode").click(function(){
 });
 
 $("#show-login-temp").click(function(){
+		resetPincode();
 		$('#pincode-screen').hide();
 		$('#login-screen').show();
 });
@@ -81,14 +82,7 @@ $("#show-login-temp").click(function(){
 // Clear Pincode
 
 $("#clear-pincode").click(function(){
-		$('#pd01').removeClass('pdFill');
-		$('#pd02').removeClass('pdFill');
-		$('#pd03').removeClass('pdFill');
-		$('#pd04').removeClass('pdFill');
-		localforage.setItem('pincode', '').then(function(value) {
-			}, function(error) {
-				console.error(error);
-			});
+		resetPincode();
 });
 
 
@@ -1001,20 +995,12 @@ function checkPinCredentials(pincode) {
 											$('#landing').hide();
                     },
 										error: function() {
-											$('.overlay').hide();
-											$('.spinner-logging-in').hide();
-											$('.form_error').show();
-											
-											
-		$('#pd01').removeClass('pdFill');
-		$('#pd02').removeClass('pdFill');
-		$('#pd03').removeClass('pdFill');
-		$('#pd04').removeClass('pdFill');
-		localforage.setItem('pincode', '').then(function(value) {
-			}, function(error) {
-				console.error(error);
-			});
-											
+											$('.overlay').delay(1000).fadeOut(100);
+											$('.spinner-logging-in').delay(1000).fadeOut(100);
+											$('.form_error').show().css('margin-top', '20px');											
+
+											resetPincode();
+
 										}
                   });
                 }
@@ -1024,3 +1010,13 @@ function checkPinCredentials(pincode) {
 
 
 
+function resetPincode() {
+	$('#pd01').removeClass('pdFill');
+	$('#pd02').removeClass('pdFill');
+	$('#pd03').removeClass('pdFill');
+	$('#pd04').removeClass('pdFill');
+	localforage.setItem('pincode', '').then(function(value) {
+		}, function(error) {
+			console.error(error);
+	});
+}
