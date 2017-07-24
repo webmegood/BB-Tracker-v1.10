@@ -17,11 +17,15 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
 	text-transform: uppercase;
 	padding: 12px 8px 2px 8px;
 }
-.form_error {
+.form_error, .pincode_error {
 	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
 	font-size: 100%;
 	color: #D28942;
+}
+.form_error {
+	margin-top: 10px;
+	margin-bottom: 6px;
 }
 .button.button-primary, .button.button-primary:hover {
 	background-color: #333;
@@ -483,8 +487,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d5454', end
 ul > li {
 	display: table-cell;
 }
-.menuArea ul li:hover, .menuArea ul li.current {
+.menuArea ul li:hover, .menuArea ul li.current, .menuArea ul li.active {
 	border-bottom-color: #AAA;
+	background: none;
 }
 #menu-tracks {
 	width: 33%;
