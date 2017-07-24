@@ -489,7 +489,9 @@ ul > li {
 }
 .menuArea ul li:hover, .menuArea ul li.current, .menuArea ul li.active {
 	border-bottom-color: #AAA;
-	background: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
 }
 #menu-tracks {
 	width: 33%;
@@ -946,6 +948,10 @@ table.scroll tbody {
 	color: #999;
 	font-size: 30px;
 	padding: 10px;
+}
+.pincode_keypad_digit:active {
+	background: #999;
+	color: #333;
 }
 .pincode_keypad_text {
 	font-family: 'Fjalla One', sans-serif;
