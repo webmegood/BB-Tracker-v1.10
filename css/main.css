@@ -491,6 +491,7 @@ ul > li {
 	border-bottom-color: #AAA;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent; /* For some Androids */
+	color: #FFF;
 }
 }
 #menu-tracks {
@@ -588,10 +589,13 @@ ul > li {
 	background-position: right bottom;
 	background-color: #9F9595;
 }
-.round-btn:hover {
+.round-btn:hover, .round-btn:active {
 	cursor: pointer;
 	background-position:left bottom;	
 	transition:all 0.4s ease;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+	background-color: #BBB;
 }
 .round-btn i {
 	margin-bottom: 5px;
